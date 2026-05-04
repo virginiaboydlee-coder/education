@@ -21,23 +21,11 @@ Virginia Website/
 |---|---|
 | **Hero** | Full-screen intro with call-to-action buttons |
 | **About** | Bio, photo, and credentials |
-| **Lessons** | Cards for Piano, Voice, Music Theory, Audition Prep |
-| **Testimonials** | Student and family reviews |
-| **Contact** | Contact details + inquiry form (Formspree) |
 
 ## Setup & Deployment
 
 ### Local preview
 Open `index.html` directly in a browser — no build step needed.
-
-### Contact form
-The form uses [Formspree](https://formspree.io) for zero-backend email handling.
-
-1. Create a free account at formspree.io
-2. Create a new form and copy your Form ID
-3. In `index.html`, replace `YOUR_FORM_ID` in the form's `action` attribute:
-   ```html
-   action="https://formspree.io/f/YOUR_FORM_ID"
    ```
 
 ### Deployment options
