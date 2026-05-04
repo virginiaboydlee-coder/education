@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grade 3 – World Music Explorer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; margin: 0; }
+    html, body { height: 100%; }
+    .map-frame { height: calc(100vh - 64px); }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased flex flex-col">
+
+  <div id="nav-placeholder"></div>
+
+  <div class="map-frame w-full">
+    <iframe
+      src="world-music-explorer/world-music-explorer.html"
+      frameborder="0"
+      style="width:100%;height:100%;display:block;border:none;"
+      title="Grade 3 World Music Explorer"
+    ></iframe>
+  </div>
+
+  <script src="js/nav.js"></script>
+</body>
+</html>

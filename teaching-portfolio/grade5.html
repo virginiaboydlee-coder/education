@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PYPX Songwriting</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .tool-content { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, opacity 0.3s ease; opacity: 0; }
+    .tool-content.open { max-height: 1000px; opacity: 1; }
+    .tool-icon { transition: transform 0.3s ease; }
+    .tool-icon.open { transform: rotate(180deg); }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+
+  <div id="nav-placeholder"></div>
+
+  <main class="max-w-4xl mx-auto px-4 py-12 sm:py-16">
+
+    <!-- ── Page Header ──────────────────────────────────────── -->
+    <div class="mb-10">
+      <span class="inline-block text-purple-600 font-semibold text-xs uppercase tracking-widest mb-2">Grade 5 · PYP Exhibition</span>
+      <h1 class="text-3xl sm:text-4xl font-bold text-slate-900 mb-3">PYPX Songwriting</h1>
+    </div>
+
+
+    <!-- ── Songwriting Toolbox ───────────────────────────────── -->
+    <section class="mb-12">
+      <h2 class="text-xl font-bold mb-2 text-slate-900">🧰 Songwriting Toolbox</h2>
+      <p class="text-slate-500 text-sm mb-5">Tools to support students in composing their Exhibition song.</p>
+
+      <div class="space-y-3">
+
+        <!-- Card 2: Chord Progressions -->
+        <div class="bg-white rounded-xl border border-slate-100 shadow-sm overflow-hidden">
+          <button class="tool-btn w-full flex items-center justify-between px-6 py-5 text-left hover:bg-purple-50 transition-colors">
+            <div class="flex items-center gap-3">
+              <span class="text-2xl">🎸</span>
+              <div>
+                <h3 class="font-semibold text-base text-slate-800">Chord Progressions</h3>
+                <p class="text-xs text-slate-400 mt-0.5">Ready-to-use harmonic foundations for ukulele &amp; guitar</p>
+              </div>
+            </div>
+            <svg class="tool-icon w-5 h-5 text-slate-400 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div class="tool-content border-t border-slate-50">
+            <div class="px-6 py-5">
+              <p class="text-sm text-slate-500 mb-4">All progressions work in the key of C. Each chord plays for one bar (4 beats) unless you decide otherwise.</p>
+              <div class="grid sm:grid-cols-2 gap-4">
+
+                <div class="border border-slate-100 rounded-xl p-4">
+                  <p class="text-xs font-bold text-emerald-600 uppercase tracking-wider mb-1">The Classic Pop</p>
+                  <p class="text-xs text-slate-400 mb-2">Uplifting · Works for almost anything</p>
+                  <div class="flex gap-2 flex-wrap">
+                    <span class="bg-emerald-100 text-emerald-800 font-mono font-bold text-sm rounded px-2.5 py-1">C</span>
+                    <span class="text-slate-300 self-center">→</span>
+                    <span class="bg-emerald-100 text-emerald-800 font-mono font-bold text-sm rounded px-2.5 py-1">G</span>
+                    <span class="text-slate-300 self-center">→</span>
+                    <span class="bg-emerald-100 text-emerald-800 font-mono font-bold text-sm rounded px-2.5 py-1">Am</span>
+                    <span class="text-slate-300 self-center">→</span>
+                    <span class="bg-emerald-100 text-emerald-800 font-mono font-bold text-sm rounded px-2.5 py-1">F</span>
+                  </div>
+                  <p class="text-xs text-slate-400 mt-2 italic">Used in: "Let It Be", "No Woman No Cry", "I'm Yours"</p>
+                </div>
+
+                <div class="border border-slate-100 rounded-xl p-4">
+                  <p class="text-xs font-bold text-blue-600 uppercase tracking-wider mb-1">Emotional Ballad</p>
+                  <p class="text-xs text-slate-400 mb-2">Reflective · Perfect for slow, heartfelt songs</p>
+                  <div class="flex gap-2 flex-wrap">
+                    <span class="bg-blue-100 text-blue-800 font-mono font-bold text-sm rounded px-2.5 py-1">Am</span>
+                    <span class="text-slate-300 self-center">→</span>
+                    <span class="bg-blue-100 text-blue-800 font-mono font-bold text-sm rounded px-2.5 py-1">F</span>
+                    <span class="text-slate-300 self-center">→</span>
+                    <span class="bg-blue-100 text-blue-800 font-mono font-bold text-sm rounded px-2.5 py-1">C</span>
+                    <span class="text-slate-300 self-center">→</span>
+                    <span class="bg-blue-100 text-blue-800 font-mono font-bold text-sm rounded px-2.5 py-1">G</span>
+                  </div>
+                  <p class="text-xs text-slate-400 mt-2 italic">Used in: "Someone Like You", "The Scientist"</p>
+                </div>
+
+                <div class="border border-slate-100 rounded-xl p-4">
+                  <p class="text-xs font-bold text-amber-600 uppercase tracking-wider mb-1">Hopeful &amp; Driving</p>
+                  <p class="text-xs text-slate-400 mb-2">Energetic · Great for action songs</p>
+                  <div class="flex gap-2 flex-wrap">
+                    <span class="bg-amber-100 text-amber-800 font-mono font-bold text-sm rounded px-2.5 py-1">C</span>
+                    <span class="text-slate-300 self-center">→</span>
+                    <span class="bg-amber-100 text-amber-800 font-mono font-bold text-sm rounded px-2.5 py-1">Am</span>
+                    <span class="text-slate-300 self-center">→</span>
+                    <span class="bg-amber-100 text-amber-800 font-mono font-bold text-sm rounded px-2.5 py-1">F</span>
+                    <span class="text-slate-300 self-center">→</span>
+                    <span class="bg-amber-100 text-amber-800 font-mono font-bold text-sm rounded px-2.5 py-1">G</span>
+                  </div>
+                  <p class="text-xs text-slate-400 mt-2 italic">Used in: "Stand By Me", "Count on Me"</p>
+                </div>
+
+                <div class="border border-slate-100 rounded-xl p-4">
+                  <p class="text-xs font-bold text-rose-600 uppercase tracking-wider mb-1">Two-Chord Groove</p>
+                  <p class="text-xs text-slate-400 mb-2">Simple &amp; powerful · Great for first songs</p>
+                  <div class="flex gap-2 flex-wrap">
+                    <span class="bg-rose-100 text-rose-800 font-mono font-bold text-sm rounded px-2.5 py-1">Am</span>
+                    <span class="text-slate-300 self-center">→</span>
+                    <span class="bg-rose-100 text-rose-800 font-mono font-bold text-sm rounded px-2.5 py-1">F</span>
+                    <span class="text-slate-300 self-center">→</span>
+                    <span class="bg-rose-100 text-rose-800 font-mono font-bold text-sm rounded px-2.5 py-1">Am</span>
+                    <span class="text-slate-300 self-center">→</span>
+                    <span class="bg-rose-100 text-rose-800 font-mono font-bold text-sm rounded px-2.5 py-1">F</span>
+                  </div>
+                  <p class="text-xs text-slate-400 mt-2 italic">Let the rhythm do the work. Try strumming D-DU-UDU.</p>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Rhyme Generator -->
+        <div class="bg-white rounded-xl border border-slate-100 shadow-sm overflow-hidden">
+          <button class="tool-btn w-full flex items-center justify-between px-6 py-5 text-left hover:bg-purple-50 transition-colors">
+            <div class="flex items-center gap-3">
+              <span class="text-2xl">🔤</span>
+              <div>
+                <h3 class="font-semibold text-base text-slate-800">Rhyme Generator</h3>
+                <p class="text-xs text-slate-400 mt-0.5">Find words that sound good at the end of a line</p>
+              </div>
+            </div>
+            <svg class="tool-icon w-5 h-5 text-slate-400 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div class="tool-content border-t border-slate-50">
+            <div class="px-6 py-5">
+              <p class="text-sm text-slate-500 mb-4">Type a word you want to rhyme with — the generator will suggest options sorted by how closely they rhyme.</p>
+              <div class="flex gap-2 mb-4 flex-wrap">
+                <input type="text" id="rhyme-input" placeholder="e.g. light, day, free…" class="flex-1 min-w-0 text-sm rounded-lg border border-slate-200 px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-purple-400" />
+                <button id="rhyme-btn" class="bg-purple-600 text-white text-sm font-semibold px-5 py-2.5 rounded-lg hover:bg-purple-700 transition-colors whitespace-nowrap">Find Rhymes</button>
+              </div>
+              <div id="rhyme-results" class="min-h-12">
+                <p class="text-slate-400 text-sm italic">Your rhyme suggestions will appear here.</p>
+              </div>
+              <div class="mt-4 bg-slate-50 rounded-lg p-3 text-xs text-slate-400">
+                <p>💡 <strong>Tip:</strong> Try near-rhymes too — words that sound <em>almost</em> alike often feel more natural and surprising in songs (e.g. "fire / higher", "rain / change").</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div><!-- end toolbox cards -->
+    </section>
+
+    <!-- ── Student Showcase (Padlet) ─────────────────────────── -->
+    <section class="mb-10">
+      <h2 class="text-xl font-bold mb-2 text-slate-900">🎤 Student Voices</h2>
+      <p class="text-slate-500 text-sm mb-5">Student reflections and brainstorming in preparation for the PYP Exhibition.</p>
+      <div class="rounded-xl overflow-hidden border border-slate-100 shadow-sm">
+        <iframe src="exhibition-mindmap.html" frameborder="0"
+                style="width:100%;height:700px;display:block;border:none;"></iframe>
+      </div>
+    </section>
+
+
+  </main>
+
+  <!-- ── Footer ─────────────────────────────────────────────── -->
+  <footer class="bg-slate-800 text-slate-400 py-8 mt-16">
+    <div class="max-w-5xl mx-auto px-4 text-center text-sm">
+      <p class="text-slate-300 font-medium mb-1">Ms. Virginia Lee · PYP Music Teacher &amp; Educational Leader</p>
+      <p>Teaching Portfolio · Built for reflection, growth, and professional documentation.</p>
+    </div>
+  </footer>
+
+  <script src="js/nav.js"></script>
+  <script>
+    // ─────────────────────────────────────────────────────────────
+    // Songwriting Toolbox Accordion
+    // ─────────────────────────────────────────────────────────────
+    document.querySelectorAll('.tool-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const content = btn.nextElementSibling;
+        const icon    = btn.querySelector('.tool-icon');
+        const isOpen  = content.classList.contains('open');
+
+        // Close all
+        document.querySelectorAll('.tool-content').forEach(c => c.classList.remove('open'));
+        document.querySelectorAll('.tool-icon').forEach(i => i.classList.remove('open'));
+
+        if (!isOpen) {
+          content.classList.add('open');
+          icon.classList.add('open');
+        }
+      });
+    });
+
+    // ─────────────────────────────────────────────────────────────
+    // Rhyme Generator
+    // ─────────────────────────────────────────────────────────────
+    const rhymeDB = {
+      'ay':    ['day','say','way','play','stay','ray','gray','pray','sway','bay','clay','display','relay','hooray','okay'],
+      'ight':  ['night','light','bright','might','right','tight','sight','flight','fight','height','write','quite','white','kite','invite'],
+      'ee':    ['free','see','be','me','tree','sea','key','we','agree','believe','breathe','dream','gleam','team'],
+      'ove':   ['love','dove','above','shove','of','glove'],
+      'ound':  ['sound','ground','found','around','bound','round','pound','surround','profound','astound'],
+      'ong':   ['song','strong','long','belong','along','wrong','among','prolong'],
+      'ame':   ['name','flame','same','claim','game','came','frame','became','proclaim','fame'],
+      'art':   ['heart','start','part','art','smart','apart','chart','depart'],
+      'and':   ['hand','land','stand','sand','band','grand','understand','expand','demand','command'],
+      'ine':   ['mine','fine','line','shine','time','climb','sign','wine','define','divine','combine','align'],
+      'ive':   ['live','give','forgive','drive','thrive','alive','strive','survive'],
+      'ope':   ['hope','cope','rope','open','scope','envelope'],
+      'ange':  ['change','range','strange','exchange','rearrange'],
+      'orld':  ['world','hurled','unfurled','swirled'],
+      'ife':   ['life','knife','wife','strife'],
+      'old':   ['bold','gold','told','hold','fold','unfold','behold'],
+      'ow':    ['know','flow','grow','show','below','glow','though','bestow'],
+      'air':   ['care','share','there','where','fair','aware','compare','declare','prepare','repair'],
+      'ore':   ['more','before','explore','shore','restore','adore','core','ignore','implore'],
+      'ome':   ['home','come','some','roam','foam','Rome','become','overcome','welcome'],
+    };
+
+    function getRhymes(word) {
+      word = word.trim().toLowerCase();
+      if (!word) return [];
+      // Try matching progressively shorter endings (up to 5 chars)
+      for (let len = 5; len >= 2; len--) {
+        const ending = word.slice(-len);
+        for (const [key, words] of Object.entries(rhymeDB)) {
+          if (ending === key || word.endsWith(key)) {
+            return words.filter(w => w !== word);
+          }
+        }
+      }
+      // Fallback: return some common single-syllable rhyme words
+      return ['change','bright','here','far','care','free','now','find','rise','hold','grow','know'];
+    }
+
+    document.getElementById('rhyme-btn').addEventListener('click', () => {
+      const val   = document.getElementById('rhyme-input').value;
+      const words = getRhymes(val);
+      const el    = document.getElementById('rhyme-results');
+
+      if (!val.trim()) {
+        el.innerHTML = '<p class="text-amber-500 text-sm">Please type a word first.</p>';
+        return;
+      }
+
+      if (words.length === 0) {
+        el.innerHTML = '<p class="text-slate-400 text-sm italic">No suggestions found — try a different word or ending.</p>';
+        return;
+      }
+
+      el.innerHTML = `
+        <p class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Rhymes for "<span class="text-purple-600">${val.trim()}</span>"</p>
+        <div class="flex flex-wrap gap-2">
+          ${words.map(w => `<span class="bg-purple-100 text-purple-800 font-medium text-sm rounded-full px-3 py-1">${w}</span>`).join('')}
+        </div>
+      `;
+    });
+
+    document.getElementById('rhyme-input').addEventListener('keydown', e => {
+      if (e.key === 'Enter') document.getElementById('rhyme-btn').click();
+    });
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leadership | Ms. Sarah Chen</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    tr.hidden-row { display: none; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+
+  <div id="nav-placeholder"></div>
+
+  <main class="max-w-5xl mx-auto px-4 py-12 sm:py-16">
+
+    <!-- ── Page Header ──────────────────────────────────────── -->
+    <div class="mb-10">
+      <span class="inline-block text-blue-600 font-semibold text-xs uppercase tracking-widest mb-2">Professional Leadership</span>
+      <h1 class="text-3xl sm:text-4xl font-bold text-slate-900 mb-3">Leadership &amp; Contributions</h1>
+      <p class="text-slate-500 text-base sm:text-lg max-w-2xl leading-relaxed">
+        A record of leadership roles, collaborative initiatives, and professional contributions
+        within the school community and the broader IB network.
+      </p>
+    </div>
+
+    <!-- ── Stats Strip ───────────────────────────────────────── -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-12">
+      <div class="bg-white rounded-xl p-5 border border-slate-100 shadow-sm text-center">
+        <p class="text-3xl font-bold text-blue-600">11+</p>
+        <p class="text-xs text-slate-500 mt-1 font-medium">Years Teaching</p>
+      </div>
+      <div class="bg-white rounded-xl p-5 border border-slate-100 shadow-sm text-center">
+        <p class="text-3xl font-bold text-emerald-600">9+</p>
+        <p class="text-xs text-slate-500 mt-1 font-medium">Years in Leadership</p>
+      </div>
+      <div class="bg-white rounded-xl p-5 border border-slate-100 shadow-sm text-center">
+        <p class="text-3xl font-bold text-amber-600">11</p>
+        <p class="text-xs text-slate-500 mt-1 font-medium">Professional Presentations</p>
+      </div>
+      <div class="bg-white rounded-xl p-5 border border-slate-100 shadow-sm text-center">
+        <p class="text-3xl font-bold text-purple-600">4</p>
+        <p class="text-xs text-slate-500 mt-1 font-medium">Schools &amp; Organisations</p>
+      </div>
+    </div>
+
+    <!-- ── Search & Filter Bar ──────────────────────────────── -->
+    <div class="bg-white rounded-xl border border-slate-100 shadow-sm p-5 mb-5">
+      <div class="flex flex-col sm:flex-row gap-3">
+        <div class="flex-1 relative">
+          <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+          </svg>
+          <input
+            type="text"
+            id="table-search"
+            placeholder="Search by role, context, or keyword…"
+            class="w-full pl-9 pr-4 py-2.5 text-sm rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          />
+        </div>
+        <select id="category-filter" class="text-sm rounded-lg border border-slate-200 px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-400 bg-white">
+          <option value="all">All Categories</option>
+          <option value="Leadership">Leadership</option>
+          <option value="Accreditation">Accreditation</option>
+          <option value="Community &amp; DEI">Community &amp; DEI</option>
+          <option value="Community">Community</option>
+          <option value="Curriculum">Curriculum</option>
+          <option value="Volunteer">Volunteer</option>
+        </select>
+      </div>
+      <p id="result-count" class="text-xs text-slate-400 mt-2.5 ml-1">Showing all 10 entries</p>
+    </div>
+
+    <!-- ── Leadership Table ──────────────────────────────────── -->
+    <div class="bg-white rounded-xl border border-slate-100 shadow-sm overflow-hidden">
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm" id="leadership-table">
+          <thead class="bg-slate-50 border-b border-slate-100">
+            <tr>
+              <th class="text-left px-5 py-3.5 font-semibold text-slate-600 text-xs uppercase tracking-wider">Role</th>
+              <th class="text-left px-5 py-3.5 font-semibold text-slate-600 text-xs uppercase tracking-wider hidden sm:table-cell">Context</th>
+              <th class="text-left px-5 py-3.5 font-semibold text-slate-600 text-xs uppercase tracking-wider hidden md:table-cell">Years</th>
+              <th class="text-left px-5 py-3.5 font-semibold text-slate-600 text-xs uppercase tracking-wider hidden lg:table-cell">Key Impact</th>
+              <th class="text-left px-5 py-3.5 font-semibold text-slate-600 text-xs uppercase tracking-wider">Category</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-50" id="table-body">
+
+            <tr class="hover:bg-slate-50 transition-colors" data-search="pyp arts team lead visual performing arts curriculum drama isns" data-category="Leadership">
+              <td class="px-5 py-4 font-medium text-slate-800">PYP Arts Team Lead</td>
+              <td class="px-5 py-4 text-slate-500 hidden sm:table-cell">International School of Nanshan Shenzhen</td>
+              <td class="px-5 py-4 text-slate-500 hidden md:table-cell">2019–Present</td>
+              <td class="px-5 py-4 text-slate-500 hidden lg:table-cell">Team lead for PYP visual and performing arts teachers; vertically aligned music learning outcomes; facilitated implementation of a new drama curriculum.</td>
+              <td class="px-5 py-4"><span class="bg-blue-100 text-blue-700 text-xs font-semibold rounded-full px-2.5 py-1">Leadership</span></td>
+            </tr>
+
+            <tr class="hover:bg-slate-50 transition-colors" data-search="cis accreditation coordinator self study narrative evidence committees visit isns" data-category="Accreditation">
+              <td class="px-5 py-4 font-medium text-slate-800">CIS Accreditation Coordinator</td>
+              <td class="px-5 py-4 text-slate-500 hidden sm:table-cell">International School of Nanshan Shenzhen</td>
+              <td class="px-5 py-4 text-slate-500 hidden md:table-cell">2019–Present</td>
+              <td class="px-5 py-4 text-slate-500 hidden lg:table-cell">Led school-wide CIS self-study narrative and evidence gathering; recruited and directed self-study committees; organised and oversaw the CIS Team Visit from logistics to stakeholder communication.</td>
+              <td class="px-5 py-4"><span class="bg-amber-100 text-amber-700 text-xs font-semibold rounded-full px-2.5 py-1">Accreditation</span></td>
+            </tr>
+
+            <tr class="hover:bg-slate-50 transition-colors" data-search="deijb committee co-founder leader diversity equity inclusion justice belonging mission policy audit diversity days isns" data-category="Community &amp; DEI">
+              <td class="px-5 py-4 font-medium text-slate-800">DEIJB Committee Co-Founder &amp; Leader</td>
+              <td class="px-5 py-4 text-slate-500 hidden sm:table-cell">International School of Nanshan Shenzhen</td>
+              <td class="px-5 py-4 text-slate-500 hidden md:table-cell">2019–Present</td>
+              <td class="px-5 py-4 text-slate-500 hidden lg:table-cell">Founding member; developed committee mission statement and multi-year strategic action plan; organised school-wide trainings, policy audits, and launched the school's first annual Diversity Days.</td>
+              <td class="px-5 py-4"><span class="bg-purple-100 text-purple-700 text-xs font-semibold rounded-full px-2.5 py-1">Community &amp; DEI</span></td>
+            </tr>
+
+            <tr class="hover:bg-slate-50 transition-colors" data-search="acamis ace representative arts conference isns" data-category="Community">
+              <td class="px-5 py-4 font-medium text-slate-800">ACAMIS ACE Representative</td>
+              <td class="px-5 py-4 text-slate-500 hidden sm:table-cell">ACAMIS / ISNS</td>
+              <td class="px-5 py-4 text-slate-500 hidden md:table-cell">2019–Present</td>
+              <td class="px-5 py-4 text-slate-500 hidden lg:table-cell">School representative to the ACAMIS Arts, Culture &amp; Education network; participated in ACAMIS Chess Tournament Steering Committee and additional cross-school committees.</td>
+              <td class="px-5 py-4"><span class="bg-teal-100 text-teal-700 text-xs font-semibold rounded-full px-2.5 py-1">Community</span></td>
+            </tr>
+
+            <tr class="hover:bg-slate-50 transition-colors" data-search="wasc committee member accreditation review isns" data-category="Accreditation">
+              <td class="px-5 py-4 font-medium text-slate-800">WASC Committee Member</td>
+              <td class="px-5 py-4 text-slate-500 hidden sm:table-cell">International School of Nanshan Shenzhen</td>
+              <td class="px-5 py-4 text-slate-500 hidden md:table-cell">2019–Present</td>
+              <td class="px-5 py-4 text-slate-500 hidden lg:table-cell">Contributed to WASC accreditation committee review process alongside school-wide self-study work.</td>
+              <td class="px-5 py-4"><span class="bg-amber-100 text-amber-700 text-xs font-semibold rounded-full px-2.5 py-1">Accreditation</span></td>
+            </tr>
+
+            <tr class="hover:bg-slate-50 transition-colors" data-search="volunteer coordinator charity auction gala captivating international child safeguarding 180 volunteers" data-category="Volunteer">
+              <td class="px-5 py-4 font-medium text-slate-800">Volunteer Coordinator — Annual Charity Gala</td>
+              <td class="px-5 py-4 text-slate-500 hidden sm:table-cell">Captivating International</td>
+              <td class="px-5 py-4 text-slate-500 hidden md:table-cell">2024–Present</td>
+              <td class="px-5 py-4 text-slate-500 hidden lg:table-cell">Recruited, trained, and coordinated 180 volunteers across 12 teams for an annual charity auction and gala; developed child-safeguarding procedures and protocols.</td>
+              <td class="px-5 py-4"><span class="bg-teal-100 text-teal-700 text-xs font-semibold rounded-full px-2.5 py-1">Volunteer</span></td>
+            </tr>
+
+            <tr class="hover:bg-slate-50 transition-colors" data-search="director arts enrichment forsyth country day school staff management budget program growth 300 percent" data-category="Leadership">
+              <td class="px-5 py-4 font-medium text-slate-800">Director of Arts Enrichment</td>
+              <td class="px-5 py-4 text-slate-500 hidden sm:table-cell">Forsyth Country Day School</td>
+              <td class="px-5 py-4 text-slate-500 hidden md:table-cell">2015–2019</td>
+              <td class="px-5 py-4 text-slate-500 hidden lg:table-cell">Staffed and managed 12 arts instructors; grew program revenue by over 300% in two years; wrote operational handbook and codified institutional policies.</td>
+              <td class="px-5 py-4"><span class="bg-blue-100 text-blue-700 text-xs font-semibold rounded-full px-2.5 py-1">Leadership</span></td>
+            </tr>
+
+            <tr class="hover:bg-slate-50 transition-colors" data-search="music theatre camp director shrine mont overnight camp hiring training budget tours" data-category="Leadership">
+              <td class="px-5 py-4 font-medium text-slate-800">Music &amp; Theatre Camp Director</td>
+              <td class="px-5 py-4 text-slate-500 hidden sm:table-cell">Shrine Mont Camps</td>
+              <td class="px-5 py-4 text-slate-500 hidden md:table-cell">2013–2020</td>
+              <td class="px-5 py-4 text-slate-500 hidden lg:table-cell">Directed overnight music and theatre camp for ages 8–17; oversaw budget and payroll; recruited, hired, trained, and mentored counselors; organised multi-day musical tours and community partnerships.</td>
+              <td class="px-5 py-4"><span class="bg-blue-100 text-blue-700 text-xs font-semibold rounded-full px-2.5 py-1">Leadership</span></td>
+            </tr>
+
+            <tr class="hover:bg-slate-50 transition-colors" data-search="musical director shrine mont musical theatre productions choreography staging choral conducting" data-category="Curriculum">
+              <td class="px-5 py-4 font-medium text-slate-800">Musical Director</td>
+              <td class="px-5 py-4 text-slate-500 hidden sm:table-cell">Shrine Mont Camps</td>
+              <td class="px-5 py-4 text-slate-500 hidden md:table-cell">2013–2020</td>
+              <td class="px-5 py-4 text-slate-500 hidden lg:table-cell">Directed full musical theatre productions for elementary, middle, and high school campers — including repertoire selection, rehearsals, choreography, staging, and choral conducting.</td>
+              <td class="px-5 py-4"><span class="bg-emerald-100 text-emerald-700 text-xs font-semibold rounded-full px-2.5 py-1">Curriculum</span></td>
+            </tr>
+
+            <tr class="hover:bg-slate-50 transition-colors" data-search="music volunteer coordinator greensboro children museum uncg program development events" data-category="Community &amp; DEI">
+              <td class="px-5 py-4 font-medium text-slate-800">Music Volunteer Coordinator</td>
+              <td class="px-5 py-4 text-slate-500 hidden sm:table-cell">Greensboro Children's Museum</td>
+              <td class="px-5 py-4 text-slate-500 hidden md:table-cell">2013–2014</td>
+              <td class="px-5 py-4 text-slate-500 hidden lg:table-cell">Liaison between UNCG Music Education department and museum; organised bi-weekly music enrichment events including performances, instrument petting zoos, and interactive exhibits.</td>
+              <td class="px-5 py-4"><span class="bg-purple-100 text-purple-700 text-xs font-semibold rounded-full px-2.5 py-1">Community &amp; DEI</span></td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+
+      <!-- No results row -->
+      <div id="no-results" class="hidden px-6 py-10 text-center text-slate-400 text-sm">
+        No entries match your search. Try a different keyword or clear the filter.
+      </div>
+    </div>
+
+    <!-- ── Professional Presentations ───────────────────────────── -->
+    <section class="mt-14">
+      <h2 class="text-xl font-bold mb-2 text-slate-900">Professional Presentations</h2>
+      <p class="text-slate-500 text-sm mb-6">Click any tile to read more and view the presentation.</p>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4" id="presentations-grid">
+
+        <!-- 1 -->
+        <div class="pres-tile bg-white rounded-xl border border-slate-100 shadow-sm overflow-hidden cursor-pointer hover:shadow-md hover:border-blue-200 transition-all"
+             data-idx="0">
+          <div class="bg-gradient-to-br from-blue-500 to-indigo-600 h-1.5"></div>
+          <div class="p-5">
+            <p class="text-xs font-bold text-blue-600 uppercase tracking-wider mb-2">ISNS Internal Professional Development</p>
+            <h3 class="font-semibold text-slate-800 text-sm leading-snug">Learner Profile Attributes for Classroom &amp; Curriculum</h3>
+            <p class="text-xs text-slate-400 mt-2 flex items-center gap-1">
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              Click to expand
+            </p>
+          </div>
+          <div class="pres-detail hidden border-t border-slate-100 px-5 pb-5 pt-4">
+            <p class="text-sm text-slate-600 leading-relaxed mb-4">The IB Learner Profile is more than a poster on the wall — it's a powerful framework for designing meaningful curriculum and classroom experiences. In this professional development session, I guide participants through practical strategies for embedding Learner Profile attributes into their planning and teaching, leaving with concrete, ready-to-use activities they can bring back to their classrooms right away.</p>
+            <a href="https://canva.link/09ddwml5cxaygzu2" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-blue-600 text-white text-xs font-semibold px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+              View Presentation
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- 2 -->
+        <div class="pres-tile bg-white rounded-xl border border-slate-100 shadow-sm overflow-hidden cursor-pointer hover:shadow-md hover:border-emerald-200 transition-all"
+             data-idx="1">
+          <div class="bg-gradient-to-br from-emerald-500 to-teal-600 h-1.5"></div>
+          <div class="p-5">
+            <p class="text-xs font-bold text-emerald-600 uppercase tracking-wider mb-2">South China Job-a-Like Program</p>
+            <h3 class="font-semibold text-slate-800 text-sm leading-snug">The Power of Games in Music</h3>
+            <p class="text-xs text-slate-400 mt-2 flex items-center gap-1">
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              Click to expand
+            </p>
+          </div>
+          <div class="pres-detail hidden border-t border-slate-100 px-5 pb-5 pt-4">
+            <p class="text-sm text-slate-600 leading-relaxed mb-4">What if your most engaging lesson was also your most educational? This presentation makes the case for bringing games into the curriculum — not as a reward, but as a core instructional strategy. I explore how thoughtfully designed game-based learning creates authentic, joyful experiences that deepen understanding and support students' social-emotional growth at the same time.</p>
+            <a href="https://canva.link/aoffs976gs08rjq3" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-emerald-600 text-white text-xs font-semibold px-4 py-2 rounded-lg hover:bg-emerald-700 transition-colors">
+              View Presentation
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- 3 -->
+        <div class="pres-tile bg-white rounded-xl border border-slate-100 shadow-sm overflow-hidden cursor-pointer hover:shadow-md hover:border-purple-200 transition-all"
+             data-idx="2">
+          <div class="bg-gradient-to-br from-purple-500 to-violet-600 h-1.5"></div>
+          <div class="p-5">
+            <p class="text-xs font-bold text-purple-600 uppercase tracking-wider mb-2">ISNS Staff Training</p>
+            <h3 class="font-semibold text-slate-800 text-sm leading-snug">Diversity, Equity, and Inclusion at ISNS</h3>
+            <p class="text-xs text-slate-400 mt-2 flex items-center gap-1">
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              Click to expand
+            </p>
+          </div>
+          <div class="pres-detail hidden border-t border-slate-100 px-5 pb-5 pt-4">
+            <p class="text-sm text-slate-600 leading-relaxed mb-4">As co-head of the ISNS DEIJ Committee, I developed this foundational staff training to kick off a school-wide commitment to diversity, equity, inclusion, and justice. This first session in a series builds a shared vocabulary and common understanding, giving educators the grounding they need to engage meaningfully with DEIJ work in their classrooms and community.</p>
+            <a href="https://drive.google.com/file/d/15GceHGBxEpeX_zcT1vPfXUbfJnt7QmxV/view?usp=sharing" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-purple-600 text-white text-xs font-semibold px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors">
+              View Presentation
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- 4 -->
+        <div class="pres-tile bg-white rounded-xl border border-slate-100 shadow-sm overflow-hidden cursor-pointer hover:shadow-md hover:border-amber-200 transition-all"
+             data-idx="3">
+          <div class="bg-gradient-to-br from-amber-400 to-orange-500 h-1.5"></div>
+          <div class="p-5">
+            <p class="text-xs font-bold text-amber-600 uppercase tracking-wider mb-2">edTech Guangzhou 2025</p>
+            <h3 class="font-semibold text-slate-800 text-sm leading-snug">Unlocking the Power of Reflection</h3>
+            <p class="text-xs text-slate-400 mt-2 flex items-center gap-1">
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              Click to expand
+            </p>
+          </div>
+          <div class="pres-detail hidden border-t border-slate-100 px-5 pb-5 pt-4">
+            <p class="text-sm text-slate-600 leading-relaxed mb-4">Reflection is one of the most powerful tools in a learner's toolkit — but too often it stops at the Exit Ticket. In this session, I share practical, tech-enhanced strategies that make every classroom activity an opportunity for deeper thinking. Participants explore a range of digital tools and hands-on approaches that help students connect ideas, interrogate their own thinking, and uncover the broader significance of what they're learning.</p>
+            <a href="https://canva.link/qpebul9ezeagvx95" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-amber-500 text-white text-xs font-semibold px-4 py-2 rounded-lg hover:bg-amber-600 transition-colors">
+              View Presentation
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- 5 -->
+        <div class="pres-tile bg-white rounded-xl border border-slate-100 shadow-sm overflow-hidden cursor-pointer hover:shadow-md hover:border-rose-200 transition-all"
+             data-idx="4">
+          <div class="bg-gradient-to-br from-rose-400 to-pink-600 h-1.5"></div>
+          <div class="p-5">
+            <p class="text-xs font-bold text-rose-600 uppercase tracking-wider mb-2">ACAMIS Conference for the Arts 2025</p>
+            <h3 class="font-semibold text-slate-800 text-sm leading-snug">Collaborative Composition and Songwriting</h3>
+            <p class="text-xs text-slate-400 mt-2 flex items-center gap-1">
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              Click to expand
+            </p>
+          </div>
+          <div class="pres-detail hidden border-t border-slate-100 px-5 pb-5 pt-4">
+            <p class="text-sm text-slate-600 leading-relaxed mb-4">Songwriting doesn't have to be a solo act. I developed this workshop to share the collaborative songwriting process I use with my students as part of the PYP Exhibition. Packed with examples and step-by-step guidance, participants experience the full journey firsthand — from crafting and editing lyrics to building melodic composition together — and leave with a process they can bring straight back to their own music classrooms.</p>
+            <a href="https://canva.link/djd1cb6lh4803aw" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-rose-500 text-white text-xs font-semibold px-4 py-2 rounded-lg hover:bg-rose-600 transition-colors">
+              View Presentation
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- 6 -->
+        <div class="pres-tile bg-white rounded-xl border border-slate-100 shadow-sm overflow-hidden cursor-pointer hover:shadow-md hover:border-teal-200 transition-all"
+             data-idx="5">
+          <div class="bg-gradient-to-br from-teal-500 to-emerald-600 h-1.5"></div>
+          <div class="p-5">
+            <p class="text-xs font-bold text-teal-600 uppercase tracking-wider mb-2">ACAMIS ACE Arts Conference</p>
+            <h3 class="font-semibold text-slate-800 text-sm leading-snug">Global Mindedness and Belonging in the Music Classroom</h3>
+            <p class="text-xs text-slate-400 mt-2 flex items-center gap-1">
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              Click to expand
+            </p>
+          </div>
+          <div class="pres-detail hidden border-t border-slate-100 px-5 pb-5 pt-4">
+            <p class="text-sm text-slate-600 leading-relaxed mb-4">Every student deserves to see themselves in the music they make and study. In this session, I explore what it looks and sounds like to teach with a genuinely culturally responsive mindset in the music room. I share concrete criteria for selecting inclusive repertoire and practical strategies for building a classroom culture where every student feels a sense of belonging and ownership in their musical community.</p>
+            <a href="https://canva.link/4xrbgg4m2p2jxl9" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-teal-600 text-white text-xs font-semibold px-4 py-2 rounded-lg hover:bg-teal-700 transition-colors">
+              View Presentation
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- 7 -->
+        <div class="pres-tile bg-white rounded-xl border border-slate-100 shadow-sm overflow-hidden cursor-pointer hover:shadow-md hover:border-slate-300 transition-all"
+             data-idx="6">
+          <div class="bg-gradient-to-br from-slate-500 to-slate-700 h-1.5"></div>
+          <div class="p-5">
+            <p class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">ISNS All-Staff Meeting · Sept 11, 2024</p>
+            <h3 class="font-semibold text-slate-800 text-sm leading-snug">Microaggressions &amp; Implicit Bias</h3>
+            <p class="text-xs text-slate-400 mt-2 flex items-center gap-1">
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              Click to expand
+            </p>
+          </div>
+          <div class="pres-detail hidden border-t border-slate-100 px-5 pb-5 pt-4">
+            <p class="text-sm text-slate-600 leading-relaxed mb-4">As co-head of the ISNS DEIJ Committee, I designed this all-staff session to open up honest, meaningful conversations about microaggressions and implicit bias. Using Mentimeter polls and small group discussion, the session creates space for staff to reflect on their own experiences and assumptions — and to begin building the awareness needed to create a more equitable and just school community.</p>
+            <a href="https://drive.google.com/file/d/1wxwoeDsB-Ij9gFXEtzdaf_yH5qfBzJJD/view?usp=sharing" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-slate-600 text-white text-xs font-semibold px-4 py-2 rounded-lg hover:bg-slate-700 transition-colors">
+              View Presentation
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- 8 -->
+        <div class="pres-tile bg-white rounded-xl border border-slate-100 shadow-sm overflow-hidden cursor-pointer hover:shadow-md hover:border-violet-200 transition-all"
+             data-idx="7">
+          <div class="bg-gradient-to-br from-violet-500 to-purple-700 h-1.5"></div>
+          <div class="p-5">
+            <p class="text-xs font-bold text-violet-600 uppercase tracking-wider mb-2">ISNS All-Staff Meeting · Sept 10, 2025</p>
+            <h3 class="font-semibold text-slate-800 text-sm leading-snug">Mirrors, Windows, and Sliding Glass Doors: DEIJB Staff Training 2025</h3>
+            <p class="text-xs text-slate-400 mt-2 flex items-center gap-1">
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              Click to expand
+            </p>
+          </div>
+          <div class="pres-detail hidden border-t border-slate-100 px-5 pb-5 pt-4">
+            <p class="text-sm text-slate-600 leading-relaxed mb-4">As chair of the ISNS DEIJB Committee, I developed this all-staff training to introduce a framework that has transformed how I think about the materials and experiences we design for students. Drawing on the theory of Mirrors, Windows, and Sliding Glass Doors — introduced by Emily Styles and expanded by Dr. Rudine Sims Bishop — I challenge educators to ask: do our students see themselves in what we teach? Are they encountering new perspectives? Are they empowered to act? Grounded in community survey data, this session gives staff a shared lens for making their curriculum more inclusive, expansive, and meaningful for every learner.</p>
+            <a href="https://canva.link/jz8shf6bhh0vlpf" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-violet-600 text-white text-xs font-semibold px-4 py-2 rounded-lg hover:bg-violet-700 transition-colors">
+              View Presentation
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- 9 -->
+        <div class="pres-tile bg-white rounded-xl border border-slate-100 shadow-sm overflow-hidden cursor-pointer hover:shadow-md hover:border-orange-200 transition-all"
+             data-idx="8">
+          <div class="bg-gradient-to-br from-orange-400 to-red-500 h-1.5"></div>
+          <div class="p-5">
+            <p class="text-xs font-bold text-orange-600 uppercase tracking-wider mb-2">ISNS PYP Teacher-Led PD · Apr 8, 2026</p>
+            <h3 class="font-semibold text-slate-800 text-sm leading-snug">Theatre Games for Every Classroom</h3>
+            <p class="text-xs text-slate-400 mt-2 flex items-center gap-1">
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              Click to expand
+            </p>
+          </div>
+          <div class="pres-detail hidden border-t border-slate-100 px-5 pb-5 pt-4">
+            <p class="text-sm text-slate-600 leading-relaxed mb-4">Think theatre games are just for the drama room? Think again! In this hands-on session, I share a toolkit of playful, low-prep activities that boost focus, build confidence, and spark creativity — no performance experience required. Whether you're teaching Math, launching a Unit of Inquiry, or warming up a writing lesson, there's something here for every classroom. Get ready to get on your feet!</p>
+            <a href="https://canva.link/la4fujigjqp0m8c" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-orange-500 text-white text-xs font-semibold px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors">
+              View Presentation
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- 10 -->
+        <div class="pres-tile bg-white rounded-xl border border-slate-100 shadow-sm overflow-hidden cursor-pointer hover:shadow-md hover:border-indigo-200 transition-all"
+             data-idx="9">
+          <div class="bg-gradient-to-br from-indigo-400 to-blue-600 h-1.5"></div>
+          <div class="p-5">
+            <p class="text-xs font-bold text-indigo-600 uppercase tracking-wider mb-2">ISNS PYP Divisional Meeting · Apr 28, 2026</p>
+            <h3 class="font-semibold text-slate-800 text-sm leading-snug">Mirrors, Windows, and Sliding Glass Doors: Divisional Reflection</h3>
+            <p class="text-xs text-slate-400 mt-2 flex items-center gap-1">
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              Click to expand
+            </p>
+          </div>
+          <div class="pres-detail hidden border-t border-slate-100 px-5 pb-5 pt-4">
+            <p class="text-sm text-slate-600 leading-relaxed mb-4">Building on our school-wide introduction to Mirrors, Windows, and Sliding Glass Doors, this divisional session gave PYP teams the time and space to dig deeper. Rather than just discussing the framework, teachers rolled up their sleeves and applied it directly to their own Units of Inquiry — interrogating existing materials, identifying gaps, and workshopping concrete ways to make their curriculum more reflective, expansive, and empowering for every student.</p>
+            <a href="https://canva.link/zt4vc41jhkbm2du" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-indigo-600 text-white text-xs font-semibold px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors">
+              View Presentation
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- 11 -->
+        <div class="pres-tile bg-white rounded-xl border border-slate-100 shadow-sm overflow-hidden cursor-pointer hover:shadow-md hover:border-pink-200 transition-all"
+             data-idx="10">
+          <div class="bg-gradient-to-br from-pink-500 to-rose-600 h-1.5"></div>
+          <div class="p-5">
+            <p class="text-xs font-bold text-pink-600 uppercase tracking-wider mb-2">ACAMIS ACE Conference for the Arts · Apr 25, 2026</p>
+            <h3 class="font-semibold text-slate-800 text-sm leading-snug">Collaborative Songwriting</h3>
+            <p class="text-xs text-slate-400 mt-2 flex items-center gap-1">
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              Click to expand
+            </p>
+          </div>
+          <div class="pres-detail hidden border-t border-slate-100 px-5 pb-5 pt-4">
+            <p class="text-sm text-slate-600 leading-relaxed mb-4">In this workshop, participants don't just hear about collaborative songwriting — they do it. I share the process I've developed for weaving collaborative songwriting into the PYP Exhibition, then guide the room through writing a song together from scratch. With clear step-by-step sequencing and plenty of real student examples, this session is designed to be immediately actionable for any music teacher ready to bring this approach into their own classroom.</p>
+            <a href="https://canva.link/2ej7nqo50tku8mq" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-pink-600 text-white text-xs font-semibold px-4 py-2 rounded-lg hover:bg-pink-700 transition-colors">
+              View Presentation
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+  </main>
+
+  <!-- ── Footer ─────────────────────────────────────────────── -->
+  <footer class="bg-slate-800 text-slate-400 py-8 mt-16">
+    <div class="max-w-5xl mx-auto px-4 text-center text-sm">
+      <p class="text-slate-300 font-medium mb-1">Ms. Virginia Lee · PYP Music Teacher &amp; Educational Leader</p>
+      <p>Teaching Portfolio · Built for reflection, growth, and professional documentation.</p>
+    </div>
+  </footer>
+
+  <script src="js/nav.js"></script>
+  <script>
+    // ─────────────────────────────────────────────────────────────
+    // Searchable + Filterable Table
+    // ─────────────────────────────────────────────────────────────
+    const searchInput  = document.getElementById('table-search');
+    const catFilter    = document.getElementById('category-filter');
+    const rows         = document.querySelectorAll('#table-body tr');
+    const noResults    = document.getElementById('no-results');
+    const resultCount  = document.getElementById('result-count');
+
+    function filterTable() {
+      const query    = searchInput.value.toLowerCase().trim();
+      const category = catFilter.value;
+      let visible    = 0;
+
+      rows.forEach(row => {
+        const searchData = row.getAttribute('data-search') || '';
+        const rowCat     = row.getAttribute('data-category') || '';
+        const cells      = Array.from(row.querySelectorAll('td')).map(td => td.textContent.toLowerCase()).join(' ');
+        const combined   = searchData + ' ' + cells;
+
+        const matchesSearch = !query || combined.includes(query);
+        const matchesCat    = category === 'all' || rowCat === category;
+
+        if (matchesSearch && matchesCat) {
+          row.classList.remove('hidden-row');
+          row.style.display = '';
+          visible++;
+        } else {
+          row.style.display = 'none';
+        }
+      });
+
+      noResults.classList.toggle('hidden', visible > 0);
+      resultCount.textContent = visible === rows.length
+        ? `Showing all ${rows.length} entries`
+        : `Showing ${visible} of ${rows.length} entries`;
+    }
+
+    searchInput.addEventListener('input', filterTable);
+    catFilter.addEventListener('change', filterTable);
+
+    // ─────────────────────────────────────────────────────────────
+    // Presentation Tiles — click to expand/collapse
+    // ─────────────────────────────────────────────────────────────
+    document.querySelectorAll('.pres-tile').forEach(tile => {
+      tile.addEventListener('click', e => {
+        // Don't collapse when clicking the link button itself
+        if (e.target.closest('a')) return;
+
+        const detail  = tile.querySelector('.pres-detail');
+        const hint    = tile.querySelector('.pres-detail ~ p, p:last-of-type');
+        const isOpen  = !detail.classList.contains('hidden');
+
+        // Close all others first
+        document.querySelectorAll('.pres-detail').forEach(d => d.classList.add('hidden'));
+        document.querySelectorAll('.pres-tile').forEach(t => {
+          t.querySelector('p:last-of-type').innerHTML =
+            `<svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg> Click to expand`;
+        });
+
+        if (!isOpen) {
+          detail.classList.remove('hidden');
+          tile.querySelector('p:last-of-type').innerHTML =
+            `<svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" transform="rotate(180 12 12)"/></svg> Click to collapse`;
+        }
+      });
+    });
+  </script>
+</body>
+</html>

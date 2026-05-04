@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PYP Exhibition — Mind Map Connections</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#1F3964;--gold:#F0A500;--teal:#2ABFBF;--coral:#E8637A;
+  --purple:#7B68EE;--green:#4CAF74;--blue:#4EACD6;--orange:#FF8C42;
+  --pink:#FF6B9D;--bg:#F0F4F8;--white:#fff;
+  --shadow:0 4px 24px rgba(0,0,0,.1);--shadow-lg:0 8px 40px rgba(0,0,0,.18);--radius:18px;
+}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:#1a1a2e;line-height:1.6;overflow-x:hidden}
+
+/* ── HERO ─────────────────────────────────────────────────────── */
+.hero{background:linear-gradient(135deg,#0a0a1a 0%,#1a1035 50%,#0d1a30 100%);
+  padding:72px 32px 64px;text-align:center;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:
+  radial-gradient(ellipse at 20% 60%,rgba(240,165,0,.12) 0%,transparent 55%),
+  radial-gradient(ellipse at 80% 30%,rgba(78,172,214,.12) 0%,transparent 55%),
+  radial-gradient(ellipse at 55% 85%,rgba(232,99,122,.08) 0%,transparent 40%);
+  animation:bgPulse 10s ease-in-out infinite}
+@keyframes bgPulse{0%,100%{opacity:.8}50%{opacity:1}}
+.hero-eyebrow{font-size:.8rem;letter-spacing:3px;text-transform:uppercase;
+  color:rgba(255,255,255,.45);margin-bottom:28px;position:relative}
+.central-idea{font-size:clamp(1.6rem,4vw,2.8rem);font-weight:700;color:rgba(255,255,255,.75);
+  line-height:1.4;max-width:860px;margin:0 auto 52px;position:relative;letter-spacing:.5px}
+.kw{display:inline;padding:0 3px;border-radius:6px;cursor:default;
+  transition:text-shadow .3s,transform .2s;position:relative;font-weight:900}
+.kw:hover{transform:scale(1.04)}
+.kw-passion{color:#F0A500;text-shadow:0 0 30px rgba(240,165,0,.45)}
+.kw-curiosity{color:#4EACD6;text-shadow:0 0 30px rgba(78,172,214,.45)}
+.kw-spark{color:#E8637A;text-shadow:0 0 30px rgba(232,99,122,.45)}
+.kw-meaningful{color:#B8A9FF;text-shadow:0 0 30px rgba(184,169,255,.45)}
+.kw-action{color:#5CB85C;text-shadow:0 0 30px rgba(92,184,92,.45)}
+
+/* ── WORD CLOUD ────────────────────────────────────────────────── */
+.wordcloud-wrap{position:relative;max-width:680px;margin:0 auto}
+.wordcloud-label{font-size:.72rem;letter-spacing:2px;text-transform:uppercase;
+  color:rgba(255,255,255,.3);margin-bottom:22px}
+.wordcloud{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;
+  gap:14px 28px;padding:8px 0}
+.wc-word{font-weight:900;cursor:default;opacity:0;letter-spacing:-.5px;
+  animation:fadeIn .7s ease both;transition:transform .2s,filter .2s;line-height:1}
+.wc-word:hover{transform:scale(1.05);filter:brightness(1.15)}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.wc-count{display:block;font-size:.65rem;font-weight:600;letter-spacing:1px;
+  text-transform:uppercase;opacity:.55;text-align:center;margin-top:4px;cursor:default}
+
+/* ── MAIN ─────────────────────────────────────────────────────── */
+.main{max-width:1200px;margin:0 auto;padding:56px 28px 40px}
+.content-block{margin-bottom:56px}
+.block-header{display:flex;align-items:center;gap:14px;margin-bottom:28px;
+  padding-bottom:14px;border-bottom:3px solid var(--navy)}
+.block-icon{width:42px;height:42px;border-radius:12px;background:var(--navy);
+  color:#fff;display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem;flex-shrink:0}
+.block-header h2{font-size:1.55rem;font-weight:800;color:var(--navy)}
+.block-desc{font-size:.9rem;color:#666;margin-bottom:28px;margin-top:-16px}
+
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:18px}
+.card{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);
+  overflow:hidden;transition:box-shadow .25s,transform .25s;cursor:pointer}
+.card:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px)}
+.card-head{padding:18px 22px;display:flex;align-items:center;
+  justify-content:space-between;gap:10px;user-select:none}
+.card-head-left{display:flex;align-items:center;gap:10px;min-width:0}
+.card-emoji{font-size:1.3rem;flex-shrink:0}
+.card-info{min-width:0}
+.card-title{font-size:.97rem;font-weight:700;color:#fff;line-height:1.3}
+.card-count{font-size:.72rem;color:rgba(255,255,255,.65);margin-top:2px}
+.card-chevron{width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.2);
+  display:flex;align-items:center;justify-content:center;color:#fff;
+  font-size:.8rem;flex-shrink:0;transition:transform .3s}
+.card.open .card-chevron{transform:rotate(180deg)}
+.card-body{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.card.open .card-body{max-height:1200px}
+.card-items{padding:14px 18px 18px;background:#FAFBFD;display:flex;flex-wrap:wrap;gap:8px}
+
+.tile{padding:5px 13px;border-radius:30px;font-size:.84rem;font-weight:500;
+  background:#fff;border:1.5px solid #E4EAF0;color:#444;
+  line-height:1.4;white-space:normal;cursor:default}
+
+/* ── SUCCESS CRITERIA ────────────────────────────────────────────── */
+.success-section{background:linear-gradient(135deg,#0a0a1a 0%,#1a1035 50%,#0d1a30 100%);
+  padding:64px 32px;position:relative;overflow:hidden}
+.success-bg{position:absolute;inset:0;background:
+  radial-gradient(ellipse at 75% 30%,rgba(78,172,214,.1) 0%,transparent 50%),
+  radial-gradient(ellipse at 25% 70%,rgba(92,184,92,.08) 0%,transparent 50%)}
+.success-inner{max-width:800px;margin:0 auto;position:relative}
+.success-eyebrow{font-size:.75rem;letter-spacing:3px;text-transform:uppercase;
+  color:rgba(255,255,255,.4);margin-bottom:10px}
+.success-title{font-size:1.8rem;font-weight:900;color:#fff;margin-bottom:8px;line-height:1.2}
+.success-subtitle{font-size:.9rem;color:rgba(255,255,255,.45);margin-bottom:40px;line-height:1.5}
+.criteria-list{display:flex;flex-direction:column;gap:14px}
+.criterion{border-radius:14px;overflow:hidden;background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.08);transition:background .2s}
+.criterion.top{background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.18)}
+.crit-inner{padding:18px 22px}
+.crit-top-row{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.crit-label{font-size:1rem;font-weight:600;color:#fff;flex:1;line-height:1.35}
+.crit-star{font-size:1rem;flex-shrink:0;opacity:0;transition:opacity .3s}
+.criterion.top .crit-star{opacity:1}
+.crit-bar-row{display:flex;align-items:center;gap:12px}
+.crit-bar-track{flex:1;height:8px;background:rgba(255,255,255,.08);border-radius:4px;overflow:hidden}
+.crit-bar-fill{height:100%;border-radius:4px;transform-origin:left;
+  animation:growBar 1s .3s ease-out both}
+@keyframes growBar{from{width:0!important}to{}}
+.crit-votes{font-size:.78rem;font-weight:700;color:rgba(255,255,255,.5);flex-shrink:0;min-width:70px;text-align:right}
+.criterion.top .crit-votes{color:rgba(255,255,255,.8)}
+.top-3-note{margin-top:28px;padding:18px 22px;border-radius:12px;
+  background:rgba(92,184,92,.12);border:1px solid rgba(92,184,92,.25)}
+.top-3-note p{font-size:.88rem;color:rgba(255,255,255,.65);line-height:1.65}
+.top-3-note strong{color:#7ee07e}
+@media(max-width:600px){.success-section{padding:44px 16px}.success-title{font-size:1.4rem}}
+
+footer{text-align:center;padding:28px;color:#aaa;font-size:.82rem;border-top:1px solid #E4EAF0}
+
+@media(max-width:600px){
+  .hero{padding:52px 18px 48px}.central-idea{font-size:1.5rem}
+  .cards-grid{grid-template-columns:1fr}.main{padding:36px 14px 28px}
+}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+const KEYWORDS = [
+  { word:"curiosity",  count:18, color:"#4EACD6" },
+  { word:"meaningful", count:16, color:"#B8A9FF" },
+  { word:"passion",    count:15, color:"#F0A500" },
+  { word:"spark",      count:12, color:"#E8637A" },
+  { word:"action",     count:10, color:"#5CB85C" },
+];
+
+function countToSize(n){
+  const min=10,max=18,sMin=2.2,sMax=4.4;
+  return (sMin+(n-min)/(max-min)*(sMax-sMin)).toFixed(2);
+}
+
+const SECTIONS = [
+  {
+    id:"vocab",
+    title:"Section 1: Vocabulary, Concepts & Topics",
+    icon:"💡",
+    desc:"Words and ideas that appeared across students' mind maps as connections to the central idea.",
+    subsections:[
+      { title:"Core Central Idea Terms", emoji:"⭐", color:"linear-gradient(135deg,#F0A500,#D98B00)",
+        items:[{t:"Action / meaningful action"},{t:"Curiosity"},{t:"Determination / not giving up"},{t:"Dream"},{t:"Ideas / inspiration / motivation"},{t:"Passion"},{t:"Reflection"},{t:"Spark"}] },
+      { title:"Character & Values", emoji:"🌟", color:"linear-gradient(135deg,#E8637A,#C94B62)",
+        items:[{t:"Advocacy"},{t:"Bravery"},{t:"Care / caring / helping"},{t:"Doing the right thing"},{t:"Don't need to be perfect"},{t:"Equality / fairness / justice"},{t:"Freedom"},{t:"Honesty / truth"},{t:"Kindness"},{t:"Love"},{t:"Open-minded"},{t:"Patience"},{t:"Peace / no arguing"},{t:"Principled"},{t:"Sustainability / environment / climate change"},{t:"Trust"},{t:"Try your best"}] },
+      { title:"Collaboration & Community", emoji:"🤝", color:"linear-gradient(135deg,#2ABFBF,#1A9999)",
+        items:[{t:"Activism / being an activist"},{t:"Better place to live"},{t:"Change / change the world / take action"},{t:"Get work done / be productive / proactive"},{t:"Helping others / help people"},{t:"Partnership / relationship"},{t:"Questioning / research / wondering"},{t:"Teamwork / working together / cooperation"}] },
+      { title:"Sports, Arts & Hobbies", emoji:"🎨", color:"linear-gradient(135deg,#FF8C42,#E07030)",
+        items:[{t:"Acting / dance / ballet / choreography / movement"},{t:"Art / drawing / creativity"},{t:"Badminton"},{t:"Basketball"},{t:"Boxing / martial arts / kung fu"},{t:"Camping"},{t:"Coding / 3D printing"},{t:"Cooking"},{t:"Costume design / hair design / set design"},{t:"Exploring / new experiences / trying new things"},{t:"Football / soccer"},{t:"Formula 1 (F1) / F2 / GT3 / motorsport / racing"},{t:"Games"},{t:"Golf"},{t:"Gym / exercise / fitness"},{t:"Hockey"},{t:"Instruments (ukulele, guitar, chords, pitch) / piano / music"},{t:"Olympics / world records"},{t:"PE (Physical Education)"},{t:"Photography"},{t:"Reading"},{t:"Sports"},{t:"Swimming"},{t:"Try everything / practice → race → world record"},{t:"Volleyball"}] },
+      { title:"Academic Subjects & Learning", emoji:"📚", color:"linear-gradient(135deg,#4EACD6,#2E8AB4)",
+        items:[{t:"Art"},{t:"Chinese language"},{t:"English"},{t:"Geography"},{t:"History"},{t:"Inquire / inquiry / inquirer"},{t:"Learn / discover / explore"},{t:"Math"},{t:"Music"},{t:"Poem / poetry"},{t:"Reading"},{t:"Scholarship"},{t:"Science / E=mc²"},{t:"Technology & Society (T&S)"},{t:"Who invented school / tests and exams"}] },
+      { title:"Space, Nature & The Universe", emoji:"🌌", color:"linear-gradient(135deg,#7B68EE,#5B48CE)",
+        items:[{t:"Animals / insects / zoology"},{t:"Earth / Moon / Mars / Jupiter / Mercury / Uranus / Venus"},{t:"Ecosystem / hurting the ecosystem"},{t:"Fire / firework / blaze / shine / bright / star / light"},{t:"Universe / galaxy / solar system"},{t:"Water"}] },
+      { title:"Places & Landmarks", emoji:"🌍", color:"linear-gradient(135deg,#4CAF74,#2E9A52)",
+        items:[{t:"Abu Dhabi (Abu Dhabi Grand Prix)"},{t:"China"},{t:"Colosseum / Rome (Italy)"},{t:"Daytona"},{t:"Monaco (Monaco Grand Prix)"},{t:"Neverland"},{t:"UAE"},{t:"USA"}] },
+      { title:"Personal Life, Goals & Emotions", emoji:"💛", color:"linear-gradient(135deg,#FF6B9D,#E04B7D)",
+        items:[{t:"Career / job / movie star / director / producer / film"},{t:"Eating / food"},{t:"Emotion / feelings / fear / scared"},{t:"Family / happy family"},{t:"Friends / friendship"},{t:"Goals / something needed / needs"},{t:"Happy / happiness / joy / glow"},{t:"Health / being healthy"},{t:"Home"},{t:"Life / my life / living your best life"},{t:"Money"},{t:"Sleep / consciousness"},{t:"Something you don't like (but that can spark action)"},{t:"Space (topic of interest / outer space)"},{t:"Story"},{t:"Travel / trip"}] },
+      { title:"History & Culture", emoji:"🏛️", color:"linear-gradient(135deg,#8B7355,#6B5335)",
+        items:[{t:"Colosseum"},{t:"Gladiators"},{t:"History"},{t:"Rome"}] },
+    ]
+  },
+  {
+    id:"media",
+    title:"Section 2: Media Connections",
+    icon:"🎬",
+    desc:"Movies, books, TV shows, songs, and real-world figures referenced by students in their mind maps.",
+    subsections:[
+      { title:"Movies & Musicals", emoji:"🎥", color:"linear-gradient(135deg,#E8637A,#C94B62)",
+        items:[{t:"Aladdin"},{t:"F1"},{t:"Frozen / Frozen 1"},{t:"Goosebumps"},{t:"Harry Potter (series)"},{t:"Hoppers"},{t:"Matilda the Musical"},{t:"Moana"},{t:"The Little Prince / 小王子"},{t:"The Lord of the Rings"},{t:"The Wizard of Oz"},{t:"Titanic"},{t:"Wicked"},{t:"Zootopia"},{t:"Zootopia 2"}] },
+      { title:"Books & Stories", emoji:"📖", color:"linear-gradient(135deg,#4EACD6,#2E8AB4)",
+        items:[{t:"Goosebumps — book series by R.L. Stine"},{t:"Harry Potter — book series by J.K. Rowling"},{t:"Peter Pan / Neverland"},{t:"The Land of Stories"},{t:"The Little Prince / 小王子"},{t:"西游记 / Journey to the West"}] },
+      { title:"TV Shows & Animated Series", emoji:"📺", color:"linear-gradient(135deg,#7B68EE,#5B48CE)",
+        items:[{t:"Curious George"},{t:"Miraculous: Tales of Ladybug & Cat Noir"},{t:"Penguins of Madagascar"},{t:"Pokémon"}] },
+      { title:"Songs", emoji:"🎵", color:"linear-gradient(135deg,#F0A500,#D98B00)",
+        items:[{t:"\"Firework\" — Katy Perry"},{t:"\"Freedom\""},{t:"\"This Land Is Your Land\" — Woody Guthrie"},{t:"\"Try Everything\" — Shakira (Zootopia)"}] },
+      { title:"Real-World Public Figures", emoji:"🏆", color:"linear-gradient(135deg,#2ABFBF,#1A9999)",
+        items:[{t:"Ayrton Senna — F1 driver"},{t:"Lewis Hamilton — F1 driver"},{t:"Max Verstappen — F1 driver"},{t:"Mike Tyson — boxer"}] },
+    ]
+  }
+];
+
+const CRITERIA = [
+  { text:"The performers all work well together",            votes:33, top:true  },
+  { text:"The story and songs are connected and make sense", votes:27, top:true  },
+  { text:"The performers are proud of themselves",           votes:24, top:true  },
+  { text:"The ideas and creativity come from the students",  votes:23, top:false },
+];
+
+const openCards = new Set();
+function esc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;') }
+
+function render(){
+  document.getElementById('root').innerHTML =
+    buildHero() +
+    '<main class="main">' + SECTIONS.map((s,i)=>buildSection(s,i)).join('') + '</main>' +
+    buildSuccess() +
+    '<footer>PYP Exhibition · Mind Map Connections · Compiled from student work</footer>';
+}
+
+function buildHero(){
+  const ciHtml = `Our <span class="kw kw-passion">passion</span> and
+    <span class="kw kw-curiosity">curiosity</span>
+    <span class="kw kw-spark">spark</span>
+    <span class="kw kw-meaningful">meaningful</span>
+    <span class="kw kw-action">action.</span>`;
+  const cloudWords = [...KEYWORDS].sort((a,b)=>b.count-a.count).map((kw,i)=>
+    `<div class="wc-word" style="color:${kw.color};font-size:${countToSize(kw.count)}rem;animation-delay:${0.1+i*0.1}s">
+      ${esc(kw.word)}<span class="wc-count" style="color:${kw.color}">${kw.count} students</span>
+    </div>`).join('');
+  return `<header class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-eyebrow">PYP Exhibition · Central Idea</div>
+    <div class="central-idea">${ciHtml}</div>
+    <div class="wordcloud-wrap">
+      <div class="wordcloud-label">Words students found most powerful</div>
+      <div class="wordcloud">${cloudWords}</div>
+    </div>
+  </header>`;
+}
+
+function buildSection(sec,si){
+  return `<div class="content-block">
+    <div class="block-header">
+      <div class="block-icon">${sec.icon}</div>
+      <h2>${esc(sec.title)}</h2>
+    </div>
+    <p class="block-desc">${esc(sec.desc)}</p>
+    <div class="cards-grid">${sec.subsections.map((sub,ci)=>buildCard(sub,si,ci)).join('')}</div>
+  </div>`;
+}
+
+function buildCard(sub,si,ci){
+  const id='card-'+si+'-'+ci;
+  const isOpen=openCards.has(id);
+  const tiles=sub.items.map(item=>'<span class="tile">'+esc(item.t)+'</span>').join('');
+  return `<div class="card${isOpen?' open':''}" id="${id}" onclick="toggleCard('${id}')">
+    <div class="card-head" style="background:${sub.color}">
+      <div class="card-head-left">
+        <span class="card-emoji">${sub.emoji}</span>
+        <div class="card-info">
+          <div class="card-title">${esc(sub.title)}</div>
+          <div class="card-count">${sub.items.length} item${sub.items.length!==1?'s':''}</div>
+        </div>
+      </div>
+      <div class="card-chevron">▼</div>
+    </div>
+    <div class="card-body"><div class="card-items">${tiles}</div></div>
+  </div>`;
+}
+
+function buildSuccess(){
+  const maxVotes=Math.max(...CRITERIA.map(c=>c.votes));
+  const bars=CRITERIA.map(c=>{
+    const pct=Math.round(c.votes/maxVotes*100);
+    const color=c.top?'#5CB85C':'rgba(255,255,255,0.25)';
+    return `<div class="criterion${c.top?' top':''}">
+      <div class="crit-inner">
+        <div class="crit-top-row">
+          <div class="crit-label">${esc(c.text)}</div>
+          <div class="crit-star">★ Focus</div>
+        </div>
+        <div class="crit-bar-row">
+          <div class="crit-bar-track"><div class="crit-bar-fill" style="width:${pct}%;background:${color}"></div></div>
+          <div class="crit-votes">${c.votes} students</div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+  return `<section class="success-section">
+    <div class="success-bg"></div>
+    <div class="success-inner">
+      <div class="success-eyebrow">Student Poll · Two Classes Combined</div>
+      <div class="success-title">How Will We Know It's Successful?</div>
+      <div class="success-subtitle">Students selected all criteria that applied. Results ranked by combined vote count.</div>
+      <div class="criteria-list">${bars}</div>
+      <div class="top-3-note"><p>Based on student responses, the <strong>top 3 success criteria</strong> to focus on are:
+        <strong>the performers work well together</strong>,
+        <strong>the story and songs connect and make sense</strong>, and
+        <strong>the performers are proud of themselves</strong>.
+        These were the most widely shared definitions of success across both classes.</p></div>
+    </div>
+  </section>`;
+}
+
+function toggleCard(id){
+  const el=document.getElementById(id);
+  if(!el) return;
+  if(openCards.has(id)){openCards.delete(id);el.classList.remove('open');}
+  else{openCards.add(id);el.classList.add('open');}
+}
+
+render();
+</script>
+</body>
+</html>
