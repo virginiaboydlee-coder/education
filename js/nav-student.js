@@ -1,8 +1,9 @@
 (function () {
   const labels = {
-    'grade3.html': 'Grade 3 – World Music Explorer',
-    'grade4.html': 'Grade 4 – Recorder Book',
-    'grade5.html': 'Grade 5 – PYPX Songwriting',
+    'grade3.html':       'Grade 3 – World Music Explorer',
+    'grade4.html':       'Grade 4 – Recorder Book',
+    'grade5-songs.html': 'Grade 5 – 4-Chord Song Library',
+    'grade5.html':       'Grade 5 – PYPX Songwriting',
   };
 
   const current  = window.location.pathname.split('/').pop() || '';
@@ -37,4 +38,31 @@
 
   const el = document.getElementById('nav-placeholder');
   if (el) el.innerHTML = navHTML;
+
+  // Floating suggestion button
+  const fab = document.createElement('a');
+  fab.href = 'https://forms.gle/NdqsGUHWHT7N2Uuy6';
+  fab.target = '_blank';
+  fab.rel = 'noopener';
+  fab.textContent = '💬 Suggest a resource';
+  fab.style.cssText = [
+    'position:fixed', 'bottom:1.25rem', 'right:1.25rem',
+    'background:#10b981', 'color:white',
+    'font-family:Inter,system-ui,sans-serif',
+    'font-size:0.78rem', 'font-weight:600',
+    'padding:0.55rem 1.1rem', 'border-radius:60px',
+    'text-decoration:none',
+    'box-shadow:0 4px 14px rgba(0,0,0,0.18)',
+    'z-index:999', 'transition:background 0.2s, transform 0.15s',
+    'white-space:nowrap'
+  ].join(';');
+  fab.addEventListener('mouseenter', () => {
+    fab.style.background = '#059669';
+    fab.style.transform = 'translateY(-2px)';
+  });
+  fab.addEventListener('mouseleave', () => {
+    fab.style.background = '#10b981';
+    fab.style.transform = '';
+  });
+  document.body.appendChild(fab);
 })();

@@ -5,15 +5,16 @@
     { href: 'leadership.html',    label: 'Leadership' },
     { href: 'blog.html',          label: 'Blog' },
     { href: 'student-tools.html', label: 'Student Tools', children: [
-      { href: 'grade3.html', label: 'Grade 3 – World Music' },
-      { href: 'grade4.html', label: 'Grade 4 – Recorder Book' },
-      { href: 'grade5.html', label: 'Grade 5 – PYPX Songwriting' },
+      { href: 'grade3.html',       label: 'Grade 3 – World Music' },
+      { href: 'grade4.html',       label: 'Grade 4 – Recorder Book' },
+      { href: 'grade5-songs.html', label: 'Grade 5 – Song Library' },
+      { href: 'grade5.html',       label: 'Grade 5 – PYPX Songwriting' },
     ]},
   ];
 
   const current = window.location.pathname.split('/').pop() || 'index.html';
 
-  const isStudentPage = current === 'grade3.html' || current === 'grade4.html' || current === 'grade5.html' || current === 'student-tools.html';
+  const isStudentPage = current === 'grade3.html' || current === 'grade4.html' || current === 'grade5-songs.html' ||current === 'grade5.html' || current === 'student-tools.html';
 
   const desktopLinks = pages.map(p => {
     const active = current === p.href || (p.children && p.children.some(c => c.href === current));
