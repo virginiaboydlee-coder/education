@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>4-Chord Song Library | Grade 5 | Ms. Virginia Lee</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+
+    /* ── Controls bar ─────────────────────────────────────────── */
+    .song-controls {
+      display: flex; flex-wrap: wrap; gap: 14px;
+      align-items: flex-end; padding: 18px 20px;
+      background: #f0fdfa; border-bottom: 1px solid #ccfbf1;
+    }
+    .song-controls label {
+      display: block; font-size: 0.78rem; font-weight: 600;
+      color: #134e4a; margin-bottom: 5px;
+    }
+    .song-controls input,
+    .song-controls select {
+      width: 100%; padding: 9px 14px;
+      border: 1px solid #99f6e4; border-radius: 60px;
+      background: white; font-size: 0.9rem;
+      font-family: inherit; transition: 0.2s; outline: none;
+    }
+    .song-controls input:focus,
+    .song-controls select:focus {
+      border-color: #0d9488;
+      box-shadow: 0 0 0 3px rgba(13,148,136,0.15);
+    }
+    .search-box { flex: 2; min-width: 180px; }
+    .filter-group { flex: 1.5; min-width: 160px; }
+    .sort-group { flex: 1; min-width: 150px; }
+    .stat-badge {
+      background: white; border: 1px solid #99f6e4;
+      padding: 6px 16px; border-radius: 40px;
+      font-size: 0.85rem; font-weight: 600; color: #0f766e;
+      white-space: nowrap; align-self: flex-end;
+    }
+
+    /* ── Table ────────────────────────────────────────────────── */
+    .table-wrapper { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.875rem; min-width: 680px; }
+    thead th {
+      background: #f0fdfa; padding: 13px 12px;
+      text-align: left; font-weight: 600; color: #134e4a;
+      border-bottom: 2px solid #99f6e4; white-space: nowrap;
+    }
+    tbody td { padding: 11px 12px; border-bottom: 1px solid #f1f5f9; vertical-align: middle; }
+    tbody tr:hover td { background: #f0fdfa; }
+    tbody tr:last-child td { border-bottom: none; }
+
+    /* ── Chord badges ─────────────────────────────────────────── */
+    .chord-badge {
+      display: inline-block; background: #fef3c7;
+      padding: 3px 9px; border-radius: 30px;
+      font-family: monospace; font-weight: 700;
+      font-size: 0.78rem; margin: 2px 2px; color: #92400e;
+      border: 1px solid #fde68a;
+    }
+
+    /* ── Difficulty tags ──────────────────────────────────────── */
+    .difficulty-tag {
+      font-weight: 600; padding: 3px 10px;
+      border-radius: 40px; font-size: 0.73rem;
+      display: inline-block; white-space: nowrap;
+    }
+    .difficulty-easy   { background: #dcfce7; color: #166534; }
+    .difficulty-medium { background: #fef9c3; color: #854d0e; }
+    .difficulty-hard   { background: #fee2e2; color: #991b1b; }
+
+    /* ── Link buttons ─────────────────────────────────────────── */
+    .listen-link, .chord-link {
+      text-decoration: none; font-weight: 500;
+      padding: 4px 11px; border-radius: 30px;
+      font-size: 0.78rem; display: inline-block;
+      transition: 0.15s; white-space: nowrap;
+    }
+    .listen-link { background: #ccfbf1; color: #0f766e; border: 1px solid #99f6e4; }
+    .listen-link:hover { background: #99f6e4; }
+    .chord-link { background: #ede9fe; color: #5b21b6; border: 1px solid #ddd6fe; }
+    .chord-link:hover { background: #ddd6fe; }
+
+    .no-results { text-align: center; padding: 40px 20px; color: #94a3b8; font-style: italic; }
+
+    /* ── Admin guide ──────────────────────────────────────────── */
+    .update-guide {
+      background: #f8fafc; border-radius: 16px; padding: 14px 20px;
+      font-size: 0.8rem; border-left: 4px solid #0d9488; color: #475569;
+    }
+    .update-guide summary { font-weight: 600; cursor: pointer; color: #0f766e; }
+    .update-guide pre {
+      background: #e2e8f0; padding: 10px 14px; border-radius: 10px;
+      overflow-x: auto; font-size: 0.78rem; margin: 8px 0;
+    }
+    .update-guide code {
+      background: #e2e8f0; padding: 2px 6px; border-radius: 6px;
+      font-size: 0.78rem;
+    }
+
+    @media (max-width: 640px) {
+      .song-controls { flex-direction: column; }
+      thead th, tbody td { padding: 9px 8px; }
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+
+  <div id="nav-placeholder"></div>
+
+  <main class="max-w-6xl mx-auto px-4 py-12 sm:py-16">
+
+    <!-- ── Page Header ──────────────────────────────────────── -->
+    <div class="mb-8">
+      <span class="inline-block text-teal-600 font-semibold text-xs uppercase tracking-widest mb-2">Grade 5 · Ukulele</span>
+      <h1 class="text-3xl sm:text-4xl font-bold text-slate-900 mb-3">🎸 4-Chord Song Library</h1>
+      <p class="text-slate-500 text-base max-w-2xl leading-relaxed">
+        Search by song or artist, filter by chord, and find your play-along track and chord sheet.
+      </p>
+    </div>
+
+    <!-- ── Song Library Card ────────────────────────────────── -->
+    <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+
+      <div class="song-controls">
+        <div class="search-box">
+          <label>🔍 Search (Title / Artist)</label>
+          <input type="text" id="searchInput" placeholder="e.g. 'Riptide', 'Taylor Swift', 'APT'" autocomplete="off" />
+        </div>
+        <div class="filter-group">
+          <label>🎼 Filter by chord</label>
+          <select id="chordFilter">
+            <option value="all">All chords</option>
+            <option value="C">C</option>
+            <option value="G">G</option>
+            <option value="Am">Am</option>
+            <option value="F">F</option>
+            <option value="Em">Em</option>
+            <option value="D">D</option>
+            <option value="Dm">Dm</option>
+            <option value="E7">E7</option>
+            <option value="A">A</option>
+            <option value="Bm">Bm</option>
+            <option value="Gm">Gm</option>
+          </select>
+        </div>
+        <div class="sort-group">
+          <label>📊 Sort by difficulty</label>
+          <select id="difficultySort">
+            <option value="default">Default (song order)</option>
+            <option value="easy-first">Easiest first</option>
+            <option value="hard-first">Hardest first</option>
+          </select>
+        </div>
+        <div class="stat-badge" id="resultCount">🎶 0 songs</div>
+      </div>
+
+      <div class="table-wrapper">
+        <table id="songTable">
+          <thead>
+            <tr>
+              <th>Artist</th>
+              <th>Title</th>
+              <th>Chords Used</th>
+              <th>Difficulty</th>
+              <th>Listen</th>
+              <th>Chord Sheet</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody">
+            <tr><td colspan="6" class="no-results">Loading songs…</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div><!-- end card -->
+
+    <!-- ── Footer note ──────────────────────────────────────── -->
+    <p class="mt-4 text-xs text-slate-400 text-center">
+      ⭐ Difficulty: Easy (1–3 chords) · Medium (4–5 chords) · Hard (6+ chords or rare changes)
+    </p>
+
+    <!-- ── Admin guide ──────────────────────────────────────── -->
+    <details class="update-guide mt-8">
+      <summary>📝 How to update this song database (teachers only)</summary>
+      <div style="margin-top:12px;">
+        <p><strong>Adding / editing songs:</strong> Find the <code>songsData</code> array in the <code>&lt;script&gt;</code> section. Each song uses this format:</p>
+        <pre>{ artist: "Artist Name", title: "Song Title", chordsRaw: "C G Am F", listenUrl: "filename.mp4", chordUrl: "filename.pdf" }</pre>
+        <ul style="margin:8px 0 8px 20px; line-height:1.8;">
+          <li><code>chordsRaw</code> – space-separated chords (e.g. <code>"C F Am G"</code>)</li>
+          <li><code>listenUrl</code> – exact filename of your .mp3/.mp4 (or <code>""</code> if none)</li>
+          <li><code>chordUrl</code> – exact filename of your chord sheet PDF (or <code>""</code>)</li>
+        </ul>
+        <p><strong>Difficulty is automatic</strong> — 1–3 chords = Easy, 4–5 = Medium, 6+ = Hard.</p>
+        <p style="margin-top:8px;"><strong>File location:</strong> Place media files in the same folder as this HTML file, or update the paths accordingly.</p>
+      </div>
+    </details>
+
+  </main>
+
+  <!-- ── Footer ───────────────────────────────────────────────── -->
+  <footer class="bg-slate-800 text-slate-400 py-8 mt-16">
+    <div class="max-w-5xl mx-auto px-4 text-center text-sm">
+      <p class="text-slate-300 font-medium mb-1">Ms. Virginia Lee · PYP Music Teacher &amp; Educational Leader</p>
+      <p>Teaching Portfolio · Built for reflection, growth, and professional documentation.</p>
+    </div>
+  </footer>
+
+  <script src="js/nav-student.js"></script>
+  <script>
+    const songsData = [
+      { artist: "Justin Wellington",             title: "Iko Iko (My Bestie)",                      chordsRaw: "C F",               listenUrl: "Iko Iko (My Bestie) Ukulele Play Along.mp4",                                         chordUrl: "Iko iko chords.pdf" },
+      { artist: "American Authors",              title: "Best Day of My Life",                       chordsRaw: "C F Am",            listenUrl: "Best day of my life - Ukulele play along.mp4",                                       chordUrl: "Best Day of My Life chords.pdf" },
+      { artist: "Sam Smith",                     title: "Stay with Me",                              chordsRaw: "C F Am",            listenUrl: "Stay With Me - Ukulele Play Along.mp4",                                              chordUrl: "Stay with Me chords.pdf" },
+      { artist: "Imagine Dragons",               title: "Thunder",                                   chordsRaw: "C F Am",            listenUrl: "Thunder Ukulele Play Along.mp4",                                                      chordUrl: "Thunder chords.pdf" },
+      { artist: "Bruno Mars",                    title: "Just the Way You Are",                      chordsRaw: "C F Am",            listenUrl: "Bruno Mars - Just the Way You Are.mp3",                                              chordUrl: "Just the Way You Are Chords.pdf" },
+      { artist: "Enhyphen",                      title: "Fever",                                     chordsRaw: "C F Am",            listenUrl: "ENHYPEN - FEVER.mp3",                                                                chordUrl: "fever chords.pdf" },
+      { artist: "Charlie Puth",                  title: "See You Again",                             chordsRaw: "C F Am",            listenUrl: "See you Again Ukulele play along.mp4",                                               chordUrl: "See You Again Chords.pdf" },
+      { artist: "Icona Pop",                     title: "I Love It (I Don't Care)",                  chordsRaw: "C G Am",            listenUrl: "Icona Pop - I Love it (I don't care).mp3",                                          chordUrl: "i love it chords.pdf" },
+      { artist: "Taylor Swift",                  title: "Shake It Off",                              chordsRaw: "C G Am",            listenUrl: "Shake It Off Ukulele Play Along (Color Chord).mp4",                                  chordUrl: "Shake It Off chords.pdf" },
+      { artist: "Bobby McFerrin",                title: "Don't Worry, Be Happy",                     chordsRaw: "C G Am",            listenUrl: "Don't Worry, Be Happy - Ukulele Play Along - Easy.mp4",                             chordUrl: "dont worry be happy chords.pdf" },
+      { artist: "Lady Gaga",                     title: "Paparazzi",                                 chordsRaw: "F G Am",            listenUrl: "Lady Gaga - Paparazzi.mp3",                                                          chordUrl: "paparazzi ukulele simple.pdf" },
+      { artist: "Bob Marley",                    title: "One Love",                                  chordsRaw: "C F G",             listenUrl: "One Love Ukulele Playalong.mp4",                                                      chordUrl: "One Love Chords.pdf" },
+      { artist: "Ryan Cayabyab",                 title: "Coconut Song (Da Coconut Nut)",             chordsRaw: "C F G",             listenUrl: "",                                                                                   chordUrl: "THE COCONUT SONG Chords.pdf" },
+      { artist: "Bob Marley & the Wailers",      title: "Three Little Birds",                        chordsRaw: "C F G",             listenUrl: "Three Little Birds Ukulele Play Along - Very Easy.mp4",                              chordUrl: "Three Little Birds Chords.pdf" },
+      { artist: "The Tokens",                    title: "The Lion Sleeps Tonight",                   chordsRaw: "C F G",             listenUrl: "The Lion Sleeps Tonight - Ukulele Play Along.mp4",                                   chordUrl: "Lion Sleeps Tonight.pdf" },
+      { artist: "Taylor Swift",                  title: "Love Story",                                chordsRaw: "C G Am F",          listenUrl: "Love Story - Taylor Swift (Ukulele Play Along).mp4",                                 chordUrl: "Love Story Chords.pdf" },
+      { artist: "Alessia Cara – Moana",          title: "How Far I'll Go",                           chordsRaw: "C G Am F",          listenUrl: "How Far I'll Go - Ukulele Play Along Video.mp4",                                     chordUrl: "How Far Ill Go Ukulele Chords.pdf" },
+      { artist: "Ben E King",                    title: "Stand By Me",                               chordsRaw: "C G Am F",          listenUrl: "Stand By Me - Ukulele Play Along.mp4",                                               chordUrl: "Stand by Me chords.pdf" },
+      { artist: "BTOB",                          title: "For You",                                   chordsRaw: "C G Am F",          listenUrl: "비투비 (BTOB) - For You (신데렐라와 네 명의 기사 OST).mp3",                          chordUrl: "For You BTOB Chords.pdf" },
+      { artist: "CL",                            title: "Done161201",                                chordsRaw: "C G Am F",          listenUrl: "CL DONE161201 (씨엘 DONE161201 가사).mp3",                                          chordUrl: "Done161201 Chords.pdf" },
+      { artist: "Avicii",                        title: "Hey Brother",                               chordsRaw: "C G Am F",          listenUrl: "Avicii - Hey Brother.mp3",                                                           chordUrl: "Hey Brother Chords.pdf" },
+      { artist: "Bon Jovi",                      title: "It's My Life",                              chordsRaw: "C G Am F",          listenUrl: "It's My Life Aminor Practice Track.mp4",                                            chordUrl: "Its My Life Chords.pdf" },
+      { artist: "Black Eyed Peas",               title: "Where Is the Love",                         chordsRaw: "C G Am F",          listenUrl: "Where Is The Love - Black Eyed Peas.mp3",                                            chordUrl: "Where is the Love Chords.pdf" },
+      { artist: "Fall Out Boy",                  title: "Immortals",                                 chordsRaw: "C G Am F",          listenUrl: "Fall Out Boy- Immortals.mp3",                                                        chordUrl: "Immortals Chords.pdf" },
+      { artist: "GD",                            title: "Untitled 2014",                             chordsRaw: "C G Am F",          listenUrl: "G-DRAGON - '무제(無題) (Untitled, 2014)'.mp3",                                      chordUrl: "Untitled 2014 Chords.pdf" },
+      { artist: "Im Hyunsik",                    title: "Dear Love",                                 chordsRaw: "C G Am F",          listenUrl: "Hyunsik (of BTOB) (임현식) - 'Dear Love'.mp3",                                     chordUrl: "Dear Love Chords.pdf" },
+      { artist: "K Pop Demon Hunters",           title: "Soda Pop",                                  chordsRaw: "C G Am F",          listenUrl: "Soda Pop - Kpop Demon Hunters - Ukulele Play Along.mp4",                             chordUrl: "Soda Pop KPop Demon Hunters Chords.pdf" },
+      { artist: "IU",                            title: "Celebrity",                                 chordsRaw: "C G Am F",          listenUrl: "IU (아이유) - 셀러브리티 (Celebrity).mp3",                                          chordUrl: "Celebrity Chords.pdf" },
+      { artist: "James Blunt",                   title: "You're Beautiful",                          chordsRaw: "C G Am F",          listenUrl: "James Blunt - You're Beautiful.mp3",                                                chordUrl: "Youre Beautiful Chords.pdf" },
+      { artist: "Rihanna ft. Calvin Harris",     title: "We Found Love",                             chordsRaw: "C G Am F",          listenUrl: "Rihanna - We Found Love ft. Calvin Harris.mp3",                                      chordUrl: "We Found Love Chords.pdf" },
+      { artist: "Shakira",                       title: "Try Everything",                            chordsRaw: "C G Am F",          listenUrl: "Try Everything (ukulele play-along).mp4",                                            chordUrl: "Try Everything chords.pdf" },
+      { artist: "Taylor Swift",                  title: "Bad Blood",                                 chordsRaw: "C G Am F",          listenUrl: "Bad Blood - Taylor Swift.mp3",                                                       chordUrl: "Bad Blood Chords.pdf" },
+      { artist: "The Beatles",                   title: "Let It Be",                                 chordsRaw: "C G Am F",          listenUrl: "Let it Be - The Beatles Ukulele Play Along.mp4",                                     chordUrl: "Let It Be Chords.pdf" },
+      { artist: "Taylor Swift",                  title: "Sparks Fly",                                chordsRaw: "C G Am F",          listenUrl: "Taylor Swift - Sparks Fly.mp3",                                                      chordUrl: "Sparks Fly Chords.pdf" },
+      { artist: "Shakira",                       title: "Waka Waka",                                 chordsRaw: "C G Am F",          listenUrl: "Waka Waka by Shakira - Ukulele play along.mp4",                                      chordUrl: "Waka Waka chords.pdf" },
+      { artist: "John Denver",                   title: "Take Me Home, Country Roads",               chordsRaw: "C G Am F",          listenUrl: "Country Roads Play Along.mp4",                                                       chordUrl: "Take Me Home Country Roads chords.pdf" },
+      { artist: "The Script ft. Will.i.am",      title: "Hall of Fame",                              chordsRaw: "C G Am F",          listenUrl: "Hall of Fame - The Script - Ukulele Play Along - (Am, F, C, G).mp4",                 chordUrl: "Hall of Fame Chords.pdf" },
+      { artist: "Train",                         title: "Hey, Soul Sister",                          chordsRaw: "C G Am F",          listenUrl: "Train - Hey, Soul Sister.mp3",                                                       chordUrl: "Hey Soul Sister Chords.pdf" },
+      { artist: "Vance Joy",                     title: "Riptide",                                   chordsRaw: "C G F Am",          listenUrl: "Riptide - Ukulele Play Along.mp4",                                                    chordUrl: "Riptide Chords.pdf" },
+      { artist: "Greg Gilpin",                   title: "The World is Ours",                         chordsRaw: "C G Am F",          listenUrl: "Aloe Blacc X David Correy - The World Is Ours.mp3",                                  chordUrl: "The World is Ours Chords.pdf" },
+      { artist: "Bryan Sharpe",                  title: "Make it Shine",                             chordsRaw: "C G Am F",          listenUrl: "Make It Shine Bryan Sharpe.mp3",                                                      chordUrl: "Make it Shine Chords.pdf" },
+      { artist: "Maroon 5",                      title: "Payphone",                                  chordsRaw: "C G Am F",          listenUrl: "Payphone Ukulele Play Along.mov",                                                     chordUrl: "Payphone chords.pdf" },
+      { artist: "Eason Chan",                    title: "孤勇者 Gu Yong Zhe",                         chordsRaw: "C G Am F",          listenUrl: "孤勇者 gu yong zhe 陈奕迅 eason chan（动态歌词 lyric） ku yung ce eason chan in C major.mp3", chordUrl: "gu yong zhe 孤勇者 chords.pdf" },
+      { artist: "Burl Ives",                     title: "Rudolph the Red Nosed Reindeer",            chordsRaw: "C D F G",           listenUrl: "Rudolph The Red Nosed Reindeer - Ukulele play along.mp4",                            chordUrl: "Rudolph the Red-Nosed Reindeer Chords.pdf" },
+      { artist: "The Cranberries",               title: "Zombie",                                    chordsRaw: "C Em G D",          listenUrl: "Zombie Ukulele Play Along.mp4",                                                       chordUrl: "Zombie Chords.pdf" },
+      { artist: "BlackPink",                     title: "As if It's Your Last",                      chordsRaw: "C G F Am A",        listenUrl: "BLACKPINK - AS IF IT'S YOUR LAST.mp3",                                              chordUrl: "As If Its Your Last 마지막처럼 Chords.pdf" },
+      { artist: "Wham",                          title: "Last Christmas",                             chordsRaw: "C Am Dm G",         listenUrl: "Last Christmas Ukulele Play Along (in C).mp4",                                       chordUrl: "Last Christmas chords.pdf" },
+      { artist: "BlackPink",                     title: "Lovesick Girls",                            chordsRaw: "C F G Am E7",       listenUrl: "BLACKPINK - Lovesick Girls.mp3",                                                      chordUrl: "Lovesick Girls chords edited.pdf" },
+      { artist: "Parry Gripp",                   title: "It's Raining Tacos",                        chordsRaw: "C F G Am Em",       listenUrl: "It's Raining Tacos Ukulele Play Along.mp4",                                         chordUrl: "It's Raining Tacos Chords.pdf" },
+      { artist: "Alicia Keys",                   title: "No One",                                    chordsRaw: "C G F Am Em Dm",    listenUrl: "No One - Alicia Keys (Ukulele Play Along).mp4",                                      chordUrl: "No One Chords.pdf" },
+      { artist: "Jason Castro",                  title: "Somewhere Over the Rainbow",                chordsRaw: "C G Am F E7 A",     listenUrl: "Ukulele - Somewhere Over The Rainbow - Ukulele Play Along - Israel Kamakawiwo'ole.mp4", chordUrl: "Somewhere over the rainbow ukulele Chords.pdf" },
+      { artist: "Imagine Dragons",               title: "Radioactive",                               chordsRaw: "C G Am D",          listenUrl: "Radioactive Ukulele Play Along.mp4",                                                  chordUrl: "Radioactive Chords.pdf" },
+      { artist: "Adele",                         title: "Hello",                                     chordsRaw: "C G Am F Em",       listenUrl: "Adele - Hello.mp3",                                                                   chordUrl: "Hello Chords.pdf" },
+      { artist: "Adele",                         title: "Someone Like You",                          chordsRaw: "C G Am F Em",       listenUrl: "Someone Like You - Adele.mp3",                                                        chordUrl: "Someone Like You Chords.pdf" },
+      { artist: "BIGBANG",                       title: "Love Song",                                 chordsRaw: "C G Am F Gm",       listenUrl: "BIGBANG (빅뱅) - LOVE SONG.mp3",                                                    chordUrl: "Love Song Chords.pdf" },
+      { artist: "BTS",                           title: "Butter",                                    chordsRaw: "C G Am F D",        listenUrl: "BTS (방탄소년단) - Butter.mp3",                                                      chordUrl: "Butter Chords.pdf" },
+      { artist: "Christina Perri",               title: "Jar of Hearts",                             chordsRaw: "C G Am F Dm",       listenUrl: "Christina Perri - Jar of Hearts.mp3",                                                chordUrl: "Jar of Hearts Chords.pdf" },
+      { artist: "BlackPink",                     title: "Stay",                                      chordsRaw: "C F G Am Dm",       listenUrl: "BLACKPINK - 'STAY'.mp3",                                                             chordUrl: "stay chords.pdf" },
+      { artist: "One Republic",                  title: "Counting Stars",                            chordsRaw: "C G Am F Dm",       listenUrl: "Counting Stars - Ukulele play along.mp4",                                            chordUrl: "Counting Stars Ukulele Chords.pdf" },
+      { artist: "Zac Efron and Zendaya",         title: "Rewrite the Stars",                         chordsRaw: "C G Am F Em",       listenUrl: "Rewrite the Stars Ukulele Play Along.mp4",                                           chordUrl: "The Greatest Showman - Rewrite the Stars Chords.pdf" },
+      { artist: "Jason Mraz",                    title: "I'm Yours",                                 chordsRaw: "C G Am F D7",       listenUrl: "I'm Yours (Jason Mraz) - Ukulele Play Along!.mp4",                                  chordUrl: "Im Yours Chords.pdf" },
+      { artist: "Rose and Bruno Mars",           title: "APT",                                       chordsRaw: "C F Am G A D",      listenUrl: "APT by Bruno Mars and Rosé (Transposed to C) Ukulele Play Along.mp4",                chordUrl: "APT Ukulele Chords.pdf" },
+      { artist: "梁静茹 (Liang Jingru)",           title: "小手拉大手 (Hand in Hand)",                   chordsRaw: "C F G Am Em7 Dm D7", listenUrl: "小手拉大手.mp3",                                                                   chordUrl: "小手拉大手 (Hand in Hand).png" },
+      { artist: "Journey",                       title: "Don't Stop Believin'",                      chordsRaw: "C G Am F Em",       listenUrl: "Journey - Don't Stop Believin'.mp3",                                                chordUrl: "Dont Stop Believin Chords.pdf" },
+      { artist: "五月天",                          title: "知足",                                       chordsRaw: "C F G Am Dm Em",    listenUrl: "知足 Key of C.mp3",                                                                  chordUrl: "知足 Chords.pdf" },
+      { artist: "Elton John",                    title: "Can You Feel The Love Tonight",             chordsRaw: "C F G Am A Em D",   listenUrl: "Can You Feel the Love Tonight Ukulele Play Along.mp4",                               chordUrl: "Can You Feel the Love Tonight Chords.pdf" },
+      { artist: "Secret",                        title: "Shy Boy",                                   chordsRaw: "F Am Dm Bm C Gm B", listenUrl: "Secret(시크릿) _ Shy Boy(샤이보이).mp3",                                           chordUrl: "Shy Boy Chords.jpeg" },
+      { artist: "K Pop Demon Hunters",           title: "Golden",                                    chordsRaw: "C G Em E D Bm",     listenUrl: "Golden by Huntrix - ukulele play-along.mp4",                                         chordUrl: "Golden Kpop Demon Hunters Chords.pdf" },
+      { artist: "a-Ha",                          title: "Take Me On",                                chordsRaw: "Am D G C Em Bm F",  listenUrl: "Take On Me (A-Ha) Ukulele Play-Along.mp4",                                           chordUrl: "Take On Me Chords.pdf" },
+    ];
+
+    function parseChordList(raw) {
+      if (!raw) return [];
+      return raw.trim().split(/\s+/).map(c => c.trim()).filter(c => c.length > 0);
+    }
+
+    function getDifficultyLevel(chordArray) {
+      const n = chordArray.length;
+      if (n <= 3) return { level: "easy",   text: "🎵 Easy",   cls: "difficulty-easy" };
+      if (n <= 5) return { level: "medium", text: "🪕 Medium", cls: "difficulty-medium" };
+      return             { level: "hard",   text: "🔥 Hard",   cls: "difficulty-hard" };
+    }
+
+    const enrichedSongs = songsData.map(song => {
+      const chords = parseChordList(song.chordsRaw);
+      const diff   = getDifficultyLevel(chords);
+      return { ...song, chords, diffLevel: diff.level, diffText: diff.text, diffCls: diff.cls };
+    });
+
+    const searchInput  = document.getElementById('searchInput');
+    const chordFilter  = document.getElementById('chordFilter');
+    const diffSort     = document.getElementById('difficultySort');
+    const tableBody    = document.getElementById('tableBody');
+    const countBadge   = document.getElementById('resultCount');
+
+    function escHtml(s) {
+      return (s || '').replace(/[&<>"']/g, c =>
+        ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]));
+    }
+
+    function render(songs) {
+      if (!songs.length) {
+        tableBody.innerHTML = `<tr><td colspan="6" class="no-results">✨ No songs match — try a different search or chord.</td></tr>`;
+        return;
+      }
+      tableBody.innerHTML = songs.map(s => {
+        const badges  = s.chords.map(c => `<span class="chord-badge">${escHtml(c)}</span>`).join('');
+        const listen  = s.listenUrl  ? `<a class="listen-link" href="${encodeURI(s.listenUrl)}"  target="_blank">🎧 Play-Along</a>` : `<span class="text-slate-300">—</span>`;
+        const chords  = s.chordUrl   ? `<a class="chord-link"  href="${encodeURI(s.chordUrl)}"   target="_blank">🎼 Chords</a>`     : `<span class="text-slate-300">—</span>`;
+        return `<tr>
+          <td><strong>${escHtml(s.artist)}</strong></td>
+          <td>${escHtml(s.title)}</td>
+          <td>${badges}</td>
+          <td><span class="difficulty-tag ${s.diffCls}">${s.diffText}</span></td>
+          <td>${listen}</td>
+          <td>${chords}</td>
+        </tr>`;
+      }).join('');
+    }
+
+    function update() {
+      const q    = searchInput.value.trim().toLowerCase();
+      const chord = chordFilter.value;
+      const sort  = diffSort.value;
+
+      let list = enrichedSongs.filter(s => {
+        const matchQ = !q || s.title.toLowerCase().includes(q) || s.artist.toLowerCase().includes(q);
+        const matchC = chord === 'all' || s.chords.includes(chord);
+        return matchQ && matchC;
+      });
+
+      if (sort === 'easy-first') {
+        const o = { easy:1, medium:2, hard:3 };
+        list = [...list].sort((a,b) => o[a.diffLevel] - o[b.diffLevel]);
+      } else if (sort === 'hard-first') {
+        const o = { easy:1, medium:2, hard:3 };
+        list = [...list].sort((a,b) => o[b.diffLevel] - o[a.diffLevel]);
+      }
+
+      render(list);
+      countBadge.textContent = `🎶 ${list.length} song${list.length !== 1 ? 's' : ''}`;
+    }
+
+    searchInput.addEventListener('input', update);
+    chordFilter.addEventListener('change', update);
+    diffSort.addEventListener('change', update);
+    update();
+  </script>
+</body>
+</html>
