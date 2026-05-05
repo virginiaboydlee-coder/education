@@ -10,7 +10,7 @@
   <style>
     body { font-family: 'Inter', system-ui, sans-serif; }
     .tool-content { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, opacity 0.3s ease; opacity: 0; }
-    .tool-content.open { max-height: 1000px; opacity: 1; }
+    .tool-content.open { max-height: 3000px; opacity: 1; }
     .tool-icon { transition: transform 0.3s ease; }
     .tool-icon.open { transform: rotate(180deg); }
   </style>
@@ -125,8 +125,8 @@
             <div class="flex items-center gap-3">
               <span class="text-2xl">🔤</span>
               <div>
-                <h3 class="font-semibold text-base text-slate-800">Rhyme Generator</h3>
-                <p class="text-xs text-slate-400 mt-0.5">Find words that sound good at the end of a line</p>
+                <h3 class="font-semibold text-base text-slate-800">Rhyme Lab</h3>
+                <p class="text-xs text-slate-400 mt-0.5">Find perfect rhymes and near rhymes – safe for all students</p>
               </div>
             </div>
             <svg class="tool-icon w-5 h-5 text-slate-400 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -135,21 +135,125 @@
           </button>
           <div class="tool-content border-t border-slate-50">
             <div class="px-6 py-5">
-              <p class="text-sm text-slate-500 mb-4">Type a word you want to rhyme with — the generator will suggest options sorted by how closely they rhyme.</p>
-              <div class="flex gap-2 mb-4 flex-wrap">
-                <input type="text" id="rhyme-input" placeholder="e.g. light, day, free…" class="flex-1 min-w-0 text-sm rounded-lg border border-slate-200 px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-purple-400" />
-                <button id="rhyme-btn" class="bg-purple-600 text-white text-sm font-semibold px-5 py-2.5 rounded-lg hover:bg-purple-700 transition-colors whitespace-nowrap">Find Rhymes</button>
+
+              <!-- Input row -->
+              <div class="flex gap-2 mb-5 flex-wrap items-end">
+                <div class="flex-1 min-w-0">
+                  <label class="block text-xs font-semibold text-slate-500 mb-1.5">✍️ Enter a word</label>
+                  <input type="text" id="rhyme-input"
+                         placeholder="e.g. love, dream, music, fire…"
+                         autocomplete="off"
+                         class="w-full text-sm rounded-lg border border-slate-200 px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-purple-400" />
+                </div>
+                <div class="flex gap-2 flex-wrap">
+                  <button id="rhyme-btn"
+                          class="bg-purple-600 text-white text-sm font-semibold px-5 py-2.5 rounded-lg hover:bg-purple-700 transition-colors whitespace-nowrap">
+                    🔍 Find Rhymes
+                  </button>
+                  <button id="rhyme-random-btn"
+                          class="bg-slate-500 text-white text-sm font-semibold px-4 py-2.5 rounded-lg hover:bg-slate-600 transition-colors whitespace-nowrap">
+                    ✨ Random
+                  </button>
+                </div>
               </div>
-              <div id="rhyme-results" class="min-h-12">
-                <p class="text-slate-400 text-sm italic">Your rhyme suggestions will appear here.</p>
+
+              <!-- Results -->
+              <div class="space-y-4">
+                <div>
+                  <p class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">📖 Perfect Rhymes</p>
+                  <div id="perfect-rhymes-area" class="flex flex-wrap gap-2 min-h-8">
+                    <span class="text-slate-400 text-sm italic">Try a word like "dream" or "light"</span>
+                  </div>
+                </div>
+                <div>
+                  <p class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">
+                    🌀 Near Rhymes
+                    <span class="font-normal normal-case tracking-normal text-slate-400 ml-1">(slant rhymes)</span>
+                  </p>
+                  <div id="near-rhymes-area" class="flex flex-wrap gap-2 min-h-8">
+                    <span class="text-slate-400 text-sm italic">Near rhymes add texture — experiment!</span>
+                  </div>
+                </div>
               </div>
-              <div class="mt-4 bg-slate-50 rounded-lg p-3 text-xs text-slate-400">
-                <p>💡 <strong>Tip:</strong> Try near-rhymes too — words that sound <em>almost</em> alike often feel more natural and surprising in songs (e.g. "fire / higher", "rain / change").</p>
+
+              <div class="mt-5 bg-slate-50 rounded-lg p-3 text-xs text-slate-400">
+                💡 <strong>Tip:</strong> Click any chip to find <em>its</em> rhymes. Near rhymes often feel more natural in songs — e.g. "fire / higher", "rain / change".
               </div>
+
             </div>
           </div>
         </div>
 
+
+        <!-- Card: AI Chatbots ───────────────────────────────── -->
+        <div class="bg-white rounded-xl border border-slate-100 shadow-sm overflow-hidden">
+          <div class="px-6 py-5 border-b border-slate-50">
+            <div class="flex items-center gap-3">
+              <span class="text-2xl">🤖</span>
+              <div>
+                <h3 class="font-semibold text-base text-slate-800">AI Songwriting Assistants</h3>
+                <p class="text-xs text-slate-400 mt-0.5">Chatbots designed to help you write and brainstorm</p>
+              </div>
+            </div>
+          </div>
+          <div class="p-5 grid sm:grid-cols-2 gap-4">
+
+            <!-- Song Wizard -->
+            <a href="https://mizou.com/login-thread?ID=EGkevs2G0cagCMM3eI5WLRNpRO5lairWGRK7UkwRuhE-126539"
+               target="_blank" rel="noopener"
+               class="group flex flex-col rounded-xl border border-slate-100 overflow-hidden hover:border-amber-300 hover:shadow-md transition-all">
+              <div class="h-36 overflow-hidden bg-gradient-to-br from-amber-100 to-green-100 flex-shrink-0">
+                <img src="images/song-wizard.jpg" alt="Song Wizard"
+                     class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
+                     onerror="this.style.display='none'" />
+              </div>
+              <div class="p-4 flex flex-col flex-1">
+                <div class="flex items-start justify-between gap-2 mb-2">
+                  <div>
+                    <span class="text-xs font-bold text-amber-600 uppercase tracking-wider">Inspiration</span>
+                    <h4 class="font-bold text-slate-800 mt-0.5">Song Wizard</h4>
+                  </div>
+                  <svg class="w-4 h-4 text-slate-300 group-hover:text-amber-500 flex-shrink-0 mt-1 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                  </svg>
+                </div>
+                <p class="text-xs text-slate-500 mb-3 leading-relaxed">Recommends real songs about topics you care about to spark your songwriting ideas.</p>
+                <div class="mt-auto bg-amber-50 rounded-lg p-3 text-xs text-slate-600 leading-relaxed border border-amber-100">
+                  <strong class="text-amber-700">💬 Try saying:</strong><br>
+                  "I'm writing a song about <em>[your topic]</em>. Can you recommend 3 songs I could listen to for inspiration, and explain what makes each one powerful?"
+                </div>
+              </div>
+            </a>
+
+            <!-- Lyrical Mastermind -->
+            <a href="https://mizou.com/login-thread?ID=FhUysx6o2ZRc6UqSdHkPk4gQljVBeMP5mxdCbgXehMY-127471"
+               target="_blank" rel="noopener"
+               class="group flex flex-col rounded-xl border border-slate-100 overflow-hidden hover:border-purple-300 hover:shadow-md transition-all">
+              <div class="h-36 overflow-hidden bg-gradient-to-br from-purple-100 to-blue-100 flex-shrink-0">
+                <img src="images/lyrical-mastermind.jpg" alt="Lyrical Mastermind"
+                     class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
+                     onerror="this.style.display='none'" />
+              </div>
+              <div class="p-4 flex flex-col flex-1">
+                <div class="flex items-start justify-between gap-2 mb-2">
+                  <div>
+                    <span class="text-xs font-bold text-purple-600 uppercase tracking-wider">Lyrics</span>
+                    <h4 class="font-bold text-slate-800 mt-0.5">Lyrical Mastermind</h4>
+                  </div>
+                  <svg class="w-4 h-4 text-slate-300 group-hover:text-purple-500 flex-shrink-0 mt-1 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                  </svg>
+                </div>
+                <p class="text-xs text-slate-500 mb-3 leading-relaxed">Helps you brainstorm rhymes, rewrite lines, and find words that fit your song's message.</p>
+                <div class="mt-auto bg-purple-50 rounded-lg p-3 text-xs text-slate-600 leading-relaxed border border-purple-100">
+                  <strong class="text-purple-700">💬 Try saying:</strong><br>
+                  "My song is about <em>[your topic]</em>. I have this line: '<em>[your line]</em>'. Can you suggest a second line that rhymes and continues the idea?"
+                </div>
+              </div>
+            </a>
+
+          </div>
+        </div>
 
       </div><!-- end toolbox cards -->
     </section>
@@ -198,73 +302,105 @@
     });
 
     // ─────────────────────────────────────────────────────────────
-    // Rhyme Generator
+    // Rhyme Lab — Datamuse API + profanity filter
     // ─────────────────────────────────────────────────────────────
-    const rhymeDB = {
-      'ay':    ['day','say','way','play','stay','ray','gray','pray','sway','bay','clay','display','relay','hooray','okay'],
-      'ight':  ['night','light','bright','might','right','tight','sight','flight','fight','height','write','quite','white','kite','invite'],
-      'ee':    ['free','see','be','me','tree','sea','key','we','agree','believe','breathe','dream','gleam','team'],
-      'ove':   ['love','dove','above','shove','of','glove'],
-      'ound':  ['sound','ground','found','around','bound','round','pound','surround','profound','astound'],
-      'ong':   ['song','strong','long','belong','along','wrong','among','prolong'],
-      'ame':   ['name','flame','same','claim','game','came','frame','became','proclaim','fame'],
-      'art':   ['heart','start','part','art','smart','apart','chart','depart'],
-      'and':   ['hand','land','stand','sand','band','grand','understand','expand','demand','command'],
-      'ine':   ['mine','fine','line','shine','time','climb','sign','wine','define','divine','combine','align'],
-      'ive':   ['live','give','forgive','drive','thrive','alive','strive','survive'],
-      'ope':   ['hope','cope','rope','open','scope','envelope'],
-      'ange':  ['change','range','strange','exchange','rearrange'],
-      'orld':  ['world','hurled','unfurled','swirled'],
-      'ife':   ['life','knife','wife','strife'],
-      'old':   ['bold','gold','told','hold','fold','unfold','behold'],
-      'ow':    ['know','flow','grow','show','below','glow','though','bestow'],
-      'air':   ['care','share','there','where','fair','aware','compare','declare','prepare','repair'],
-      'ore':   ['more','before','explore','shore','restore','adore','core','ignore','implore'],
-      'ome':   ['home','come','some','roam','foam','Rome','become','overcome','welcome'],
-    };
+    (function () {
+      const blocked = new Set([
+        "fuck","shit","asshole","bitch","cunt","dick","pussy","bastard","whore","slut",
+        "nigger","faggot","retard","crap","piss","cock","twat","wanker","arsehole",
+        "douche","motherfucker","cocksucker","nigga","tits","penis","vagina","clit",
+        "boner","orgasm","masturbate","anal","dildo","semen","cum","ejaculate",
+        "prostitute","hooker","porn"
+      ]);
 
-    function getRhymes(word) {
-      word = word.trim().toLowerCase();
-      if (!word) return [];
-      // Try matching progressively shorter endings (up to 5 chars)
-      for (let len = 5; len >= 2; len--) {
-        const ending = word.slice(-len);
-        for (const [key, words] of Object.entries(rhymeDB)) {
-          if (ending === key || word.endsWith(key)) {
-            return words.filter(w => w !== word);
-          }
+      function isBad(w) {
+        return blocked.has(w.toLowerCase().replace(/[^a-z]/g, ''));
+      }
+
+      const safeWords = [
+        "dream","light","fire","ocean","heart","shine","moon","star","together",
+        "forever","melody","rhythm","smile","rain","sun","wind","song","dance",
+        "hope","peace","love","true","blue","free","tree","night","bright","wild",
+        "grow","flow","silence","magic","music","echo","butterfly"
+      ];
+
+      const input      = document.getElementById('rhyme-input');
+      const findBtn    = document.getElementById('rhyme-btn');
+      const randomBtn  = document.getElementById('rhyme-random-btn');
+      const perfectEl  = document.getElementById('perfect-rhymes-area');
+      const nearEl     = document.getElementById('near-rhymes-area');
+
+      function setLoading() {
+        perfectEl.innerHTML = '<span class="text-slate-400 text-sm italic">Loading…</span>';
+        nearEl.innerHTML    = '<span class="text-slate-400 text-sm italic">Loading…</span>';
+      }
+
+      function renderChips(data, container, type) {
+        const words = data
+          .map(d => d.word)
+          .filter(w => w !== input.value.trim().toLowerCase() && !isBad(w))
+          .slice(0, 30);
+
+        if (words.length === 0) {
+          container.innerHTML = '<span class="text-slate-400 text-sm italic">No results — try another word.</span>';
+          return;
+        }
+
+        const chipClass = type === 'perfect'
+          ? 'bg-purple-100 text-purple-800 hover:bg-purple-200'
+          : 'bg-slate-100 text-slate-600 hover:bg-slate-200';
+
+        container.innerHTML = '';
+        words.forEach(w => {
+          const chip = document.createElement('span');
+          chip.textContent = w;
+          chip.className = `${chipClass} font-medium text-sm rounded-full px-3 py-1 cursor-pointer transition-colors`;
+          chip.addEventListener('click', () => { input.value = w; search(w); });
+          container.appendChild(chip);
+        });
+      }
+
+      async function search(word) {
+        word = (word || input.value).trim().toLowerCase();
+        if (!word) {
+          perfectEl.innerHTML = '<span class="text-amber-500 text-sm">Please type a word first.</span>';
+          nearEl.innerHTML = '';
+          return;
+        }
+        if (isBad(word)) {
+          perfectEl.innerHTML = '<span class="text-rose-500 text-sm font-medium">🚫 That word isn\'t allowed. Please try a different one.</span>';
+          nearEl.innerHTML = '';
+          return;
+        }
+
+        setLoading();
+
+        try {
+          const [perfRes, nearRes] = await Promise.all([
+            fetch(`https://api.datamuse.com/words?rel_rhy=${encodeURIComponent(word)}&max=35`),
+            fetch(`https://api.datamuse.com/words?rel_nry=${encodeURIComponent(word)}&max=35`)
+          ]);
+          const [perfData, nearData] = await Promise.all([perfRes.json(), nearRes.json()]);
+          renderChips(perfData.filter(d => !isBad(d.word)), perfectEl, 'perfect');
+          renderChips(nearData.filter(d => !isBad(d.word)), nearEl, 'near');
+        } catch {
+          perfectEl.innerHTML = '<span class="text-rose-500 text-sm">Network error — please try again.</span>';
+          nearEl.innerHTML = '';
         }
       }
-      // Fallback: return some common single-syllable rhyme words
-      return ['change','bright','here','far','care','free','now','find','rise','hold','grow','know'];
-    }
 
-    document.getElementById('rhyme-btn').addEventListener('click', () => {
-      const val   = document.getElementById('rhyme-input').value;
-      const words = getRhymes(val);
-      const el    = document.getElementById('rhyme-results');
+      findBtn.addEventListener('click', () => search());
+      input.addEventListener('keydown', e => { if (e.key === 'Enter') search(); });
+      randomBtn.addEventListener('click', () => {
+        const w = safeWords[Math.floor(Math.random() * safeWords.length)];
+        input.value = w;
+        search(w);
+      });
 
-      if (!val.trim()) {
-        el.innerHTML = '<p class="text-amber-500 text-sm">Please type a word first.</p>';
-        return;
-      }
-
-      if (words.length === 0) {
-        el.innerHTML = '<p class="text-slate-400 text-sm italic">No suggestions found — try a different word or ending.</p>';
-        return;
-      }
-
-      el.innerHTML = `
-        <p class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Rhymes for "<span class="text-purple-600">${val.trim()}</span>"</p>
-        <div class="flex flex-wrap gap-2">
-          ${words.map(w => `<span class="bg-purple-100 text-purple-800 font-medium text-sm rounded-full px-3 py-1">${w}</span>`).join('')}
-        </div>
-      `;
-    });
-
-    document.getElementById('rhyme-input').addEventListener('keydown', e => {
-      if (e.key === 'Enter') document.getElementById('rhyme-btn').click();
-    });
+      // Pre-load a starter word
+      input.value = 'music';
+      search('music');
+    })();
 
   </script>
 </body>
