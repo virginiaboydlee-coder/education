@@ -8,125 +8,79 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
-    body { font-family: 'Inter', system-ui, sans-serif; margin: 0; }
-    html, body { height: 100%; }
-
-    /* Toolbar height: 48px  Nav height: 64px */
-    .viewer-frame { height: calc(100vh - 64px - 48px); }
-
-    /* Loading spinner */
-    .spinner {
-      width: 36px; height: 36px;
-      border: 3px solid #e2e8f0;
-      border-top-color: #0d9488;
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .recorder-card {
+      background: linear-gradient(135deg, #0d9488 0%, #0891b2 100%);
     }
-    @keyframes spin { to { transform: rotate(360deg); } }
+    .note {
+      animation: float 3s ease-in-out infinite;
+    }
+    .note:nth-child(2) { animation-delay: 0.5s; }
+    .note:nth-child(3) { animation-delay: 1s; }
+    .note:nth-child(4) { animation-delay: 1.5s; }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-8px); }
+    }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased flex flex-col">
+<body class="bg-slate-50 text-slate-800 antialiased flex flex-col min-h-screen">
 
   <div id="nav-placeholder"></div>
 
-  <!-- ── Toolbar ──────────────────────────────────────────────── -->
-  <div class="bg-white border-b border-slate-100 shadow-sm h-12 flex items-center justify-between px-4 sm:px-6 flex-shrink-0 z-10">
-    <div class="flex items-center gap-2 min-w-0">
-      <span class="text-xs font-bold text-teal-600 uppercase tracking-widest flex-shrink-0">Grade 4</span>
-      <span class="text-slate-300 flex-shrink-0">·</span>
-      <span class="font-semibold text-slate-700 text-sm truncate">🎵 Recorder Book</span>
+  <main class="flex-1 flex flex-col items-center justify-center px-4 py-16">
+
+    <!-- Hero card -->
+    <div class="recorder-card rounded-3xl shadow-2xl overflow-hidden max-w-lg w-full text-white">
+
+      <!-- Top decoration strip -->
+      <div class="flex justify-center gap-6 pt-10 pb-4 opacity-40 select-none">
+        <span class="note text-4xl">𝅘𝅥𝅮</span>
+        <span class="note text-3xl">♩</span>
+        <span class="note text-4xl">♪</span>
+        <span class="note text-3xl">𝅘𝅥𝅯</span>
+      </div>
+
+      <div class="px-10 pb-10 text-center">
+        <p class="text-teal-200 text-xs font-bold uppercase tracking-widest mb-2">Grade 4 · Student Resource</p>
+        <h1 class="text-3xl font-bold mb-3 leading-tight">Recorder Book</h1>
+        <p class="text-teal-100 text-sm leading-relaxed mb-8 opacity-90">
+          Songs, fingering charts, and practice pieces for Grade 4 recorder.<br>
+          Opens in Canva — no login required.
+        </p>
+
+        <a href="https://canva.link/2hq43dz7bcrrgsl"
+           target="_blank" rel="noopener"
+           class="inline-flex items-center gap-2.5 bg-white text-teal-700 font-bold px-8 py-4 rounded-2xl shadow-lg hover:shadow-xl hover:bg-teal-50 transition-all text-base">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+          </svg>
+          Open Recorder Book
+          <svg class="w-4 h-4 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+          </svg>
+        </a>
+
+        <p class="mt-4 text-teal-200 text-xs opacity-70">Opens in a new tab</p>
+      </div>
     </div>
-    <div class="flex items-center gap-2 flex-shrink-0">
-      <button
-        onclick="goFullscreen()"
-        class="hidden sm:flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-teal-600 transition-colors px-3 py-1.5 rounded-lg hover:bg-slate-50 border border-slate-200 hover:border-teal-200"
-        title="Fullscreen">
-        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 4h-4m4 0l-5-5"/>
-        </svg>
-        Fullscreen
-      </button>
-      <a href="https://canva.link/2hq43dz7bcrrgsl"
-         target="_blank" rel="noopener"
-         class="flex items-center gap-1.5 text-xs font-semibold text-teal-600 hover:text-teal-700 transition-colors px-3 py-1.5 rounded-lg bg-teal-50 hover:bg-teal-100 border border-teal-200">
-        Open in Canva
-        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-        </svg>
-      </a>
-    </div>
-  </div>
 
-  <!-- ── Viewer ────────────────────────────────────────────────── -->
-  <div id="viewer-wrap" class="viewer-frame w-full flex-1 relative bg-slate-100">
-
-    <!-- Loading indicator -->
-    <div id="loading-indicator"
-         class="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-slate-100 z-10 pointer-events-none">
-      <div class="spinner"></div>
-      <p class="text-slate-400 text-sm font-medium">Loading Recorder Book…</p>
-    </div>
-
-    <iframe
-      id="canva-frame"
-      src="https://canva.link/2hq43dz7bcrrgsl"
-      frameborder="0"
-      allowfullscreen
-      style="width:100%;height:100%;display:block;border:none;position:relative;z-index:1;"
-      title="Grade 4 Recorder Book"
-    ></iframe>
-  </div>
-
-  <!-- ── Fallback (shown if Canva blocks iframing) ────────────── -->
-  <div id="fallback"
-       class="hidden flex-1 flex flex-col items-center justify-center py-20 px-4 text-center bg-slate-50">
-    <div class="text-5xl mb-5">🎵</div>
-    <h2 class="text-xl font-bold text-slate-800 mb-2">Grade 4 Recorder Book</h2>
-    <p class="text-slate-500 mb-7 max-w-sm text-sm leading-relaxed">
-      The Recorder Book is hosted on Canva. Click below to open it in a new tab.
+    <!-- Sub-note -->
+    <p class="mt-8 text-slate-400 text-xs text-center max-w-sm leading-relaxed">
+      This resource is hosted on Canva. If you have trouble opening it, ask Ms. Lee for help.
     </p>
-    <a href="https://canva.link/2hq43dz7bcrrgsl"
-       target="_blank" rel="noopener"
-       class="inline-flex items-center gap-2 bg-teal-600 hover:bg-teal-700 text-white font-semibold px-6 py-3 rounded-full transition-colors text-sm">
-      Open Recorder Book
-      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-      </svg>
-    </a>
-  </div>
+
+  </main>
+
+  <footer class="bg-slate-800 text-slate-400 py-8">
+    <div class="max-w-5xl mx-auto px-4 text-center text-sm">
+      <p class="text-slate-300 font-medium mb-1">Ms. Virginia Lee · PYP Music Teacher &amp; Educational Leader</p>
+      <p>Teaching Portfolio · Built for reflection, growth, and professional documentation.</p>
+    </div>
+  </footer>
 
   <script src="js/nav.js"></script>
-  <script>
-    const frame     = document.getElementById('canva-frame');
-    const loading   = document.getElementById('loading-indicator');
-    const wrap      = document.getElementById('viewer-wrap');
-    const fallback  = document.getElementById('fallback');
-
-    let loaded = false;
-
-    frame.addEventListener('load', () => {
-      loaded = true;
-      loading.style.display = 'none';
-    });
-
-    // After 8 s, if still unloaded assume Canva blocked the iframe
-    setTimeout(() => {
-      if (!loaded) {
-        wrap.classList.add('hidden');
-        fallback.classList.remove('hidden');
-        fallback.classList.add('flex');
-      }
-    }, 8000);
-
-    function goFullscreen() {
-      const el = frame;
-      if (el.requestFullscreen)            el.requestFullscreen();
-      else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
-      else if (el.mozRequestFullScreen)    el.mozRequestFullScreen();
-    }
-  </script>
 </body>
 </html>
