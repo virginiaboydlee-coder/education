@@ -9,9 +9,9 @@ const countries = [
     id: "southafrica", name: "South Africa", flag: "&#127487;&#127462;", type: "Choral Harmony Singing",
     x: 1420, y: 1115, color: "#16a34a",
     url: "https://www.youtube.com/watch?v=nlzomGoy97I",  // youtube_southafrica
-    videoLabel: "Baba Yetu — South African Choir",
-    desc: "In South Africa, people love to sing together in big groups! A famous style is called <strong>isicathamiya</strong> (say: ee-see-kah-tah-MEE-yah). Singers blend their voices to make one powerful sound. The name means 'to walk softly' — and performers even tiptoe gently across the stage as they sing!",
-    styleFact: "In this video, a South African choir sings <em>Baba Yetu</em>, which means 'Our Father' in Swahili. Listen for how some voices sing high, some sing low, and they all blend together into something beautiful.",
+    videoLabel: "Shosholoza — Ladysmith Black Mambazo",
+    desc: "In South Africa, there is a famous style of music called <strong>isicathamiya</strong> (say: ee-see-kah-tah-MEE-yah). This is when a group of singers blend their voices to make one powerful sound. The name means 'to walk softly' — and performers even tiptoe gently across the stage as they sing!",
+    styleFact: "In this video, a South African group called <strong>Ladysmith Black Mambazo</strong> sings <em>Shosholoza</em> which means 'Go forward.' The song has a message of hope and perseverance, and is often called the country's second national anthem. Listen for how some voices sing high, some sing low, and they all blend together into something beautiful.",
     funFact: "The famous group Ladysmith Black Mambazo has won 5 Grammy Awards and once performed for Nelson Mandela at his presidential inauguration!",
     instruments: ["Voices (harmony choir)", "Handclapping"]
   },
