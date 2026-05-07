@@ -2,8 +2,9 @@
   const pages = [
     { href: 'index.html',         label: 'Home' },
     { href: 'teaching.html',      label: 'Teaching' },
-    { href: 'leadership.html',    label: 'Leadership' },
-    { href: 'blog.html',          label: 'Blog' },
+    { href: 'leadership.html',         label: 'Leadership' },
+    { href: 'responsibilities.html',   label: 'Responsibilities' },
+    { href: 'blog.html',               label: 'Blog' },
     { href: 'student-tools.html', label: 'Student Tools', children: [
       { href: 'grade3.html',       label: 'Grade 3 – World Music' },
       { href: 'grade4.html',       label: 'Grade 4 – Recorder Book' },
