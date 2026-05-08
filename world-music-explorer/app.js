@@ -10,9 +10,9 @@ const countries = [
     x: 1420, y: 1115, color: "#16a34a",
     url: "https://www.youtube.com/watch?v=nlzomGoy97I",  // youtube_southafrica
     videoLabel: "Shosholoza — Ladysmith Black Mambazo",
-    desc: "In South Africa, there is a famous style of music called <strong>isicathamiya</strong> (say: ee-see-kah-tah-MEE-yah). This is when a group of singers blend their voices to make one powerful sound. The name means 'to walk softly' — and performers even tiptoe gently across the stage as they sing!",
-    styleFact: "In this video, a South African group called <strong>Ladysmith Black Mambazo</strong> sings <em>Shosholoza</em> which means 'Go forward.' The song has a message of hope and perseverance, and is often called the country's second national anthem. Listen for how some voices sing high, some sing low, and they all blend together into something beautiful.",
-    funFact: "The famous group Ladysmith Black Mambazo has won 5 Grammy Awards and once performed for Nelson Mandela at his presidential inauguration!",
+    desc: "In South Africa, people love to sing together in big groups! A famous style is called <strong>isicathamiya</strong> (say: ee-see-kah-tah-MEE-yah). Singers blend their voices to make one powerful sound. The name means 'to walk softly' — and performers even tiptoe gently across the stage as they sing!",
+    styleFact: "In this video, Ladysmith Black Mambazo perform <em>Shosholoza</em> — one of South Africa's most beloved songs. The word means 'push forward' or 'go fast' and was originally sung by migrant workers. Listen for how the low voices create a deep foundation while higher voices soar on top.",
+    funFact: "Ladysmith Black Mambazo has won 5 Grammy Awards and once performed for Nelson Mandela at his presidential inauguration — they are true icons of South African music!",
     instruments: ["Voices (harmony choir)", "Handclapping"]
   },
   {
@@ -39,9 +39,9 @@ const countries = [
     id: "japan", name: "Japan", flag: "&#127471;&#127477;", type: "Taiko Drumming",
     x: 2335, y: 490, color: "#db2777",
     url: "https://www.youtube.com/watch?v=ZagsLrNzg3I",  // youtube_japan
-    videoLabel: "Taiko Taikai 2023 — 1st Place",
+    videoLabel: "Eitetsu Hayashi — Fertility of the Sea (2014)",
     desc: "<strong>Taiko</strong> means 'big drum' in Japanese! Taiko drummers put on one of the most exciting shows you will ever see. The drums can be as big as a car! Drummers work as a team, hitting giant drums with big wooden sticks and moving their whole bodies.",
-    styleFact: "In this video, a taiko team won first place at a drumming competition. Watch how everyone moves together — every single person hits their drum at exactly the right moment. That takes years of practice and amazing teamwork!",
+    styleFact: "In this video, legendary taiko master <strong>Eitetsu Hayashi</strong> performs <em>Fertility of the Sea</em> in a 2014 concert. Watch how the drummers move their whole bodies — in taiko, the movements are just as important as the sound. Every strike, every pose, is part of the performance!",
     funFact: "Some taiko drums are so enormous that the sound can be heard from more than a mile away. The biggest taiko drum in Japan weighs as much as a baby elephant!",
     instruments: ["O-daiko (giant bass drum)", "Nagado-daiko (barrel drum)", "Shime-daiko (small high-pitched drum)"]
   },
@@ -89,9 +89,9 @@ const countries = [
     id: "uk", name: "United Kingdom", flag: "&#127468;&#127463;", type: "Folk Music & Bagpipes",
     x: 1200, y: 390, color: "#0f766e",
     url: "https://www.youtube.com/watch?v=oBYVmnMFMtA",  // youtube_uk
-    videoLabel: "UK Folk Music",
-    desc: "The United Kingdom — England, Scotland, Wales, and Northern Ireland — has wonderful music! <strong>Scottish bagpipes</strong> make one of the most recognizable sounds in the world. Wales is famous for big community choirs. And in the 1960s, a band from England called <strong>The Beatles</strong> changed music all around the world!",
-    styleFact: "UK folk music has been passed down for hundreds of years. Many folk songs tell stories about everyday life and adventures. Listen for the fiddle, tin whistle, and acoustic guitar weaving together in a lively, energetic sound.",
+    videoLabel: "Edinburgh Military Tattoo — Massed Pipes & Drums",
+    desc: "The United Kingdom — England, Scotland, Wales, and Northern Ireland — has wonderful music! <strong>Scottish bagpipes</strong> make one of the most recognizable sounds in the world. When hundreds of bagpipers and drummers march and play together, the sound is absolutely spine-tingling! Wales is also famous for big community choirs, and in the 1960s, a band from England called <strong>The Beatles</strong> changed music all around the world!",
+    styleFact: "In this video, the famous <strong>Edinburgh Military Tattoo</strong> features a massed band of bagpipes and drums — dozens of performers all playing together in perfect unison on the esplanade of Edinburgh Castle. Listen for how the sound of all those pipes fills the entire arena!",
     funFact: "When The Beatles first arrived in America in 1964, over 3,000 screaming fans were waiting at the airport! Newspapers called it 'Beatlemania!'",
     instruments: ["Bagpipes", "Fiddle (violin)", "Tin whistle", "Bodhran (frame drum)", "Guitar", "Voices"]
   },
@@ -169,9 +169,9 @@ const countries = [
     id: "brazil", name: "Brazil", flag: "&#127463;&#127479;", type: "Batucada & Samba",
     x: 700, y: 940, color: "#15803d",
     url: "https://www.youtube.com/watch?v=MKM_IKRPsR8",  // youtube_brazil
-    videoLabel: "Brazilian Batucada",
+    videoLabel: "AAINJAA — Batucada Performance",
     desc: "<strong>Batucada</strong> is powerful drumming from Brazil that is the heartbeat of samba music! Many drummers play different drums all at once, creating one giant rhythmic machine. Batucada fills the streets of Brazil during <strong>Carnival</strong> — the biggest street party in the world — where millions of people dance in colorful costumes!",
-    styleFact: "In this video, watch how each drummer has a different drum with a different job. Some keep the steady beat, some play fast fills, and some play exciting patterns on top. Together they create a sound you can feel in your whole body!",
+    styleFact: "In this video, the Colombian percussion group <strong>AAINJAA</strong> performs in the Brazilian batucada style. Watch how each drummer has a different drum with a different job — some keep the steady beat, some play fast fills, and some play exciting patterns on top. Together they create a sound you can feel in your whole body!",
     funFact: "At Rio de Janeiro's Carnival, one samba school's drum section can have over 300 drummers playing at once! The sound is so loud you can feel it vibrating in your chest from a whole block away!",
     instruments: ["Surdo (bass drum)", "Caixa (snare drum)", "Tamborim (small frame drum)", "Repique (tenor drum)", "Agogo (double bell)", "Chocalho (shaker)"]
   },
@@ -189,10 +189,10 @@ const countries = [
     id: "newzealand", name: "New Zealand", flag: "&#127475;&#127487;", type: "Maori Haka",
     x: 2460, y: 1230, color: "#b91c1c",
     url: "https://www.youtube.com/watch?v=A0DkhR60xj4",  // youtube_newzealand
-    videoLabel: "All Blacks Haka — Rugby World Cup 2023",
-    desc: "The <strong>Maori people</strong> are the Indigenous people of New Zealand, and the <strong>haka</strong> is one of their most powerful traditions! In a haka, a group stomps, claps, and chants together with huge energy. It was once performed before battle to show strength, but today it celebrates and welcomes important guests.",
-    styleFact: "In this video, New Zealand's famous All Blacks rugby team performs the haka before a World Cup match. There are no instruments at all — only the power of voices, stomping feet, and strong body movements working together as one.",
-    funFact: "The All Blacks perform the haka before EVERY rugby match they play anywhere in the world! It is one of the most recognized sporting traditions on the entire planet!",
+    videoLabel: "Te Maurea Whiritoi — Youth Kapa Haka Competition",
+    desc: "The <strong>Maori people</strong> are the Indigenous people of New Zealand, and the <strong>haka</strong> is one of their most powerful traditions! In a haka, a group stomps, claps, and chants together with huge energy. It was once performed before battle to show strength, but today it is performed at competitions, ceremonies, and celebrations — by everyone from children to elders!",
+    styleFact: "In this video, the youth group <strong>Te Maurea Whiritoi</strong> performs at a kapa haka competition. There are no instruments at all — only the power of voices, stomping feet, and strong body movements working together as one. Watch how every performer moves in perfect unison — that precision is what the judges look for!",
+    funFact: "The world-famous All Blacks rugby team performs the haka before EVERY match they play — and audiences around the world have come to love it. But haka belongs to all Maori people, not just athletes — it is performed at schools, weddings, funerals, and graduations throughout New Zealand!",
     instruments: ["Voices (powerful chanting)", "Feet (stomping as percussion)", "Hands (clapping as percussion)"]
   },
   {
