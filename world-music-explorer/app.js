@@ -28,12 +28,12 @@ const countries = [
   {
     id: "china", name: "China", flag: "&#127464;&#127475;", type: "Traditional Erhu & Guzheng",
     x: 2055, y: 545, color: "#dc2626",
-    url: "https://www.youtube.com/watch?v=-OA8YIEo7is",  // youtube_china
-    videoLabel: "Erhu & Guzheng Duet Performance",
-    desc: "China has some of the oldest music in the world — over <strong>3,000 years old!</strong> In this video, you will hear two beautiful instruments played together. One is bowed like a violin, and the other is plucked like a harp. Together they create flowing, graceful melodies.",
-    styleFact: "The <strong>erhu</strong> has only two strings, but it can sound almost like a human voice singing. The <strong>guzheng</strong> has 21 strings. You pluck them with your fingers to make shimmering, flowing melodies.",
+    url: "https://www.youtube.com/watch?v=gw0VS2p6mVQ",  // youtube_china
+    videoLabel: "Big Fish & Begonia — Erhu, Guzheng & Pipa Ensemble",
+    desc: "China has some of the oldest music in the world — over <strong>3,000 years old!</strong> In this video, you will hear three beautiful traditional instruments playing together. One is bowed like a violin, one is plucked like a harp, and one is a teardrop-shaped lute. Together they create flowing, graceful melodies.",
+    styleFact: "The <strong>erhu</strong> has only two strings but sounds almost like a human voice. The <strong>guzheng</strong> has 21 strings that you pluck to make shimmering melodies. The <strong>pipa</strong> is a four-string lute held upright — players pluck it with great speed and skill. In this video, all three play music from the beloved Chinese animated film <em>Big Fish &amp; Begonia</em>.",
     funFact: "The erhu can copy the sounds of birds, horses, and even human laughter — all from just two strings and a tiny bow!",
-    instruments: ["Erhu (two-string bowed instrument)", "Guzheng (21-string plucked zither)"]
+    instruments: ["Erhu (two-string bowed instrument)", "Guzheng (21-string plucked zither)", "Pipa (four-string lute)"]
   },
   {
     id: "japan", name: "Japan", flag: "&#127471;&#127477;", type: "Taiko Drumming",
