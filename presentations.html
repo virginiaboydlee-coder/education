@@ -534,47 +534,6 @@
     });
 
     // ─────────────────────────────────────────────────────────────
-    // Searchable + Filterable Table
-    // ─────────────────────────────────────────────────────────────
-    const searchInput  = document.getElementById('table-search');
-    const catFilter    = document.getElementById('category-filter');
-    const rows         = document.querySelectorAll('#table-body tr');
-    const noResults    = document.getElementById('no-results');
-    const resultCount  = document.getElementById('result-count');
-
-    function filterTable() {
-      const query    = searchInput.value.toLowerCase().trim();
-      const category = catFilter.value;
-      let visible    = 0;
-
-      rows.forEach(row => {
-        const searchData = row.getAttribute('data-search') || '';
-        const rowCat     = row.getAttribute('data-category') || '';
-        const cells      = Array.from(row.querySelectorAll('td')).map(td => td.textContent.toLowerCase()).join(' ');
-        const combined   = searchData + ' ' + cells;
-
-        const matchesSearch = !query || combined.includes(query);
-        const matchesCat    = category === 'all' || rowCat === category;
-
-        if (matchesSearch && matchesCat) {
-          row.classList.remove('hidden-row');
-          row.style.display = '';
-          visible++;
-        } else {
-          row.style.display = 'none';
-        }
-      });
-
-      noResults.classList.toggle('hidden', visible > 0);
-      resultCount.textContent = visible === rows.length
-        ? `Showing all ${rows.length} entries`
-        : `Showing ${visible} of ${rows.length} entries`;
-    }
-
-    searchInput.addEventListener('input', filterTable);
-    catFilter.addEventListener('change', filterTable);
-
-    // ─────────────────────────────────────────────────────────────
     // Presentation Tiles — click to expand/collapse
     // ─────────────────────────────────────────────────────────────
     document.querySelectorAll('.pres-tile').forEach(tile => {
