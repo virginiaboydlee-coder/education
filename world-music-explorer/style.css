@@ -29,12 +29,10 @@
   .card-sub { font-size: 11px; font-weight: 700; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.6px; margin-top: 2px; }
   .close-btn { margin-left: auto; background: #f3f4f6; border: none; border-radius: 9px; cursor: pointer; font-size: 18px; width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; color: #9ca3af; flex-shrink: 0; transition: background 0.12s; }
   .close-btn:hover { background: #e5e7eb; color: #374151; }
-  /* YouTube button */
-  .yt-btn { display: flex; align-items: center; gap: 12px; background: #FF0000; border-radius: 10px; padding: 0.85rem 1rem; text-decoration: none; transition: background 0.15s, transform 0.1s; }
-  .yt-btn:hover { background: #CC0000; transform: scale(1.01); }
-  .yt-logo-wrap { width: 38px; height: 28px; background: #fff; border-radius: 7px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-  .yt-btn-label { font-family: "Nunito", sans-serif; font-size: 15px; font-weight: 800; color: #fff; line-height: 1.2; }
-  .yt-btn-sub { font-size: 11px; color: rgba(255,255,255,0.8); margin-top: 2px; }
+  /* Local video player */
+  .video-wrap { display: flex; flex-direction: column; gap: 6px; }
+  .country-video { width: 100%; aspect-ratio: 16 / 9; border-radius: 10px; box-shadow: 0 4px 16px rgba(0,0,0,0.18); border: none; display: block; }
+  .video-citation { font-size: 11px; color: #9ca3af; word-break: break-all; }
   /* Sections */
   .card-sections { padding: 1rem 1.25rem 1.25rem; display: flex; flex-direction: column; gap: 1.1rem; }
   .section-head { font-family: "Nunito", sans-serif; font-size: 12px; font-weight: 800; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 7px; }
