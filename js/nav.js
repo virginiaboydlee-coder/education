@@ -4,6 +4,7 @@
     { href: 'teaching.html',      label: 'Teaching' },
     { href: 'leadership.html',         label: 'Leadership' },
     { href: 'responsibilities.html',   label: 'Responsibilities' },
+    { href: 'presentations.html',      label: 'Presentations & Portfolio' },
     { href: 'blog.html',               label: 'Blog' },
     { href: 'student-tools.html', label: 'Student Tools', children: [
       { href: 'grade3.html',       label: 'World Music Explorer' },
