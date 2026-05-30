@@ -2,27 +2,28 @@
   const pages = [
     { href: 'index.html',         label: 'Home' },
     { href: 'teaching.html',      label: 'Teaching' },
-    { href: 'presentations.html',         label: 'Presentations' },
-    { href: 'leadership.html',   label: 'Leadership' },
+    { href: 'leadership.html',         label: 'Leadership' },
+    { href: 'responsibilities.html',   label: 'Responsibilities' },
     { href: 'blog.html',               label: 'Blog' },
     { href: 'student-tools.html', label: 'Student Tools', children: [
-      { href: 'grade3.html',       label: 'Grade 3 – World Music' },
-      { href: 'grade4.html',       label: 'Grade 4 – Recorder Book' },
-      { href: 'grade5-songs.html', label: 'Grade 5 – Song Library' },
-      { href: 'grade5.html',       label: 'Grade 5 – PYPX Songwriting' },
+      { href: 'grade3.html',       label: 'World Music Explorer' },
+      { href: 'grade4.html',       label: 'Recorder Book' },
+      { href: 'grade5-songs.html', label: 'Song Library' },
+      { href: 'grade5.html',       label: 'PYPX Songwriting' },
+      { href: 'music-choice-board/board.html', label: 'Music Choice Board' },
     ]},
   ];
 
   const current = window.location.pathname.split('/').pop() || 'index.html';
 
-  const isStudentPage = current === 'grade3.html' || current === 'grade4.html' || current === 'grade5-songs.html' ||current === 'grade5.html' || current === 'student-tools.html';
+  const isStudentPage = current === 'grade3.html' || current === 'grade4.html' || current === 'grade5-songs.html' || current === 'grade5.html' || current === 'student-tools.html' || current === 'board.html';
 
   const desktopLinks = pages.map(p => {
-    const active = current === p.href || (p.children && p.children.some(c => c.href === current));
+    const active = current === p.href || (p.children && p.children.some(c => c.href === current || c.href.endsWith('/' + current)));
     if (p.children) {
       const dropItems = p.children.map(c =>
         `<a href="${c.href}" class="block px-4 py-2.5 text-sm font-medium transition-colors ${
-          current === c.href ? 'text-emerald-700 bg-emerald-50' : 'text-slate-600 hover:bg-slate-50 hover:text-emerald-700'
+          (current === c.href || c.href.endsWith('/' + current)) ? 'text-emerald-700 bg-emerald-50' : 'text-slate-600 hover:bg-slate-50 hover:text-emerald-700'
         }">${c.label}</a>`
       ).join('');
       return `
@@ -46,11 +47,11 @@
   }).join('');
 
   const mobileLinks = pages.map(p => {
-    const active = current === p.href || (p.children && p.children.some(c => c.href === current));
+    const active = current === p.href || (p.children && p.children.some(c => c.href === current || c.href.endsWith('/' + current)));
     if (p.children) {
       const subItems = p.children.map(c =>
         `<a href="${c.href}" class="block pl-8 pr-4 py-2.5 text-sm font-medium transition-colors ${
-          current === c.href ? 'text-emerald-700 bg-emerald-50' : 'text-slate-500 hover:bg-slate-50 hover:text-emerald-700'
+          (current === c.href || c.href.endsWith('/' + current)) ? 'text-emerald-700 bg-emerald-50' : 'text-slate-500 hover:bg-slate-50 hover:text-emerald-700'
         }">${c.label}</a>`
       ).join('');
       return `
