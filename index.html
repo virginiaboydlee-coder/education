@@ -3,266 +3,167 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Virginia Lee — PYP Music Educator. Educational Leader" />
-  <title>Virginia Lee | Music Teacher</title>
-
-  <!-- Fonts -->
+  <meta name="description" content="Virginia Lee — PYP Music Educator &amp; Educational Leader" />
+  <title>Virginia Lee | PYP Music Teacher &amp; Educational Leader</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans:    ['Lato', 'system-ui', 'sans-serif'],
+            display: ['Playfair Display', 'Georgia', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Lato:wght@400;700&display=swap" rel="stylesheet" />
-
-  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Lato:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: 'Lato', system-ui, sans-serif; }
+    .font-display { font-family: 'Playfair Display', Georgia, serif; }
+    .hero-bg {
+      background: linear-gradient(135deg, #0f2027 0%, #1a3a4a 50%, #1b5e4b 100%);
+    }
+    .divider {
+      border: none;
+      height: 3px;
+      width: 48px;
+      background: #10b981;
+      margin: 1.25rem 0;
+    }
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #10b981;
+    }
+  </style>
 </head>
-<body>
+<body class="bg-slate-50 text-slate-800 antialiased">
 
-  <!-- ===== NAV ===== -->
-  <nav id="navbar">
-    <a href="#hero" class="nav-logo">Virginia <span>Lee</span></a>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#lessons">Lessons</a></li>
-      <li><a href="#testimonials">Testimonials</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+  <div id="nav-placeholder"></div>
 
-  <!-- ===== HERO ===== -->
-  <section id="hero">
-    <div class="hero-content">
-      <p class="section-label">Music Teacher &amp; Performer</p>
-      <h1>Where Every Student<br/><em>Finds Their Voice</em></h1>
-      <p class="hero-subtitle">
-        Private lessons in piano, voice, and music theory — nurturing a lifelong
-        love of music in students of all ages and backgrounds.
-      </p>
-      <div class="hero-cta">
-        <a href="#contact" class="btn btn-primary">Book a Lesson</a>
-        <a href="#about" class="btn btn-outline">Meet Virginia</a>
-      </div>
-    </div>
-  </section>
+  <main>
 
-  <!-- ===== ABOUT ===== -->
-  <section id="about">
-    <div class="about-grid">
-      <div class="about-image-wrap">
-        <img
-          src="https://virginia-lee.com/virginiaprofile.jpg"
-          alt="Virginia Lee"
-        />
-      </div>
-          <div class="about-text">
-  <p class="section-label">About</p>
-  <h2>Hi, I'm Virginia Lee</h2>
-  <hr class="divider" />
-  <p>
-    I am a licensed <strong>K-12 Music Teacher</strong>, specializing in
-    <strong>Choral Arts</strong>, <strong>Musical Theatre</strong>, and
-    <strong>General Music</strong>. I am originally from
-    <strong>Great Falls, Virginia, USA</strong>.
-  </p>
-  <p>
-    I graduated <em>Summa Cum Laude</em> from the
-    <strong>University of North Carolina at Greensboro</strong> in 2014,
-    earning a <strong>Bachelor of Music Education</strong>. I received my
-    <strong>Orff Level 1 Certification</strong> at Virginia Commonwealth
-    University in 2014. In 2022, I earned a
-    <strong>Master's Degree in Education Leadership and Policy</strong>
-    from <strong>Boston College</strong>.
-  </p>
-  <p>
-    From 2014&ndash;2019, I worked in North Carolina as a
-    <strong>K-8 General Music Teacher</strong> and
-    <strong>Director of Middle School Choirs</strong> at
-    <strong>Forsyth Country Day School</strong>. During my time at FCDS,
-    I also served as <strong>Director of the Arts Enrichment Center</strong>
-    and was awarded the <strong>Edith Spinks Award in Teaching Excellence</strong>
-    in addition to the <strong>Lower School Teacher of the Year Award</strong>.
-  </p>
-  <p>
-    I currently work as the <strong>Grades 3&ndash;5 PYP Music Teacher</strong>
-    at the <strong>International School of Nanshan Shenzhen</strong>. In addition
-    to teaching, I serve as the school's <strong>CIS Accreditation Coordinator</strong>,
-    <strong>PYP Arts Team Lead</strong>, <strong>Head of the DEIJ Committee</strong>,
-    and more. I am also a <strong>workshop leader</strong> and present professional
-    development workshops both within my school community and around China.
-  </p>
-</div>
+    <!-- ── Hero ───────────────────────────────────────────────── -->
+    <section class="hero-bg text-white py-28 sm:py-36 px-4">
+      <div class="max-w-3xl mx-auto text-center">
+        <p class="section-label mb-5" style="color:#6ee7b7;">PYP Music Teacher &amp; Educational Leader</p>
+        <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl leading-tight mb-6">
+          Virginia Lee
+        </h1>
+        <p class="text-slate-300 text-lg sm:text-xl leading-relaxed max-w-xl mx-auto">
+          Cultivating curiosity, creativity, and cultural connection through music
+          — in the classroom, on the stage, and across the world.
         </p>
+      </div>
+    </section>
 
+    <!-- ── About ──────────────────────────────────────────────── -->
+    <section id="about" class="max-w-5xl mx-auto px-4 py-20 sm:py-24">
+      <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-start">
+
+        <!-- Photo -->
+        <div class="flex justify-center md:justify-start">
+          <div class="relative">
+            <div class="w-72 h-72 sm:w-80 sm:h-80 rounded-2xl overflow-hidden shadow-xl border-4 border-white">
+              <img
+                src="https://virginia-lee.com/virginiaprofile.jpg"
+                alt="Virginia Lee"
+                class="w-full h-full object-cover object-top"
+              />
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- ===== LESSONS ===== -->
-  <section id="lessons">
-    <div class="lessons-header">
-      <p class="section-label">What I Teach</p>
-      <h2>Lessons Tailored to You</h2>
-      <hr class="divider" />
+        <!-- Bio -->
+        <div>
+          <p class="section-label mb-2">About</p>
+          <h2 class="font-display text-3xl sm:text-4xl text-slate-900 mb-4">Hi, I'm Virginia Lee</h2>
+          <hr class="divider" />
+
+          <div class="space-y-4 text-slate-600 leading-relaxed">
+            <p>
+              I am a licensed <strong class="text-slate-800">K-12 Music Teacher</strong>, specialising in
+              <strong class="text-slate-800">Choral Arts</strong>, <strong class="text-slate-800">Musical Theatre</strong>, and
+              <strong class="text-slate-800">General Music</strong>. I am originally from
+              <strong class="text-slate-800">Great Falls, Virginia, USA</strong>.
+            </p>
+            <p>
+              I graduated <em>Summa Cum Laude</em> from the
+              <strong class="text-slate-800">University of North Carolina at Greensboro</strong> in 2014,
+              earning a <strong class="text-slate-800">Bachelor of Music Education</strong>. I received my
+              <strong class="text-slate-800">Orff Level 1 Certification</strong> at Virginia Commonwealth
+              University in 2014. In 2022, I earned a
+              <strong class="text-slate-800">Master's Degree in Education Leadership and Policy</strong>
+              from <strong class="text-slate-800">Boston College</strong>.
+            </p>
+            <p>
+              From 2014–2019, I worked in North Carolina as a
+              <strong class="text-slate-800">K-8 General Music Teacher</strong> and
+              <strong class="text-slate-800">Director of Middle School Choirs</strong> at
+              <strong class="text-slate-800">Forsyth Country Day School</strong>. During my time at FCDS,
+              I also served as <strong class="text-slate-800">Director of the Arts Enrichment Center</strong>
+              and was awarded the <strong class="text-slate-800">Edith Spinks Award in Teaching Excellence</strong>
+              and the <strong class="text-slate-800">Lower School Teacher of the Year Award</strong>.
+            </p>
+            <p>
+              I currently work as the <strong class="text-slate-800">Grades 3–5 PYP Music Teacher</strong>
+              at the <strong class="text-slate-800">International School of Nanshan Shenzhen</strong>. In addition
+              to teaching, I serve as the school's <strong class="text-slate-800">CIS Accreditation Coordinator</strong>,
+              <strong class="text-slate-800">PYP Arts Team Lead</strong>, <strong class="text-slate-800">Head of the DEIJB Committee</strong>,
+              and more. I also present professional development workshops within my school community and across China.
+            </p>
+          </div>
+
+          <!-- CV Button -->
+          <div class="mt-6">
+            <a href="https://canva.link/dme7769k2qfzswd" target="_blank" rel="noopener"
+               class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm px-5 py-2.5 rounded-lg transition-colors shadow-sm">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+              </svg>
+              View My CV
+            </a>
+          </div>
+
+          <!-- Credential chips -->
+          <div class="flex flex-wrap gap-2 mt-4">
+            <span class="bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-semibold rounded-full px-3 py-1">BME · University of North Carolina at Greensboro</span>
+            <span class="bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-semibold rounded-full px-3 py-1">MEd · Boston College</span>
+            <span class="bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-semibold rounded-full px-3 py-1">Licensed and Certified Teacher</span>
+            <span class="bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-semibold rounded-full px-3 py-1">11+ Years Teaching</span>
+            <span class="bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-semibold rounded-full px-3 py-1">9+ Years Leadership</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+  </main>
+
+  <!-- ── Footer ─────────────────────────────────────────────── -->
+  <footer class="bg-slate-800 text-slate-400 py-8">
+    <div class="max-w-5xl mx-auto px-4 text-center text-sm">
+      <p class="font-display text-slate-200 text-lg font-bold mb-1">Virginia <span style="color:#6ee7b7;">Lee</span></p>
+      <p class="mb-1">PYP Music Teacher &amp; Educational Leader</p>
       <p>
-        From beginner fundamentals to advanced repertoire, each lesson is
-        designed around your goals and shaped by your passion.
+        &copy; <span id="year"></span> Virginia Lee &nbsp;·&nbsp;
+        <a href="https://virginia-lee.com" class="hover:text-slate-200 transition-colors">virginia-lee.com</a>
+        &nbsp;·&nbsp;
+        <a href="mailto:virginia.lee@isnsz.com" class="hover:text-slate-200 transition-colors">virginia.lee@isnsz.com</a>
       </p>
     </div>
-
-    <div class="lessons-grid">
-      <div class="lesson-card">
-        <div class="lesson-icon">🎹</div>
-        <h3>Piano</h3>
-        <p>
-          Classical technique, contemporary styles, sight-reading, and
-          repertoire building — for beginners through advanced students.
-        </p>
-        <p class="lesson-meta">Ages 5 &amp; up &nbsp;·&nbsp; All Levels</p>
-      </div>
-
-      <div class="lesson-card">
-        <div class="lesson-icon">🎤</div>
-        <h3>Voice</h3>
-        <p>
-          Breath support, tone development, diction, and performance
-          confidence — from musical theatre to classical and pop.
-        </p>
-        <p class="lesson-meta">Ages 8 &amp; up &nbsp;·&nbsp; All Levels</p>
-      </div>
-
-      <div class="lesson-card">
-        <div class="lesson-icon">🎼</div>
-        <h3>Music Theory</h3>
-        <p>
-          Scales, harmony, ear training, and composition — the building
-          blocks that make every musician stronger.
-        </p>
-        <p class="lesson-meta">All Ages &nbsp;·&nbsp; Beginner – Advanced</p>
-      </div>
-
-      <div class="lesson-card">
-        <div class="lesson-icon">🌟</div>
-        <h3>Audition Prep</h3>
-        <p>
-          Intensive coaching for conservatory applications, competitions,
-          school auditions, and solo recitals.
-        </p>
-        <p class="lesson-meta">All Ages &nbsp;·&nbsp; Intermediate – Advanced</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== TESTIMONIALS ===== -->
-  <section id="testimonials">
-    <div class="testimonials-header">
-      <p class="section-label">Kind Words</p>
-      <h2>What Students & Families Say</h2>
-      <hr class="divider" />
-    </div>
-
-    <div class="testimonials-grid">
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <blockquote>
-          "Virginia completely changed my relationship with music. In two years
-          I went from never touching a piano to performing at our school recital.
-          She is absolutely the best teacher I've ever had."
-        </blockquote>
-        <p class="testimonial-author">— Maya R., Student</p>
-      </div>
-
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <blockquote>
-          "Our daughter has been with Virginia for three years. Her patience,
-          creativity, and genuine love for teaching are unmatched. We couldn't
-          imagine a better music teacher."
-        </blockquote>
-        <p class="testimonial-author">— The Chen Family</p>
-      </div>
-
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <blockquote>
-          "I'm an adult learner who was terrified to start. Virginia made me
-          feel welcome from lesson one. Six months later I'm playing pieces
-          I never thought possible."
-        </blockquote>
-        <p class="testimonial-author">— James T., Adult Student</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== CONTACT ===== -->
-  <section id="contact">
-    <div class="contact-wrap">
-      <div class="contact-info">
-        <p class="section-label">Get in Touch</p>
-        <h2>Ready to Start Your Musical Journey?</h2>
-        <hr class="divider" />
-        <p>
-          I'd love to hear from you. Send a message and I'll get back to
-          you within one business day to schedule a free introductory lesson.
-        </p>
-
-        <div class="contact-details">
-          <div class="contact-detail">
-            <span class="icon">📧</span>
-            <a href="mailto:hello@virginia-lee.com">hello@virginia-lee.com</a>
-          </div>
-          <div class="contact-detail">
-            <span class="icon">📍</span>
-            <span>In-person &amp; online lessons available</span>
-          </div>
-          <div class="contact-detail">
-            <span class="icon">🌐</span>
-            <a href="https://virginia-lee.com">virginia-lee.com</a>
-          </div>
-        </div>
-      </div>
-
-      <form
-        action="https://formspree.io/f/YOUR_FORM_ID"
-        method="POST"
-        aria-label="Contact form"
-      >
-        <div class="form-row">
-          <input type="text"   name="name"  placeholder="Your Name"  required />
-          <input type="email"  name="email" placeholder="Your Email" required />
-        </div>
-        <select name="interest">
-          <option value="" disabled selected>I'm interested in…</option>
-          <option value="piano">Piano Lessons</option>
-          <option value="voice">Voice Lessons</option>
-          <option value="theory">Music Theory</option>
-          <option value="audition">Audition Prep</option>
-          <option value="other">Other / Not Sure Yet</option>
-        </select>
-        <textarea name="message" placeholder="Tell me a little about yourself or your child and your musical goals…"></textarea>
-        <button type="submit" class="btn btn-primary">Send Message</button>
-      </form>
-    </div>
-  </section>
-
-  <!-- ===== FOOTER ===== -->
-  <footer>
-    <p class="footer-logo">Virginia <span>Lee</span></p>
-    <p>
-      &copy; <span id="year"></span> Virginia Lee Music &nbsp;·&nbsp;
-      <a href="https://virginia-lee.com">virginia-lee.com</a>
-    </p>
   </footer>
 
-  <!-- ===== JS ===== -->
+  <script src="js/nav.js"></script>
   <script>
-    // Current year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Navbar shadow on scroll
-    const nav = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 20);
-    });
   </script>
-
 </body>
 </html>
