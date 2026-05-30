@@ -1,9 +1,14 @@
 (function () {
   const labels = {
-    'grade3.html':       'Grade 3 – World Music Explorer',
-    'grade4.html':       'Grade 4 – Recorder Book',
-    'grade5-songs.html': 'Grade 5 – 4-Chord Song Library',
-    'grade5.html':       'Grade 5 – PYPX Songwriting',
+    'grade3.html':       'World Music Explorer',
+    'grade4.html':       'Recorder Book',
+    'grade5-songs.html': '4-Chord Song Library',
+    'grade5.html':       'PYPX Songwriting',
+    'board.html':        'Music Choice Board',
+  };
+
+  const backLinks = {
+    'board.html': '../student-tools.html',
   };
 
   const current  = window.location.pathname.split('/').pop() || '';
@@ -24,7 +29,7 @@
           </div>
 
           <!-- Back to Student Tools -->
-          <a href="student-tools.html"
+          <a href="${backLinks[current] || 'student-tools.html'}"
              class="flex items-center gap-1.5 text-sm font-semibold text-slate-500 hover:text-emerald-700 transition-colors px-3 py-1.5 rounded-lg hover:bg-slate-50">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
