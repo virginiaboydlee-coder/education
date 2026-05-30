@@ -41,8 +41,8 @@
 
   <main id="app" class="app"></main>
 
-  <!-- Suggestion box -->
-  <div style="position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:0 clamp(16px,4vw,40px) 16px;">
+  <!-- Suggestion box (home only — hidden on sub-pages, FAB covers them) -->
+  <div id="suggestion-bar" style="position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:0 clamp(16px,4vw,40px) 16px;">
     <div class="bg-emerald-50 border border-emerald-100 rounded-2xl px-7 py-6 flex flex-col sm:flex-row items-start sm:items-center gap-5">
       <div class="text-3xl flex-shrink-0">💬</div>
       <div class="flex-1 min-w-0">
@@ -113,6 +113,10 @@ function render(){
   document.title = id === 'home' ? 'Music Choice Board | Ms. Virginia Lee' : pg.title + ' • Music Choice Board';
 
   backBtn.hidden = (id === 'home');
+
+  // Suggestion bar: full banner on home, hidden on sub-pages (FAB handles those)
+  const bar = document.getElementById('suggestion-bar');
+  if (bar) bar.style.display = id === 'home' ? '' : 'none';
 
   let gridClass = pg.kind === 'menu' ? 'grid menu-grid' : 'grid';
   if (id === 'home') gridClass += ' home-grid';
