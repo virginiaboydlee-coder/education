@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Music Choice Board</title>
+<meta name="description" content="An interactive music choice board for upper elementary students.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="bg-notes" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <button class="nav-btn home-btn" id="homeBtn" aria-label="Go to main menu">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"/></svg>
+      <span>Home</span>
+    </button>
+    <div class="brand">
+      <span class="brand-note">♪</span>
+      <span class="brand-text">Music Choice Board</span>
+    </div>
+    <button class="nav-btn back-btn" id="backBtn" aria-label="Go back" hidden>
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+      <span>Back</span>
+    </button>
+  </header>
+
+  <main id="app" class="app"></main>
+
+  <footer class="foot">
+    <p>Click a card to open the activity in a new tab.</p>
+  </footer>
+
+<script src="data.js"></script>
+<script>
+const app = document.getElementById('app');
+const backBtn = document.getElementById('backBtn');
+const homeBtn = document.getElementById('homeBtn');
+
+// where each board "came from" so Back is sensible
+const PARENT = {
+  create:'home', learn:'home', instruments:'home', concepts:'home',
+  rhythm:'concepts', pitch:'concepts', timbre:'concepts',
+  harmony:'concepts', 'major-minor':'concepts', other:'concepts'
+};
+
+function currentId(){
+  const h = location.hash.replace('#','');
+  return BOARD[h] ? h : 'home';
+}
+
+function escapeHtml(s){
+  return (s||'').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+}
+
+function cardHtml(c){
+  const desc = c.desc ? `<p class="card-desc">${escapeHtml(c.desc)}</p>` : '';
+  const visual = c.icon
+    ? `<div class="card-img card-emoji" aria-hidden="true">${c.icon}</div>`
+    : `<div class="card-img"><img src="${c.img}" alt="" loading="lazy"></div>`;
+  if (c.to){ // internal navigation
+    return `<a class="card menu-card" href="#${c.to}">
+      ${visual}
+      <div class="card-body"><h3 class="card-title">${escapeHtml(c.title)}</h3>${desc}</div>
+      <span class="card-go" aria-hidden="true">→</span>
+    </a>`;
+  }
+  return `<a class="card" href="${escapeHtml(c.url)}" target="_blank" rel="noopener noreferrer">
+    ${visual}
+    <div class="card-body"><h3 class="card-title">${escapeHtml(c.title)}</h3>${desc}</div>
+    <span class="card-ext" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg>
+    </span>
+  </a>`;
+}
+
+function render(){
+  const id = currentId();
+  const pg = BOARD[id];
+  document.body.dataset.theme = pg.color;
+  document.title = id === 'home' ? 'Music Choice Board' : pg.title + ' • Music Choice Board';
+
+  backBtn.hidden = (id === 'home');
+
+  let gridClass = pg.kind === 'menu' ? 'grid menu-grid' : 'grid';
+  if (id === 'home') gridClass += ' home-grid';
+  app.innerHTML = `
+    <section class="hero">
+      <h1 class="hero-title">${escapeHtml(pg.title)}</h1>
+      <p class="hero-sub">${escapeHtml(pg.sub)}</p>
+    </section>
+    <section class="${gridClass}">
+      ${pg.cards.map(cardHtml).join('')}
+    </section>`;
+
+  // staggered entrance
+  [...app.querySelectorAll('.card')].forEach((el,i)=>{
+    el.style.animationDelay = (i*45)+'ms';
+  });
+  window.scrollTo({top:0, behavior:'instant'});
+}
+
+backBtn.addEventListener('click', ()=>{
+  const id = currentId();
+  location.hash = PARENT[id] || 'home';
+});
+homeBtn.addEventListener('click', (e)=>{ e.preventDefault(); location.hash='home'; });
+
+window.addEventListener('hashchange', render);
+render();
+</script>
+</body>
+</html>
