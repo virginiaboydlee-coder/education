@@ -170,13 +170,13 @@
                     <span class="font-normal normal-case tracking-normal text-slate-400 ml-1">(slant rhymes)</span>
                   </p>
                   <div id="near-rhymes-area" class="flex flex-wrap gap-2 min-h-8">
-                    <span class="text-slate-400 text-sm italic">Near rhymes add texture — experiment!</span>
+                    <span class="text-slate-400 text-sm italic">Near rhymes add texture. Experiment!</span>
                   </div>
                 </div>
               </div>
 
               <div class="mt-5 bg-slate-50 rounded-lg p-3 text-xs text-slate-400">
-                💡 <strong>Tip:</strong> Click any chip to find <em>its</em> rhymes. Near rhymes often feel more natural in songs — e.g. "fire / higher", "rain / change".
+                💡 <strong>Tip:</strong> Click any chip to find <em>its</em> rhymes. Near rhymes often feel more natural in songs, e.g. "fire / higher", "rain / change".
               </div>
 
             </div>
@@ -341,7 +341,7 @@
           .slice(0, 30);
 
         if (words.length === 0) {
-          container.innerHTML = '<span class="text-slate-400 text-sm italic">No results — try another word.</span>';
+          container.innerHTML = '<span class="text-slate-400 text-sm italic">No results. Try another word.</span>';
           return;
         }
 
@@ -383,7 +383,7 @@
           renderChips(perfData.filter(d => !isBad(d.word)), perfectEl, 'perfect');
           renderChips(nearData.filter(d => !isBad(d.word)), nearEl, 'near');
         } catch {
-          perfectEl.innerHTML = '<span class="text-rose-500 text-sm">Network error — please try again.</span>';
+          perfectEl.innerHTML = '<span class="text-rose-500 text-sm">Network error. Please try again.</span>';
           nearEl.innerHTML = '';
         }
       }

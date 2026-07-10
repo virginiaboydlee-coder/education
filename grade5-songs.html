@@ -194,7 +194,7 @@
           <li><code>listenUrl</code> – exact filename of your .mp3/.mp4 (or <code>""</code> if none)</li>
           <li><code>chordUrl</code> – exact filename of your chord sheet PDF (or <code>""</code>)</li>
         </ul>
-        <p><strong>Difficulty is automatic</strong> — 1–3 chords = Easy, 4–5 = Medium, 6+ = Hard.</p>
+        <p><strong>Difficulty is automatic:</strong> 1–3 chords = Easy, 4–5 = Medium, 6+ = Hard.</p>
         <p style="margin-top:8px;"><strong>File location:</strong> Place media files in the same folder as this HTML file, or update the paths accordingly.</p>
       </div>
     </details>
@@ -314,7 +314,7 @@
 
     function render(songs) {
       if (!songs.length) {
-        tableBody.innerHTML = `<tr><td colspan="6" class="no-results">✨ No songs match — try a different search or chord.</td></tr>`;
+        tableBody.innerHTML = `<tr><td colspan="6" class="no-results">✨ No songs match. Try a different search or chord.</td></tr>`;
         return;
       }
       tableBody.innerHTML = songs.map(s => {
