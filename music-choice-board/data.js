@@ -121,7 +121,7 @@ const BOARD = {
         "title": "Inside the Orchestra",
         "desc": "Play music games and learn about the orchestra",
         "img": "images/image24.png",
-        "url": "https://insidetheorchestra.org/virtual-school-programs-hub/online-musical-games/"
+        "url": "https://activities.insidetheorchestra.org/dynamic-game/"
       },
       {
         "title": "Classics for Kids",
@@ -183,7 +183,7 @@ const BOARD = {
         "title": "About the Instruments",
         "desc": "Play different orchestra family instruments.",
         "img": "images/image16.png",
-        "url": "https://insidetheorchestra.org/virtual-school-programs-hub/online-musical-games/games-about-the-instruments/"
+        "url": "https://activities.insidetheorchestra.org/dynamic-game/"
       },
       {
         "title": "VIola the Bird",
@@ -347,7 +347,7 @@ const BOARD = {
         "title": "About the Instruments",
         "desc": "Instrument identification, instrument families, matching, puzzles, and spelling games.",
         "img": "images/image24.png",
-        "url": "https://insidetheorchestra.org/virtual-school-programs-hub/online-musical-games/games-about-the-instruments/"
+        "url": "https://activities.insidetheorchestra.org/dynamic-game/"
       },
       {
         "title": "Musical Instruments",
@@ -443,7 +443,7 @@ const BOARD = {
         "title": "Musical Concepts",
         "desc": "Explore form, dynamics, tempo, and more!",
         "img": "images/image63.png",
-        "url": "https://insidetheorchestra.org/virtual-school-programs-hub/online-musical-games/musical-concept-games/"
+        "url": "https://activities.insidetheorchestra.org/dynamic-game/"
       }
     ]
   }
