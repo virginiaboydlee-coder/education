@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Genre Explorer | Ms. Virginia Lee</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="fonts/fonts.css">
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+
+    .genre-tile { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    .genre-tile:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.18); }
+    .genre-tile:hover .tile-overlay { opacity: 1; }
+    .tile-overlay { transition: opacity 0.2s ease; }
+
+    #modal { transition: opacity 0.2s ease; }
+    #modal.hidden { pointer-events: none; }
+
+    #slide-img { transition: opacity 0.15s ease; }
+
+    .nav-btn { transition: background 0.15s, transform 0.1s; }
+    .nav-btn:hover { transform: scale(1.08); }
+    .nav-btn:active { transform: scale(0.96); }
+
+    /* Artist view */
+    #artist-view { transition: opacity 0.2s ease; }
+    .artist-btn { transition: transform 0.15s, background 0.15s, box-shadow 0.15s; }
+    .artist-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
+    .artist-btn:active { transform: scale(0.97); }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+
+  <div id="nav-placeholder"></div>
+
+  <!-- ── Hero ──────────────────────────────────────────────────── -->
+  <section style="background:linear-gradient(135deg,#0f2027 0%,#1a3a4a 50%,#1b5e4b 100%);"
+           class="text-white py-16 sm:py-20 px-4 text-center">
+    <p class="text-xs font-bold tracking-widest uppercase mb-4" style="color:#6ee7b7;">Music ● Culture ● Exploration</p>
+    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-4">Genre Explorer</h1>
+    <p class="text-slate-300 text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
+      Discover the sounds, stories, and styles behind the world's most iconic music genres.
+      Click a genre to start exploring.
+    </p>
+  </section>
+
+  <!-- ── Tile Grid ─────────────────────────────────────────────── -->
+  <main class="max-w-6xl mx-auto px-4 py-12 sm:py-16">
+    <div id="genre-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"></div>
+  </main>
+
+  <!-- ── Modal ─────────────────────────────────────────────────── -->
+  <div id="modal"
+       class="hidden fixed inset-0 z-50 flex flex-col"
+       style="background:rgba(10,18,28,0.97);"
+       role="dialog" aria-modal="true" aria-label="Genre slideshow">
+
+    <!-- Top bar -->
+    <div class="flex items-center justify-between px-4 sm:px-6 py-3 flex-shrink-0"
+         style="background:rgba(255,255,255,0.05); border-bottom:1px solid rgba(255,255,255,0.08);">
+      <div class="flex items-center gap-3 min-w-0">
+        <!-- Back button: shown only in artist view -->
+        <button id="back-btn"
+                class="hidden nav-btn text-slate-400 hover:text-white bg-white/10 hover:bg-white/20 rounded-full w-8 h-8 flex-shrink-0 flex items-center justify-center"
+                aria-label="Back to slides">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+          </svg>
+        </button>
+        <div class="min-w-0">
+          <p id="modal-genre-name" class="text-white font-bold text-base sm:text-lg leading-tight truncate"></p>
+          <p id="slide-counter" class="text-slate-400 text-xs mt-0.5"></p>
+        </div>
+      </div>
+      <button id="close-btn"
+              class="nav-btn text-slate-400 hover:text-white bg-white/10 hover:bg-white/20 rounded-full w-9 h-9 flex-shrink-0 flex items-center justify-center ml-3"
+              aria-label="Close">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- ── SLIDESHOW VIEW ─────────────────────────────────────── -->
+    <div id="slide-view" class="flex-1 flex flex-col overflow-hidden min-h-0">
+
+      <div class="flex-1 flex flex-col lg:flex-row overflow-hidden min-h-0">
+
+        <!-- Prev -->
+        <div class="flex items-center justify-center px-2 sm:px-4 flex-shrink-0 order-2 lg:order-1 pb-2 lg:pb-0">
+          <button id="prev-btn"
+                  class="nav-btn text-white bg-white/10 hover:bg-emerald-600 rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center"
+                  aria-label="Previous slide">
+            <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Slide content -->
+        <div class="flex-1 flex flex-col items-center justify-center gap-4 px-2 py-4 overflow-auto min-h-0 order-1 lg:order-2">
+          <img id="slide-img" src="" alt="Slide"
+               class="max-h-[50vh] lg:max-h-[60vh] max-w-full rounded-xl shadow-2xl object-contain" />
+
+          <!-- Slide-level YouTube (for non-artist slides with music examples) -->
+          <div id="yt-container" class="hidden w-full max-w-xl">
+            <div class="relative w-full rounded-xl overflow-hidden shadow-xl" style="padding-top:56.25%;">
+              <iframe id="yt-iframe" class="absolute inset-0 w-full h-full" src=""
+                      title="Music example"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen></iframe>
+            </div>
+          </div>
+
+          <!-- Artist picker: shown instead of the slide image on the artist slide -->
+          <div id="artist-picker" class="hidden w-full max-w-2xl">
+            <p class="text-slate-400 text-sm text-center mb-4">Choose an artist to listen to:</p>
+            <div id="artist-buttons" class="flex flex-wrap justify-center gap-3"></div>
+          </div>
+        </div>
+
+        <!-- Next -->
+        <div class="flex items-center justify-center px-2 sm:px-4 flex-shrink-0 order-3 pb-2 lg:pb-0">
+          <button id="next-btn"
+                  class="nav-btn text-white bg-white/10 hover:bg-emerald-600 rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center"
+                  aria-label="Next slide">
+            <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Dot nav -->
+      <div id="dot-nav" class="flex justify-center gap-1.5 py-3 flex-shrink-0 flex-wrap px-4"></div>
+    </div>
+
+    <!-- ── ARTIST VIEW ────────────────────────────────────────── -->
+    <div id="artist-view" class="hidden flex-1 flex flex-col items-center justify-center px-4 py-8 overflow-auto gap-6">
+      <div class="text-center">
+        <p id="artist-genre-label" class="text-xs font-bold tracking-widest uppercase mb-2" style="color:#6ee7b7;"></p>
+        <h2 id="artist-name" class="text-white text-2xl sm:text-3xl font-extrabold mb-1"></h2>
+        <p id="artist-song" class="text-slate-400 text-sm"></p>
+      </div>
+      <div id="artist-yt-wrap" class="w-full max-w-2xl">
+        <div class="relative w-full rounded-2xl overflow-hidden shadow-2xl" style="padding-top:56.25%;">
+          <iframe id="artist-yt-iframe" class="absolute inset-0 w-full h-full" src=""
+                  title="Artist example"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /modal -->
+
+  <script src="js/nav-student.js"></script>
+  <script>
+  // ═══════════════════════════════════════════════════════════════
+  //  GENRE DATA  —  fill in your YouTube video IDs below
+  //
+  //  artistSlide : 0-based index of the slide that shows example
+  //                artists. Set to null if a genre has none.
+  //
+  //  artists     : array of artist objects shown on that slide.
+  //    name      : artist name (shown as button label + heading)
+  //    song      : song title (shown as subtitle in artist view)
+  //    youtube   : YouTube video ID (the part after ?v= in the URL)
+  //
+  //  youtube[]   : per-slide YouTube ID for non-artist slides.
+  //                null = no video on that slide.
+  // ═══════════════════════════════════════════════════════════════
+  const GENRES = [
+    {
+      id: 'jazz',
+      name: 'Jazz',
+      emoji: '🎷',
+      accent: '#f59e0b',
+      folder: 'genres/jazz',
+      ext: 'jpg',
+      slideCount: 9,
+      artistSlide: 8,           // last slide (0-based); change if your artist slide is elsewhere
+      artists: [
+        { name: 'Duke Ellington',  song: '',  youtube: 'DcWK5loKSdo' },
+        { name: 'Ella Fitzgerald', song: '',  youtube: 'yQSpd2pPVec' },
+        { name: 'Louis Armstrong', song: '',  youtube: 'MiZp563Jnso' },
+      ],
+      youtube: [null,null,null,null,null,null,null,null,null],
+    },
+    {
+      id: 'rock',
+      name: 'Rock',
+      emoji: '🎸',
+      accent: '#ef4444',
+      folder: 'genres/rock',
+      ext: 'png',
+      slideCount: 13,
+      artistSlide: 12,
+      artists: [
+        { name: 'The Beatles',  song: '', youtube: 'KQetemT1sWc' },
+        { name: 'Led Zeppelin', song: '', youtube: 'P3Y8OWkiUts' },
+        { name: 'Heart',        song: '', youtube: 'VdOkQ6THDVw' },
+      ],
+      youtube: [null,null,null,null,null,null,null,null,null,null,null,null,null],
+    },
+    {
+      id: 'hip-hop',
+      name: 'Hip Hop',
+      emoji: '🎤',
+      accent: '#8b5cf6',
+      folder: 'genres/hip-hop',
+      ext: 'jpg',
+      slideCount: 13,
+      artistSlide: 12,
+      artists: [
+        { name: 'LL Cool J',      song: '', youtube: '4BbQIx3F1jA' },
+        { name: 'Queen Latifah',  song: '', youtube: 'baDt0eYqJy4' },
+        { name: 'Will Smith',     song: '', youtube: '-sOPCY6_If8' },
+      ],
+      youtube: [null,null,null,null,null,null,null,null,null,null,null,null,null],
+    },
+    {
+      id: 'reggae',
+      name: 'Reggae',
+      emoji: '🌿',
+      accent: '#10b981',
+      folder: 'genres/reggae',
+      ext: 'jpg',
+      slideCount: 5,
+      artistSlide: 4,
+      artists: [
+        { name: 'Bob Marley', song: '', youtube: '-KaLZ51rtwI' },
+      ],
+      youtube: [null,null,null,null,null],
+    },
+    {
+      id: 'electronic',
+      name: 'Electronic',
+      emoji: '🎛️',
+      accent: '#06b6d4',
+      folder: 'genres/electronic',
+      ext: 'jpg',
+      slideCount: 13,
+      artistSlide: 12,
+      artists: [
+        { name: 'Trance',   song: '', youtube: '30eXKMfrVcw' },
+        { name: 'Dubstep',  song: '', youtube: 'dBb060OPegg' },
+        { name: 'Lo-Fi',    song: '', youtube: 'wGdodz6ck7g' },
+      ],
+      youtube: [null,null,null,null,null,null,null,null,null,null,null,null,null],
+    },
+    {
+      id: 'chinese-traditional',
+      name: 'Chinese Traditional',
+      emoji: '🪘',
+      accent: '#f97316',
+      folder: 'genres/chinese-traditional',
+      ext: 'jpg',
+      slideCount: 8,
+      artistSlide: 7,
+      artists: [
+        { name: '茉莉花 Jasmine Flower',                    song: '', youtube: 'HHx_4NzI7G4' },
+        { name: '高山流水 High Mountain & Flowing River',   song: '', youtube: 'x7UfcwS3WXI' },
+        { name: '二泉映月 Moon on the Second Spring',       song: '', youtube: 'x7UfcwS3WXI' },
+      ],
+      youtube: [null,null,null,null,null,null,null,null],
+    },
+  ];
+
+  // ── DOM refs ──────────────────────────────────────────────────
+  const modal         = document.getElementById('modal');
+  const slideView     = document.getElementById('slide-view');
+  const artistView    = document.getElementById('artist-view');
+  const modalName     = document.getElementById('modal-genre-name');
+  const slideCounter  = document.getElementById('slide-counter');
+  const slideImg      = document.getElementById('slide-img');
+  const ytContainer   = document.getElementById('yt-container');
+  const ytIframe      = document.getElementById('yt-iframe');
+  const artistPicker  = document.getElementById('artist-picker');
+  const artistButtons = document.getElementById('artist-buttons');
+  const dotNav        = document.getElementById('dot-nav');
+  const prevBtn       = document.getElementById('prev-btn');
+  const nextBtn       = document.getElementById('next-btn');
+  const closeBtn      = document.getElementById('close-btn');
+  const backBtn       = document.getElementById('back-btn');
+  const artistGenreLabel = document.getElementById('artist-genre-label');
+  const artistName    = document.getElementById('artist-name');
+  const artistSong    = document.getElementById('artist-song');
+  const artistYtIframe = document.getElementById('artist-yt-iframe');
+
+  let currentGenre = null;
+  let currentSlide = 0;
+  let inArtistView = false;
+
+  // ── Build tiles ───────────────────────────────────────────────
+  const grid = document.getElementById('genre-grid');
+  GENRES.forEach((g, i) => {
+    const thumb = `${g.folder}/1.${g.ext}`;
+    const tile = document.createElement('button');
+    tile.className = 'genre-tile relative rounded-2xl overflow-hidden shadow-lg bg-slate-900 aspect-video w-full text-left cursor-pointer border-2 border-transparent hover:border-white/20';
+    tile.setAttribute('aria-label', `Open ${g.name} genre slideshow`);
+    tile.innerHTML = `
+      <img src="${thumb}" alt="${g.name} title slide" class="w-full h-full object-cover opacity-90" />
+      <div class="tile-overlay opacity-0 absolute inset-0 flex items-center justify-center"
+           style="background:rgba(0,0,0,0.45);">
+        <span class="text-white font-bold text-lg tracking-wide flex items-center gap-2">
+          <svg class="w-5 h-5" fill="white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          Explore
+        </span>
+      </div>
+      <div class="absolute bottom-0 left-0 right-0 px-4 py-3"
+           style="background:linear-gradient(to top,rgba(0,0,0,0.75) 0%,transparent 100%);">
+        <p class="text-white font-bold text-lg leading-tight">${g.emoji} ${g.name}</p>
+        <p class="text-slate-300 text-xs mt-0.5">${g.slideCount} slides</p>
+      </div>`;
+    tile.addEventListener('click', () => openModal(i));
+    grid.appendChild(tile);
+  });
+
+  // ── Open / close modal ────────────────────────────────────────
+  function openModal(genreIdx) {
+    currentGenre = GENRES[genreIdx];
+    currentSlide = 0;
+    inArtistView = false;
+    modalName.textContent = `${currentGenre.emoji} ${currentGenre.name}`;
+    backBtn.classList.add('hidden');
+    showSlideView();
+    buildDots();
+    showSlide(0);
+    modal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    modal.classList.add('hidden');
+    document.body.style.overflow = '';
+    ytIframe.src = '';
+    artistYtIframe.src = '';
+  }
+
+  // ── View switching ────────────────────────────────────────────
+  function showSlideView() {
+    slideView.classList.remove('hidden');
+    artistView.classList.add('hidden');
+    backBtn.classList.add('hidden');
+    inArtistView = false;
+  }
+
+  function showArtistDetail(artist) {
+    slideView.classList.add('hidden');
+    artistView.classList.remove('hidden');
+    backBtn.classList.remove('hidden');
+    inArtistView = true;
+
+    artistGenreLabel.textContent = `${currentGenre.emoji} ${currentGenre.name}`;
+    artistName.textContent = artist.name;
+    artistSong.textContent = artist.song ? `♪ ${artist.song}` : '';
+
+    if (artist.youtube) {
+      artistYtIframe.src = `https://www.youtube-nocookie.com/embed/${artist.youtube}?rel=0&modestbranding=1&autoplay=1`;
+    } else {
+      artistYtIframe.src = '';
+    }
+  }
+
+  backBtn.addEventListener('click', () => {
+    artistYtIframe.src = '';
+    showSlideView();
+    showSlide(currentSlide);
+  });
+
+  // ── Dots ──────────────────────────────────────────────────────
+  function buildDots() {
+    dotNav.innerHTML = '';
+    for (let i = 0; i < currentGenre.slideCount; i++) {
+      const dot = document.createElement('button');
+      dot.className = 'w-2 h-2 rounded-full transition-all duration-150';
+      dot.style.background = i === 0 ? currentGenre.accent : 'rgba(255,255,255,0.25)';
+      dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+      dot.addEventListener('click', () => { if (!inArtistView) showSlide(i); });
+      dotNav.appendChild(dot);
+    }
+  }
+
+  // ── Show slide ────────────────────────────────────────────────
+  function showSlide(idx) {
+    if (!currentGenre) return;
+    idx = Math.max(0, Math.min(idx, currentGenre.slideCount - 1));
+    currentSlide = idx;
+
+    const isArtistSlide = currentGenre.artistSlide !== null && idx === currentGenre.artistSlide;
+
+    // Slide image
+    slideImg.style.opacity = '0';
+    setTimeout(() => {
+      slideImg.src = `${currentGenre.folder}/${idx + 1}.${currentGenre.ext}`;
+      slideImg.style.opacity = '1';
+    }, 120);
+
+    // Counter
+    slideCounter.textContent = isArtistSlide
+      ? `Slide ${idx + 1} of ${currentGenre.slideCount} — choose an artist below`
+      : `Slide ${idx + 1} of ${currentGenre.slideCount}`;
+
+    // Slide-level YouTube (non-artist slides)
+    const ytId = currentGenre.youtube[idx];
+    if (ytId && !isArtistSlide) {
+      ytIframe.src = `https://www.youtube-nocookie.com/embed/${ytId}?rel=0&modestbranding=1`;
+      ytContainer.classList.remove('hidden');
+    } else {
+      ytIframe.src = '';
+      ytContainer.classList.add('hidden');
+    }
+
+    // Artist picker
+    if (isArtistSlide && currentGenre.artists && currentGenre.artists.length) {
+      artistButtons.innerHTML = '';
+      currentGenre.artists.forEach(artist => {
+        const btn = document.createElement('button');
+        btn.className = 'artist-btn px-5 py-3 rounded-xl font-bold text-sm sm:text-base text-white shadow-lg';
+        btn.style.background = currentGenre.accent + '22';
+        btn.style.border = `2px solid ${currentGenre.accent}`;
+        btn.style.color = 'white';
+        btn.innerHTML = `<span style="color:${currentGenre.accent};">▶</span> ${artist.name}`;
+        btn.addEventListener('click', () => showArtistDetail(artist));
+        artistButtons.appendChild(btn);
+      });
+      artistPicker.classList.remove('hidden');
+    } else {
+      artistPicker.classList.add('hidden');
+    }
+
+    // Dots
+    Array.from(dotNav.children).forEach((dot, i) => {
+      dot.style.background = i === idx ? currentGenre.accent : 'rgba(255,255,255,0.25)';
+      dot.style.transform = i === idx ? 'scale(1.4)' : 'scale(1)';
+    });
+
+    // Arrow opacity
+    prevBtn.style.opacity = idx === 0 ? '0.35' : '1';
+    nextBtn.style.opacity = idx === currentGenre.slideCount - 1 ? '0.35' : '1';
+  }
+
+  prevBtn.addEventListener('click', () => showSlide(currentSlide - 1));
+  nextBtn.addEventListener('click', () => {
+    if (currentSlide === currentGenre.slideCount - 1) closeModal();
+    else showSlide(currentSlide + 1);
+  });
+  closeBtn.addEventListener('click', closeModal);
+
+  document.addEventListener('keydown', (e) => {
+    if (modal.classList.contains('hidden')) return;
+    if (inArtistView) {
+      if (e.key === 'Escape') { artistYtIframe.src = ''; showSlideView(); showSlide(currentSlide); }
+      return;
+    }
+    if (e.key === 'ArrowRight') { if (currentSlide === currentGenre.slideCount - 1) closeModal(); else showSlide(currentSlide + 1); }
+    if (e.key === 'ArrowLeft')  showSlide(currentSlide - 1);
+    if (e.key === 'Escape')     closeModal();
+  });
+  </script>
+</body>
+</html>
