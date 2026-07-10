@@ -9,9 +9,9 @@ const countries = [
     x: 1420, y: 1115, color: "#16a34a",
     videoFile: "https://drive.google.com/file/d/16Lt7-2Qdw1x7g_W1fL8wQoc0RtaaBPhC/preview",
     url: "https://www.youtube.com/watch?v=nlzomGoy97I",
-    desc: "In South Africa, people love to sing together in big groups! A famous style is called <strong>isicathamiya</strong> (say: ee-see-kah-tah-MEE-yah). Singers blend their voices to make one powerful sound. The name means 'to walk softly' — and performers even tiptoe gently across the stage as they sing!",
-    styleFact: "In this video, Ladysmith Black Mambazo perform <em>Shosholoza</em> — one of South Africa's most beloved songs. The word means 'push forward' or 'go fast' and was originally sung by migrant workers. Listen for how the low voices create a deep foundation while higher voices soar on top.",
-    funFact: "Ladysmith Black Mambazo has won 5 Grammy Awards and once performed for Nelson Mandela at his presidential inauguration — they are true icons of South African music!",
+    desc: "In South Africa, people love to sing together in big groups! A famous style is called <strong>isicathamiya</strong> (say: ee-see-kah-tah-MEE-yah). Singers blend their voices to make one powerful sound. The name means 'to walk softly,' and performers even tiptoe gently across the stage as they sing!",
+    styleFact: "In this video, Ladysmith Black Mambazo perform <em>Shosholoza</em>, one of South Africa's most beloved songs. The word means 'push forward' or 'go fast' and was originally sung by migrant workers. Listen for how the low voices create a deep foundation while higher voices soar on top.",
+    funFact: "Ladysmith Black Mambazo has won 5 Grammy Awards and once performed for Nelson Mandela at his presidential inauguration. They are true icons of South African music!",
     instruments: ["Voices (harmony choir)", "Handclapping"]
   },
   {
@@ -19,9 +19,9 @@ const countries = [
     x: 2135, y: 580, color: "#2563eb",
     videoFile: "https://drive.google.com/file/d/1VFT5TcVsUMTyLLlzjeaBgGBq_PrzlEE9/preview",
     url: "https://www.youtube.com/watch?v=9IRo0rjKZqY",
-    desc: "Korea has beautiful folk songs that have been sung for hundreds of years! <strong>Namdo folk songs</strong> come from the southern part of Korea. The singing uses a special wavy sound — like the voice is going up and down like a wave — that gives it a magical, emotional feeling.",
+    desc: "Korea has beautiful folk songs that have been sung for hundreds of years! <strong>Namdo folk songs</strong> come from the southern part of Korea. The singing uses a special wavy sound, like the voice going up and down like a wave, that gives it a magical, emotional feeling.",
     styleFact: "The song <em>Saetaryeong</em> is a playful folk song about birds. Listen for how the singer's voice moves up and down smoothly. Traditional instruments play along to support the singing.",
-    funFact: "The gayageum, often heard in namdo folk songs, was invented over 1,500 years ago — according to legend, by a Korean king named Gasil who wanted to create an instrument that was uniquely Korean. It has been played almost unchanged ever since!",
+    funFact: "The gayageum, often heard in namdo folk songs, was invented over 1,500 years ago, according to legend by a Korean king named Gasil who wanted to create an instrument that was uniquely Korean. It has been played almost unchanged ever since!",
     instruments: ["Gayageum (12-string zither)", "Haegeum (two-string fiddle)", "Daegeum (bamboo flute)", "Janggu (hourglass drum)"]
   },
   {
@@ -29,9 +29,9 @@ const countries = [
     x: 2055, y: 545, color: "#dc2626",
     videoFile: "https://drive.google.com/file/d/18Wzjl8Omul_CUSv7TgrMUN9EihUF4N8D/preview",
     url: "https://www.youtube.com/watch?v=gw0VS2p6mVQ",
-    desc: "China has some of the oldest music in the world — over <strong>3,000 years old!</strong> In this video, you will hear three beautiful traditional instruments playing together. One is bowed like a violin, one is plucked like a harp, and one is a teardrop-shaped lute. Together they create flowing, graceful melodies.",
-    styleFact: "The <strong>erhu</strong> has only two strings but sounds almost like a human voice. The <strong>guzheng</strong> has 21 strings that you pluck to make shimmering melodies. The <strong>pipa</strong> is a four-string lute held upright — players pluck it with great speed and skill. In this video, all three play music from the beloved Chinese animated film <em>Big Fish &amp; Begonia</em>.",
-    funFact: "The erhu can copy the sounds of birds, horses, and even human laughter — all from just two strings and a tiny bow!",
+    desc: "China has some of the oldest music in the world, over <strong>3,000 years old!</strong> In this video, you will hear three beautiful traditional instruments playing together. One is bowed like a violin, one is plucked like a harp, and one is a teardrop-shaped lute. Together they create flowing, graceful melodies.",
+    styleFact: "The <strong>erhu</strong> has only two strings but sounds almost like a human voice. The <strong>guzheng</strong> has 21 strings that you pluck to make shimmering melodies. The <strong>pipa</strong> is a four-string lute held upright, and players pluck it with great speed and skill. In this video, all three play music from the beloved Chinese animated film <em>Big Fish &amp; Begonia</em>.",
+    funFact: "The erhu can copy the sounds of birds, horses, and even human laughter, all from just two strings and a tiny bow!",
     instruments: ["Erhu (two-string bowed instrument)", "Guzheng (21-string plucked zither)", "Pipa (four-string lute)"]
   },
   {
@@ -40,16 +40,16 @@ const countries = [
     videoFile: "https://drive.google.com/file/d/1SeTfV37AsBKVHvG9BmWJ9wu0dLNYxxjx/preview",
     url: "https://www.youtube.com/watch?v=ZagsLrNzg3I",
     desc: "<strong>Taiko</strong> means 'big drum' in Japanese! Taiko drummers put on one of the most exciting shows you will ever see. The drums can be as big as a car! Drummers work as a team, hitting giant drums with big wooden sticks and moving their whole bodies.",
-    styleFact: "In this video, legendary taiko master <strong>Eitetsu Hayashi</strong> performs <em>Fertility of the Sea</em> in a 2014 concert. Watch how the drummers move their whole bodies — in taiko, the movements are just as important as the sound. Every strike, every pose, is part of the performance!",
+    styleFact: "In this video, legendary taiko master <strong>Eitetsu Hayashi</strong> performs <em>Fertility of the Sea</em> in a 2014 concert. Watch how the drummers move their whole bodies. In taiko, the movements are just as important as the sound. Every strike, every pose, is part of the performance!",
     funFact: "Some taiko drums are so enormous that the sound can be heard from more than a mile away. The biggest taiko drum in Japan weighs as much as a baby elephant!",
     instruments: ["O-daiko (giant bass drum)", "Nagado-daiko (barrel drum)", "Shime-daiko (small high-pitched drum)"]
   },
   {
-    id: "usa", name: "USA — Jazz", flag: "&#127482;&#127480;", type: "Jazz & Blues",
+    id: "usa", name: "USA – Jazz", flag: "&#127482;&#127480;", type: "Jazz & Blues",
     x: 430, y: 595, color: "#7c3aed",
     videoFile: "https://drive.google.com/file/d/19nAwgOYVZNld9TmB54z2eyQH3CF1PZq8/preview",
     url: "https://www.youtube.com/watch?v=g_FWCe49rKU",
-    desc: "<strong>Jazz</strong> was born in New Orleans, USA, over 100 years ago! Jazz musicians sometimes make up their music as they go — that is called <strong>improvisation</strong>. Louis Armstrong was one of the most famous jazz musicians ever, known for his shiny trumpet and his big, warm smile.",
+    desc: "<strong>Jazz</strong> was born in New Orleans, USA, over 100 years ago! Jazz musicians sometimes make up their music as they go. That is called <strong>improvisation</strong>. Louis Armstrong was one of the most famous jazz musicians ever, known for his shiny trumpet and his big, warm smile.",
     styleFact: "In this 1961 TV performance, Louis Armstrong plays trumpet and sings with his band. Listen for how the trumpet sounds almost like it is talking or telling a story. That conversational style is what makes jazz so special!",
     funFact: "Louis Armstrong was one of the first Black musicians to appear regularly on American national television, helping bring jazz into living rooms across the country. His appearances on The Ed Sullivan Show were watched by tens of millions of people!",
     instruments: ["Trumpet", "Trombone", "Clarinet", "Piano", "Double bass", "Drums"]
@@ -61,7 +61,7 @@ const countries = [
     url: "https://www.youtube.com/watch?v=755HZydxL3w",
     desc: "Canada's First Nations peoples have the oldest music traditions in North America. At a <strong>pow wow</strong>, a big group of drummers sit together around a large drum and play and sing at the same time. The drum is said to represent the heartbeat of Mother Earth!",
     styleFact: "In this video, the Odawa people perform a traditional pow wow in Ottawa. The large drum is played by many people at once, all hitting it together while singers perform powerful songs. The rhythm is steady and strong, like a heartbeat.",
-    funFact: "The large pow wow drum is never placed directly on the ground — it is always elevated, because it is considered sacred. The singers who sit around it are called a 'drum,' too — the group and the instrument share the same name!",
+    funFact: "The large pow wow drum is never placed directly on the ground. It is always elevated, because it is considered sacred. The singers who sit around it are called a 'drum,' too. The group and the instrument share the same name!",
     instruments: ["Pow wow drum (large ceremonial drum)", "Voices"]
   },
   {
@@ -70,8 +70,8 @@ const countries = [
     videoFile: "https://drive.google.com/file/d/1HaijeMmX8KvLNn4AlBnPs1UrNR6ZigGx/preview",
     url: "https://www.youtube.com/watch?v=KmJULbLUzME",
     desc: "Kenya's music is full of energy and joy! <strong>Ohangla</strong> is a music style from the Luo people in western Kenya. It uses a special ancient stringed instrument called the <strong>nyatiti</strong> and gets everyone up and dancing. The music mixes fast rhythms with call-and-response singing!",
-    styleFact: "In this video, the nyatiti player plucks the strings while balancing the instrument on one foot — a special playing technique. Listen for how the singers call out and the group responds, passing the music back and forth.",
-    funFact: "Nyatiti players attach small metal rings to their big toe, which jingle against the instrument as they play — so their foot becomes a percussion instrument at the same time they're plucking the strings!",
+    styleFact: "In this video, the nyatiti player plucks the strings while balancing the instrument on one foot, a special playing technique. Listen for how the singers call out and the group responds, passing the music back and forth.",
+    funFact: "Nyatiti players attach small metal rings to their big toe, which jingle against the instrument as they play, so their foot becomes a percussion instrument at the same time they're plucking the strings!",
     instruments: ["Nyatiti (8-string lyre)", "Orutu (one-string fiddle)", "Bul (drum)", "Voices"]
   },
   {
@@ -79,9 +79,9 @@ const countries = [
     x: 2285, y: 1105, color: "#92400e",
     videoFile: "https://drive.google.com/file/d/1-WvbCUkMJswDT8WHDre6P4YSP7wDV7UX/preview",
     url: "https://www.youtube.com/watch?v=IRMxLwOfKGQ",
-    desc: "Aboriginal Australians have been making music for over <strong>65,000 years</strong> — the oldest musical tradition on Earth! The <strong>didgeridoo</strong> (also called <em>yidaki</em>) is a long wooden tube that makes a deep, buzzing drone sound. It is made from a hollow eucalyptus tree trunk.",
-    styleFact: "In this video, you will learn about the yidaki and hear its amazing sounds. Watch how the player uses a special breathing trick — they breathe in through their nose while blowing out, so the sound never stops! This is called <strong>circular breathing</strong>.",
-    funFact: "The didgeridoo can be heard from more than a mile away! Some players can make it sound like animals — frogs, birds, and even wild dingoes!",
+    desc: "Aboriginal Australians have been making music for over <strong>65,000 years</strong>, the oldest musical tradition on Earth! The <strong>didgeridoo</strong> (also called <em>yidaki</em>) is a long wooden tube that makes a deep, buzzing drone sound. It is made from a hollow eucalyptus tree trunk.",
+    styleFact: "In this video, you will learn about the yidaki and hear its amazing sounds. Watch how the player uses a special breathing trick: they breathe in through their nose while blowing out, so the sound never stops! This is called <strong>circular breathing</strong>.",
+    funFact: "The didgeridoo can be heard from more than a mile away! Some players can make it sound like animals: frogs, birds, and even wild dingoes!",
     instruments: ["Yidaki / Didgeridoo (large wind instrument)", "Clapsticks (wooden percussion sticks)"]
   },
   {
@@ -89,9 +89,9 @@ const countries = [
     x: 1200, y: 390, color: "#0f766e",
     videoFile: "https://drive.google.com/file/d/12xr21xnkaWQbNBlVYaaRF-rin-vN2cej/preview",
     url: "https://www.youtube.com/watch?v=oBYVmnMFMtA",
-    desc: "The United Kingdom — England, Scotland, Wales, and Northern Ireland — has wonderful music! <strong>Scottish bagpipes</strong> make one of the most recognizable sounds in the world. When hundreds of bagpipers and drummers march and play together, the sound is absolutely spine-tingling! Wales is also famous for big community choirs, and in the 1960s, a band from England called <strong>The Beatles</strong> changed music all around the world!",
-    styleFact: "In this video, the famous <strong>Edinburgh Military Tattoo</strong> features a massed band of bagpipes and drums — dozens of performers all playing together in perfect unison on the esplanade of Edinburgh Castle. Listen for how the sound of all those pipes fills the entire arena!",
-    funFact: "Bagpipes are so loud they can reach 111 decibels — louder than a chainsaw! Armies historically used them in battle because the sound could be heard over the noise of the fighting. Scottish soldiers marched into combat to the sound of the pipes for hundreds of years!",
+    desc: "The United Kingdom (England, Scotland, Wales, and Northern Ireland) has wonderful music! <strong>Scottish bagpipes</strong> make one of the most recognizable sounds in the world. When hundreds of bagpipers and drummers march and play together, the sound is absolutely spine-tingling! Wales is also famous for big community choirs, and in the 1960s, a band from England called <strong>The Beatles</strong> changed music all around the world!",
+    styleFact: "In this video, the famous <strong>Edinburgh Military Tattoo</strong> features a massed band of bagpipes and drums, with dozens of performers all playing together in perfect unison on the esplanade of Edinburgh Castle. Listen for how the sound of all those pipes fills the entire arena!",
+    funFact: "Bagpipes are so loud they can reach 111 decibels, louder than a chainsaw! Armies historically used them in battle because the sound could be heard over the noise of the fighting. Scottish soldiers marched into combat to the sound of the pipes for hundreds of years!",
     instruments: ["Bagpipes", "Fiddle (violin)", "Tin whistle", "Bodhran (frame drum)", "Guitar", "Voices"]
   },
   {
@@ -101,7 +101,7 @@ const countries = [
     url: "https://www.youtube.com/watch?v=G7bW6Z0moDo",
     desc: "The Philippines has a beautiful ancient instrument called the <strong>kulintang</strong>! It is a row of small bronze gongs lined up in a row. A player hits them with two padded sticks to create shimmering, bell-like melodies. This tradition has been kept alive for hundreds of years!",
     styleFact: "In this video, a full kulintang ensemble plays together. Listen for how the small gongs play the main melody on top, while larger gongs boom underneath. Each musician has a different part that fits together like puzzle pieces.",
-    funFact: "Kulintang music was traditionally used to send messages between villages — different rhythms meant different announcements. It worked like a musical telephone!",
+    funFact: "Kulintang music was traditionally used to send messages between villages, where different rhythms meant different announcements. It worked like a musical telephone!",
     instruments: ["Kulintang (row of small gongs)", "Agung (large hanging gong)", "Dabakan (drum)"]
   },
   {
@@ -109,9 +109,9 @@ const countries = [
     x: 2155, y: 860, color: "#c2410c",
     videoFile: "https://drive.google.com/file/d/1zkf58p_xDqOT9bmXlc6zh-sRIU_-Oo9f/preview",
     url: "https://www.youtube.com/watch?v=UEWCCSuHsuQ",
-    desc: "Indonesia has a magical type of music called <strong>gamelan</strong>! A gamelan is not just one instrument — it is an entire orchestra of bronze gongs, chimes, and drums all playing together. The sound shimmers and ripples like sunlight on water. Gamelan music comes from the islands of Java and Bali.",
+    desc: "Indonesia has a magical type of music called <strong>gamelan</strong>! A gamelan is not just one instrument. It is an entire orchestra of bronze gongs, chimes, and drums all playing together. The sound shimmers and ripples like sunlight on water. Gamelan music comes from the islands of Java and Bali.",
     styleFact: "In this video, you can see the full gamelan orchestra. Each musician plays a different part, and together they create one big, shimmering sound. Gamelan music is often used in temple ceremonies and colorful shadow puppet shows!",
-    funFact: "A full gamelan set can have more than 75 instruments! They are considered sacred — players must always remove their shoes before touching the instruments, as a sign of deep respect.",
+    funFact: "A full gamelan set can have more than 75 instruments! They are considered sacred, so players must always remove their shoes before touching the instruments, as a sign of deep respect.",
     instruments: ["Bonang (gong chimes)", "Saron (bronze metallophone)", "Gong ageng (large gong)", "Kendhang (drum)", "Gender (keyed resonator bars)"]
   },
   {
@@ -119,8 +119,8 @@ const countries = [
     x: 1180, y: 630, color: "#d97706",
     videoFile: "https://drive.google.com/file/d/1J-bNvf5wuurwRsbttXAUB3uVVxxvUpHT/preview",
     url: "https://www.youtube.com/watch?v=jUIUlm5bDMI",
-    desc: "Morocco is home to the <strong>Amazigh people</strong> (also called Berbers), one of the oldest groups in North Africa. Their folk music is powerful and ancient! It features strong drumbeats, handclapping, and call-and-response singing — where one person sings and the whole group sings back.",
-    styleFact: "In this video, listen for the <strong>bendir</strong> — a large frame drum — beating out a strong, steady rhythm. The singing passes back and forth between a leader and the group. This music is often performed outside at night around fires during festivals!",
+    desc: "Morocco is home to the <strong>Amazigh people</strong> (also called Berbers), one of the oldest groups in North Africa. Their folk music is powerful and ancient! It features strong drumbeats, handclapping, and call-and-response singing, where one person sings and the whole group sings back.",
+    styleFact: "In this video, listen for the <strong>bendir</strong>, a large frame drum, beating out a strong, steady rhythm. The singing passes back and forth between a leader and the group. This music is often performed outside at night around fires during festivals!",
     funFact: "The Amazigh people have lived in North Africa for over 10,000 years. Their music and language are some of the oldest still being used anywhere in the world today!",
     instruments: ["Bendir (large frame drum)", "Gambri (3-string bass lute)", "Voices", "Handclapping"]
   },
@@ -129,10 +129,10 @@ const countries = [
     x: 1980, y: 430, color: "#7c3aed",
     videoFile: "https://drive.google.com/file/d/18HOj_dbbwXbMgtph5LGT0LrpwHG-NiLG/preview",
     url: "https://www.youtube.com/watch?v=TpQBG_W-vdg",
-    desc: "Mongolia has one of the most amazing music traditions on Earth — <strong>throat singing!</strong> A single singer can make two different notes at the same time. It sounds almost impossible! Mongolia also has a beautiful instrument called the <strong>morin khuur</strong>, a fiddle with a horse's head carved on top.",
-    styleFact: "In this video, the band <em>Khusugtun</em> plays traditional Mongolian music. Listen carefully for the throat singing — you will hear two notes coming from one person at the very same time! It takes years of practice to learn.",
-    funFact: "Mongolian throat singers can copy the sounds of wind, rivers, birds, and running horses — using only their voice. Some can even sound like an entire orchestra all by themselves!",
-    instruments: ["Morin khuur (horsehead fiddle)", "Tovshuur (lute)", "Limbe (bamboo flute)", "Voice — khoomei (throat singing)"]
+    desc: "Mongolia has one of the most amazing music traditions on Earth: <strong>throat singing!</strong> A single singer can make two different notes at the same time. It sounds almost impossible! Mongolia also has a beautiful instrument called the <strong>morin khuur</strong>, a fiddle with a horse's head carved on top.",
+    styleFact: "In this video, the band <em>Khusugtun</em> plays traditional Mongolian music. Listen carefully for the throat singing. You will hear two notes coming from one person at the very same time! It takes years of practice to learn.",
+    funFact: "Mongolian throat singers can copy the sounds of wind, rivers, birds, and running horses, using only their voice. Some can even sound like an entire orchestra all by themselves!",
+    instruments: ["Morin khuur (horsehead fiddle)", "Tovshuur (lute)", "Limbe (bamboo flute)", "Voice (khoomei throat singing)"]
   },
   {
     id: "india", name: "India", flag: "&#127470;&#127475;", type: "Tabla & Sitar",
@@ -140,18 +140,18 @@ const countries = [
     videoFile: "https://drive.google.com/file/d/1DiLUdn10V5QrWokmEOM7nWwJvG-pKlof/preview",
     url: "https://www.youtube.com/watch?v=ed4SIvGjqNI",
     desc: "India has one of the richest music traditions in the world, going back over <strong>3,000 years!</strong> The <strong>sitar</strong> is a long-necked instrument with many strings that makes a beautiful, shimmering sound. The <strong>tabla</strong> is a pair of small hand drums that play very complex rhythms. Together they tell a story without any words!",
-    styleFact: "In this video, a sitar player and tabla player perform together. Listen to how the music starts slowly and then gets faster and more exciting — this is called a <strong>raga</strong>. The energy keeps building until it reaches a thrilling finish!",
+    styleFact: "In this video, a sitar player and tabla player perform together. Listen to how the music starts slowly and then gets faster and more exciting. This is called a <strong>raga</strong>. The energy keeps building until it reaches a thrilling finish!",
     funFact: "Tabla players must memorize hundreds of rhythm patterns called <em>taals</em>. Some patterns are so tricky that it takes years of daily practice just to learn one!",
     instruments: ["Sitar (long-neck string instrument)", "Tabla (pair of hand drums)", "Tanpura (drone string instrument)"]
   },
   {
-    id: "appalachia", name: "USA — Bluegrass", flag: "&#127482;&#127480;", type: "Bluegrass",
+    id: "appalachia", name: "USA – Bluegrass", flag: "&#127482;&#127480;", type: "Bluegrass",
     x: 500, y: 590, color: "#92400e",
     videoFile: "https://drive.google.com/file/d/1spIzKPSVCrGorKFX0rdIUiek5CKSLKaE/preview",
     url: "https://www.youtube.com/watch?v=yQIJuu3N5EY",
     desc: "<strong>Bluegrass</strong> music comes from the mountains of the eastern United States! It uses fast, twangy instruments and beautiful close harmonies. Bluegrass grew from music brought to America long ago by Scottish, Irish, and African American musicians. It tells stories about mountain life, love, and adventure!",
-    styleFact: "Listen for how fast the players pick their strings — bluegrass musicians are some of the fastest players in the world! The banjo, fiddle, and mandolin each play different parts that fit together like puzzle pieces.",
-    funFact: "Bluegrass gets its name from Kentucky, nicknamed the 'Bluegrass State.' The style was largely invented by one man — Bill Monroe — who is called the 'Father of Bluegrass!'",
+    styleFact: "Listen for how fast the players pick their strings. Bluegrass musicians are some of the fastest players in the world! The banjo, fiddle, and mandolin each play different parts that fit together like puzzle pieces.",
+    funFact: "Bluegrass gets its name from Kentucky, nicknamed the 'Bluegrass State.' The style was largely invented by one man, Bill Monroe, who is called the 'Father of Bluegrass!'",
     instruments: ["Banjo (5-string)", "Fiddle (violin)", "Mandolin", "Acoustic guitar", "Double bass (upright bass)"]
   },
   {
@@ -159,7 +159,7 @@ const countries = [
     x: 430, y: 680, color: "#15803d",
     videoFile: "https://drive.google.com/file/d/1s-uPYRyvs00G16vn7Lp3twkUO7pjUyIq/preview",
     url: "https://www.youtube.com/watch?v=xLZiEWqKhBQ",
-    desc: "<strong>Mariachi</strong> is the most famous music of Mexico! Mariachi bands play at birthdays, weddings, and fiestas — and sometimes they serenade people right at their front door! The musicians wear beautiful, decorated outfits called <strong>charro suits</strong> with shiny silver buttons and wide brimmed hats.",
+    desc: "<strong>Mariachi</strong> is the most famous music of Mexico! Mariachi bands play at birthdays, weddings, and fiestas, and sometimes they serenade people right at their front door! The musicians wear beautiful, decorated outfits called <strong>charro suits</strong> with shiny silver buttons and wide brimmed hats.",
     styleFact: "Listen for the bright, bold sound of the trumpets and the warm strumming of the guitars. The big bass guitar is called a <strong>guitarron</strong>. All the instruments and voices blend together to create the bright, joyful mariachi sound!",
     funFact: "Mariachi music is so important to Mexico that UNESCO officially named it a world heritage treasure that must be protected forever!",
     instruments: ["Trumpet", "Violin", "Guitarron (large bass guitar)", "Vihuela (small round guitar)", "Guitar"]
@@ -169,8 +169,8 @@ const countries = [
     x: 700, y: 940, color: "#15803d",
     videoFile: "https://drive.google.com/file/d/1yxNUFtIDr9emKE8GIFg7Xft2V_VZA2Og/preview",
     url: "https://www.youtube.com/watch?v=MKM_IKRPsR8",
-    desc: "<strong>Batucada</strong> is powerful drumming from Brazil that is the heartbeat of samba music! Many drummers play different drums all at once, creating one giant rhythmic machine. Batucada fills the streets of Brazil during <strong>Carnival</strong> — the biggest street party in the world — where millions of people dance in colorful costumes!",
-    styleFact: "In this video, the Colombian percussion group <strong>AAINJAA</strong> performs in the Brazilian batucada style. Watch how each drummer has a different drum with a different job — some keep the steady beat, some play fast fills, and some play exciting patterns on top. Together they create a sound you can feel in your whole body!",
+    desc: "<strong>Batucada</strong> is powerful drumming from Brazil that is the heartbeat of samba music! Many drummers play different drums all at once, creating one giant rhythmic machine. Batucada fills the streets of Brazil during <strong>Carnival</strong>, the biggest street party in the world, where millions of people dance in colorful costumes!",
+    styleFact: "In this video, the Colombian percussion group <strong>AAINJAA</strong> performs in the Brazilian batucada style. Watch how each drummer has a different drum with a different job. Some keep the steady beat, some play fast fills, and some play exciting patterns on top. Together they create a sound you can feel in your whole body!",
     funFact: "At Rio de Janeiro's Carnival, one samba school's drum section can have over 300 drummers playing at once! The sound is so loud you can feel it vibrating in your chest from a whole block away!",
     instruments: ["Surdo (bass drum)", "Caixa (snare drum)", "Tamborim (small frame drum)", "Repique (tenor drum)", "Agogo (double bell)", "Chocalho (shaker)"]
   },
@@ -179,9 +179,9 @@ const countries = [
     x: 615, y: 795, color: "#b45309",
     videoFile: "https://drive.google.com/file/d/1uEQ9UQpE00l_cjieI0zyVK9YoKomPyB2/preview",
     url: "https://www.youtube.com/watch?v=7bNfslPIKrQ",
-    desc: "<strong>Parranda</strong> is one of Venezuela's most joyful music traditions! It is fast, fun music played at celebrations and holidays — when the parranda starts, everyone joins in singing and dancing! It is especially popular during Christmas time in Venezuela.",
-    styleFact: "Listen for the <strong>cuatro</strong> — a small 4-string guitar — and the shaking maracas driving the rhythm. The <strong>furro</strong> drum makes a deep, buzzy sound by rubbing a wet stick. Together they create a sound that makes you want to jump up and celebrate!",
-    funFact: "The maracas used in parranda are traditionally made from the dried shell of a taparo gourd, filled with seeds. Venezuela is considered the birthplace of the maraca as a musical instrument — and the cuatro has been Venezuela's national instrument since the 1800s!",
+    desc: "<strong>Parranda</strong> is one of Venezuela's most joyful music traditions! It is fast, fun music played at celebrations and holidays. When the parranda starts, everyone joins in singing and dancing! It is especially popular during Christmas time in Venezuela.",
+    styleFact: "Listen for the <strong>cuatro</strong>, a small 4-string guitar, and the shaking maracas driving the rhythm. The <strong>furro</strong> drum makes a deep, buzzy sound by rubbing a wet stick. Together they create a sound that makes you want to jump up and celebrate!",
+    funFact: "The maracas used in parranda are traditionally made from the dried shell of a taparo gourd, filled with seeds. Venezuela is considered the birthplace of the maraca as a musical instrument, and the cuatro has been Venezuela's national instrument since the 1800s!",
     instruments: ["Cuatro (4-string guitar)", "Maracas (shakers)", "Furro (friction drum)"]
   },
   {
@@ -189,9 +189,9 @@ const countries = [
     x: 2460, y: 1230, color: "#b91c1c",
     videoFile: "https://drive.google.com/file/d/1sGnd7BPHb3-1er0Bk4dKL89rxZM0mekD/preview",
     url: "https://www.youtube.com/watch?v=A0DkhR60xj4",
-    desc: "The <strong>Maori people</strong> are the Indigenous people of New Zealand, and the <strong>haka</strong> is one of their most powerful traditions! In a haka, a group stomps, claps, and chants together with huge energy. It was once performed before battle to show strength, but today it is performed at competitions, ceremonies, and celebrations — by everyone from children to elders!",
-    styleFact: "In this video, the youth group <strong>Te Maurea Whiritoi</strong> performs at a kapa haka competition. There are no instruments at all — only the power of voices, stomping feet, and strong body movements working together as one. Watch how every performer moves in perfect unison — that precision is what the judges look for!",
-    funFact: "The world-famous All Blacks rugby team performs the haka before EVERY match they play — and audiences around the world have come to love it. But haka belongs to all Maori people, not just athletes — it is performed at schools, weddings, funerals, and graduations throughout New Zealand!",
+    desc: "The <strong>Maori people</strong> are the Indigenous people of New Zealand, and the <strong>haka</strong> is one of their most powerful traditions! In a haka, a group stomps, claps, and chants together with huge energy. It was once performed before battle to show strength, but today it is performed at competitions, ceremonies, and celebrations by everyone from children to elders!",
+    styleFact: "In this video, the youth group <strong>Te Maurea Whiritoi</strong> performs at a kapa haka competition. There are no instruments at all, only the power of voices, stomping feet, and strong body movements working together as one. Watch how every performer moves in perfect unison. That precision is what the judges look for!",
+    funFact: "The world-famous All Blacks rugby team performs the haka before EVERY match they play, and audiences around the world have come to love it. But haka belongs to all Maori people, not just athletes. It is performed at schools, weddings, funerals, and graduations throughout New Zealand!",
     instruments: ["Voices (powerful chanting)", "Feet (stomping as percussion)", "Hands (clapping as percussion)"]
   },
   {
@@ -200,8 +200,8 @@ const countries = [
     videoFile: "https://drive.google.com/file/d/16HWnp8Ig2cJTD40VCbFJ5WNPLNE2wxEg/preview",
     url: "https://www.youtube.com/watch?v=jN4Qw2nAL9Y",
     desc: "<strong>Flamenco</strong> is one of the most dramatic and exciting music styles in the world! It combines singing, guitar playing, and powerful dancing all at once. Flamenco dancers stomp their feet in lightning-fast rhythms and sweep their arms in graceful patterns. It comes from the Andalusia region in southern Spain.",
-    styleFact: "In this video, watch the dancer's feet and arms — they are moving perfectly to the flamenco guitar rhythm. The stomping feet are actually playing percussion! The guitar style uses lightning-fast finger movements called <em>rasgueado</em>.",
-    funFact: "Flamenco dancers wear special shoes with metal tacks hammered into the heel and toe so their stomping makes a loud, sharp sound — their feet are a percussion instrument!",
+    styleFact: "In this video, watch the dancer's feet and arms. They are moving perfectly to the flamenco guitar rhythm. The stomping feet are actually playing percussion! The guitar style uses lightning-fast finger movements called <em>rasgueado</em>.",
+    funFact: "Flamenco dancers wear special shoes with metal tacks hammered into the heel and toe so their stomping makes a loud, sharp sound. Their feet are a percussion instrument!",
     instruments: ["Flamenco guitar", "Voice", "Palmas (handclapping)", "Zapateado (foot stomping)", "Castanets"]
   },
   {
@@ -209,9 +209,9 @@ const countries = [
     x: 1270, y: 350, color: "#f97316",
     videoFile: "https://drive.google.com/file/d/1iV5ibgYBmCNL_SN2NGWz1HD9i31y5smx/preview",
     url: "https://www.youtube.com/watch?v=rVkrGJxdhuI",
-    desc: "In the Netherlands, people dance in wooden shoes called <strong>klompen</strong> — also known as clogs! The clacking sound the wooden shoes make on the floor creates its own rhythm. <strong>Clog dancing</strong> started hundreds of years ago with farmers and workers who wore the sturdy wooden shoes every day.",
-    styleFact: "In this video, watch the dancers' feet as they stamp out patterns with their wooden clogs. The clogs hit the floor in exact rhythms — making the shoes into a percussion instrument! The accordion often plays the melody.",
-    funFact: "The Dutch make about 3 million pairs of wooden clogs every year! They were originally worn because they protect feet much better than leather shoes — even from water and heavy farm tools.",
+    desc: "In the Netherlands, people dance in wooden shoes called <strong>klompen</strong>, also known as clogs! The clacking sound the wooden shoes make on the floor creates its own rhythm. <strong>Clog dancing</strong> started hundreds of years ago with farmers and workers who wore the sturdy wooden shoes every day.",
+    styleFact: "In this video, watch the dancers' feet as they stamp out patterns with their wooden clogs. The clogs hit the floor in exact rhythms, making the shoes into a percussion instrument! The accordion often plays the melody.",
+    funFact: "The Dutch make about 3 million pairs of wooden clogs every year! They were originally worn because they protect feet much better than leather shoes, even from water and heavy farm tools.",
     instruments: ["Klompen / Wooden clogs (worn as percussion)", "Accordion", "Fiddle (violin)"]
   },
   {
@@ -220,8 +220,8 @@ const countries = [
     videoFile: "https://drive.google.com/file/d/19T4Dhngyyma82UUHgymEyoA3u4w3lJHw/preview",
     url: "https://www.youtube.com/watch?v=27jABq105j4",
     desc: "Romania has joyful folk music and dancing that goes back hundreds of years! The <strong>hora</strong> is a circle dance where everyone holds hands and moves together. It is performed at weddings, festivals, and village celebrations. The music is fast, lively, and almost impossible to sit still to!",
-    styleFact: "In this video, a lively band plays the <em>Hora din Moldova</em> — a famous circle dance from the Moldova region of Romania. Listen for the fast pan flute melody and the hammering sound of the cimbalom playing chords underneath.",
-    funFact: "The hora circle dance is so important in Romania that it is performed at nearly every wedding — sometimes with hundreds of guests all holding hands in one giant moving circle!",
+    styleFact: "In this video, a lively band plays the <em>Hora din Moldova</em>, a famous circle dance from the Moldova region of Romania. Listen for the fast pan flute melody and the hammering sound of the cimbalom playing chords underneath.",
+    funFact: "The hora circle dance is so important in Romania that it is performed at nearly every wedding, sometimes with hundreds of guests all holding hands in one giant moving circle!",
     instruments: ["Nai (pan flute)", "Cimbalom (hammered dulcimer)", "Cobza (lute)", "Violin", "Accordion"]
   }
 ];
